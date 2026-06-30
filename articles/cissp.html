@@ -1,0 +1,3750 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CISSP 八大領域整理：治理與風險、資產安全、安全工程與密碼學、網路、IAM、安全評鑑、維運、軟體開發安全；對比矩陣、記憶口訣與自測。">
+<meta name="author" content="葉柏毅 Alex Yeh">
+<title>CISSP 八大領域筆記｜仆洛宅資安筆記</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="CISSP 八大領域筆記">
+<meta property="og:description" content="CISSP 八大領域整理：治理與風險、資產安全、安全工程與密碼學、網路、IAM、安全評鑑、維運、軟體開發安全；對比矩陣、記憶口訣與自測。">
+<meta property="og:url" content="https://sec.angelz13.com/articles/cissp.html">
+<meta property="og:image" content="https://sec.angelz13.com/assets/avatar.png">
+<link rel="icon" type="image/png" href="../assets/avatar.png">
+<link rel="apple-touch-icon" href="../assets/avatar.png">
+<link rel="stylesheet" href="../css/brand.css">
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="../index.html">← 返回資安筆記</a>
+  <div class="kicker">SEC NOTES</div>
+  <h1>CISSP 八大領域筆記</h1>
+  <p class="article-meta">作者：葉柏毅 Alex Yeh ｜ 原文：<a href="https://hackmd.io/@alrex5401/CISSP" rel="noopener" target="_blank">HackMD</a></p>
+  <div class="attribution">本篇 CISSP 八大領域筆記整理自 <strong>WUSON（Wentz Wu）</strong>課程教材、經授權公開分享；圖表版權屬原作者，在此致謝。完整原始筆記見 <a href="https://hackmd.io/@alrex5401/CISSP" rel="noopener" target="_blank">HackMD</a>。</div>
+  <article class="article-body">
+<style>
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+</style>
+
+<h1 id="wusoncissp-alex-yeh">WUSON的CISSP課後筆記整理-葉柏毅Alex Yeh</h1>
+<h2 id="_1">相關連結</h2>
+<h3 id="cissp-alex-yeh"><a href="https://wentzwu.com/2021/08/05/cissp%e8%80%83%e8%a9%a6%e5%bf%83%e5%be%97-alex-yeh/">CISSP考試心得-Alex Yeh</a></h3>
+<hr />
+<h3 id="alexyeh"><a href="https://drive.google.com/file/d/1kHS50FoW_X_OzXSdnRFvWgjCojogxguR/view?usp=sharing">AlexYeh心智圖(點我下載)</a></h3>
+<pre><code>心智圖才是本篇精華，記得點選上方連結
+</code></pre>
+<hr />
+<h3 id="alexyeh-pdf"><a href="https://drive.google.com/file/d/19vU6XPtsKfOyLoixawso2oqWCgnPlt_i/view?usp=sharing">AlexYeh 心智圖PDF版(點我下載)</a></h3>
+<hr />
+<h3 id="_2"><a href="https://coaches.wuson.org/alex-yeh/">關於我</a></h3>
+<p>葉柏毅 Alex <BR><br />
+Linkedin：https://www.linkedin.com/in/alrex5401/</p>
+<hr />
+<p>Structure<br><br />
+Architecture<br><br />
+Framework<br><br />
+Approach<br><br />
+Methodology<br></p>
+<hr />
+<h2 id="domain"><strong>Domain 口訣</strong></h2>
+<p>Domain 1. Security and Risk Management C、I、A+GRC(安全和風險管理）<br><br />
+Domain 2. Asset Security 盤點、分類、保護（資產安全）<br><br />
+Domain 3. Security Architecture and Engineering 時時都安全、處處都安全（安全架構和工程）<br><br />
+Domain 4. Communication and Network Security 處處都安全（通信及網路安全）<br><br />
+Domain 5. Identity and Access Management (IAM) I + 3A（身分識別及存取控制）<br><br />
+Domain 6. Security Assessment and Testing 查驗、訪談、測試（安全評鑑及測試）<br><br />
+Domain 7. Security Operations 日常維運、持續改善（安全維運）<br><br />
+Domain 8. Software Development Security 時時都安全、處處都安全（軟體開發安全）<br></p>
+<hr />
+<p>美國法定目標（FISMA）/ 資通安全法<br><br />
+CIA<br></p>
+<p>Ｃ機密性：資料不被偷<br><br />
+Ｉ完整性：資料不被竄改<br><br />
+Ａ可用性：資料隨時可用<br></p>
+<p>Integrity完整性<br><br />
+Data Integrity（資料完整性）<br><br />
+Authenticity（資料真偽；真實性）<br><br />
+Non-repudiation 不可否認性（法律上）：傳送方不能否認未傳收；接受方不能否認未收到<br></p>
+<p>FISMA<br><br />
+NIST<br><br />
+FIPS 199<br><br />
+NIST SP 800<br></p>
+<p><img alt="" src="../assets/cissp/img01.png" /></p>
+<h2 id="asset">資產Asset</h2>
+<p>資產Asset：有價值Value的東西，且值得保護<br><br />
+Assets 通常指資訊系統<br />
+* 資料<br />
+* 電腦系統<br />
+* 操作系統<br />
+* 軟體<br />
+* 網路<br />
+* 資料中心（機房）<br />
+* 人（最重要）<br />
+* 業務流程</p>
+<p><img alt="" src="../assets/cissp/img02.png" /></p>
+<p><img alt="" src="../assets/cissp/img03.png" /></p>
+<h2 id="_3">資安目標</h2>
+<p>資安目標（定義）：<br><br />
+透過安全管制措施，保護資訊資產不受到危害，以達到CIA目標<br><br />
+進而支持組織的業務流程<br><br />
+將安全融入組織業務流程（人事/採購），產銷人發財<br><br />
+支持組織的「產品」及「服務」持續交付<br><br />
+為公司創造價值，實現公司的使命及願景<br></p>
+<p>公司最高經營階層的管理作為就叫做治理.<br><br />
+管理是達成目標的一套有系統的方法; 最常用的方法是PDCA.<br><br />
+治理的目標是創造價值,<br><br />
+戰略(strategy)是達成治理目標的高階計畫, 高階主管必須透過下達政策(policy)指示來執行戰略.<br></p>
+<p>治理：經營高層（董事會+高階主管）的管理作為。（治理目標：創造價值），經營高層的計畫書：戰略。戰略怎麼落實執行：政策<br><br />
+管理：達成目標的一套有系統的方法（PDCA）<br><br />
+達到目標的方法：<br><br />
+Plan<br><br />
+Do<br><br />
+Check<br><br />
+Act<br></p>
+<p>目標Goals/Objectives：<br><br><br />
+Specific（明確的）<br><br />
+Measurable（可衡量的）<br><br />
+Achievable（可達成的）<br><br />
+Relevant（相關的）<br><br />
+Time-bound（有時限的）<br></p>
+<p>治理目標：創造價值<br><br />
+經營高層的計畫書：戰略<br><br />
+戰略怎麼落實執行：政策<br></p>
+<p>InfoSec  Governance (CISM)<br></p>
+<p><img alt="" src="../assets/cissp/img04.png" /></p>
+<h2 id="governance-structure">Governance Structure</h2>
+<p>CISO，如果與稽核單位報告，則稽核單位將會喪失獨立性</p>
+<p><img alt="" src="../assets/cissp/img05.png" /></p>
+<h5 id="_4">戰略發展</h5>
+<p>Strategic Development 戰略發展<br><br />
+未來目標與現在程度的落差進行Gap Analysis，就是Road MAP<br><br />
+需要Resources資源及遇到Constraints限制<br></p>
+<p><img alt="" src="../assets/cissp/img06.png" /></p>
+<h5 id="_5">戰略投資組合</h5>
+<p>戰略投資組合(Strategy Portfolio)<br></p>
+<p>戰略(strategy)、投資組合(portfolio)、計畫(program)與專案(project)的關係<br><br />
+將戰略目標，拆分成各項投資組合，實現其戰略價值，進一步證明其投資報酬率（ROI）。<br><br />
+其投資組合由計畫(program)或專案(project)的執行結果達成其效果（效益、好處）。<br><br />
+部分大型計畫會拆分成專案，以各項專案輸出達成計畫之結果。<br></p>
+<p>Values 價值<br><br />
+Outcomes and Benefits 結果與好處<br><br />
+Outputs 輸出<br></p>
+<p><img alt="" src="../assets/cissp/img07.png" /></p>
+<h6 id="_6">政策框架</h6>
+<p>政策框架（Policy Framework），都是強制性的<br />
+1. Policies 政策<br />
+1. Standards 標準<br />
+1. Procedures 程序<br />
+1. Guidelines 指引（option）</p>
+<h5 id="_7">專案</h5>
+<p>業務企畫案(business case)：將企劃/想法，透過成本效益分析後並透過高層立案後的專案。</p>
+<p>立案 (Charter) (根據專案章程)<br />
+* 之前要做 成本效益分析 Cost/Benift<br />
+    * 成本效益分析後的產出 Business Case<br />
+        * 兩案併呈，候選案 (Alternative)<br />
+    * 如果可以做、值得做，最後簽過才會立案<br />
+* 之後才會稱為專案</p>
+<p>Accountability 扛責任<br><br />
+Responsibility 事情做好的責任<br></p>
+<p>立案 (Charter）<br><br />
+候選案 (Alternative)<br></p>
+<p><img alt="" src="../assets/cissp/img08.png" /></p>
+<p>Scope Creep 範疇潛變：不受控的範圍變化<br />
+* 「範疇潛變」係在專案進行過程中發生未經授權或未加以控制的範疇變更。未走公司的標準變更管理程序。</p>
+<p>變更管理Change Management：變更BaseLine<br />
+* Baseline：被核定的結果<br />
+* 被核定過東西就是baseline. 常見的基礎有: scope, schedule, cost/budget, controls, configruations....</p>
+<p>變更管理的標的：baseline<br />
+* 重點：申請&amp;核准</p>
+<p><img alt="" src="../assets/cissp/img09.png" /></p>
+<p>平衡計分卡 Balanced Scorecard（BSC）</p>
+<p><img alt="" src="../assets/cissp/img10.png" /></p>
+<h2 id="_8">風險</h2>
+<p><img alt="" src="../assets/cissp/img11.png" /></p>
+<p>風險：影響目標達成的不確定因素<br><br />
+管理：達成目標的一套有系統的方法（PDCA）<br><br />
+風險管理目標：經營階層所能接受的殘餘風險<br></p>
+<p>沒有目標的風險，應只是指危險，而非風險<br></p>
+<p><img alt="" src="../assets/cissp/img12.png" /></p>
+<p>風險管理：ISO 31000<br />
+* 風險評鑑 Risk Assessment<br />
+    * 風險識別 Risk Identification（找風險）<br />
+        * 目標（列表）<br />
+        * 風險登錄表（Risk Register）<br />
+    * 風險分析 Risk Analysis<br />
+        * 不確定因素/機率<br />
+        * 影響<br />
+            * 風險曝險值Risk exposure<br />
+            * 量化分析<br />
+            * 質化分析<br />
+    * 風險評估 Risk Evaluation<br />
+        * 決定/判斷decisions是否進行風險處置<br />
+        * 順位Priorities<br />
+* 風險處置 Risk Treatment(ATMA)<br />
+    * Avoid避免: 放棄原本要做的事情<br />
+    * Transfer 轉移：第三方風險轉移。如，買資安險。風險可以轉移，但責任不行。<br />
+        * 保險<br />
+        * 外包<br />
+    * Mitigate緩解：處理不確定因素(降低發生可能性)，或處理影響。<br />
+    * Accept接受：考量成本效益分析，僅留在風險登錄表。</p>
+<p>風險識別最重要的應注意事項為何?<br />
+* 確認目標（列表）<br />
+* 風險登錄表（Risk Register）</p>
+<p>風險分析在分析什麼? 風險分析的結果是什麼? 有那二種主要的風險分析方法?<br />
+1. 分析不確定因素（機率）及影響<br />
+1. 分析結果是風險曝險值Risk exposure<br />
+1. 分析方法分「量化分析」及「質化分析」</p>
+<p>何謂風險評估(evaluation)? 何謂風險評鑑(assessment)?<br />
+* 風險評估 Risk Evaluation：決定/判斷是否進行風險處置，並排處置順位<br />
+* 風險評鑑 Risk assessment：進行風險識別、風險分析及風險評估<br />
+風險處置(treatment)又稱風險回應(response), 若以威脅的角度來看, 其主要的方法或策略有那四種?<br />
+* Avoid避免<br />
+* Transfer 轉移<br />
+* Mitigate緩解<br />
+* Accept接受</p>
+<p>Residual Risk 殘餘風險<br />
+<img alt="" src="../assets/cissp/img13.jpg" /></p>
+<p>Risk Appetite 風險胃納量<br />
+<img alt="" src="../assets/cissp/img14.png" /></p>
+<p>NIST的一般風險模型(generic risk model)有那些主要的元素?<br />
+* Source（Ｗho）、Event（What）、Vulinerabiliy（利用何種弱點）、Impact（影響）<br />
+* 威脅情境(scenario)：一個威脅來源(Threat Source)對應到一個威脅事件(Threat Event)的組合</p>
+<p><img alt="" src="../assets/cissp/img15.png" /></p>
+<h2 id="business-processes">Business Processes</h2>
+<h3 id="human-resources">Human Resources</h3>
+<p>員工召募的步驟</p>
+<ol>
+<li>
+<p>建立職責描述 Job Description<br />
+* 職責分離 (seperation of duties)</p>
+<ul>
+<li>將關鍵敏感的資訊 分給幾個不同的管理員或高級操作員防阻串通的保護措施（如：開發及維運）</li>
+<li>工作職責 (job responsibilities)</li>
+<li>最小權限Least Privilege</li>
+<li>最小需知Need to Know</li>
+<li>Assets Owner授權時，亦根據Need to know及Least Privilege進行授權</li>
+</ul>
+</li>
+<li>
+<p>設定工作級別</p>
+</li>
+<li>
+<p>篩選應聘者<br />
+* 候選者的篩選基於職責描述所定義的敏感性和分類。現在許多公司做線上的背景調查還有社交網路審查已成為標準作法</p>
+<ul>
+<li>候選人篩選</li>
+<li>背景調查Background Check</li>
+<li>推薦信調查</li>
+<li>學歷驗證</li>
+<li>安全調查Security Clearance</li>
+</ul>
+</li>
+<li>
+<p>入職和離職程序<br />
+* 入職</p>
+<ul>
+<li>雇傭協議NDA</li>
+<li>AUP</li>
+<li>Provisioning</li>
+</ul>
+</li>
+<li>
+<p>招募和培訓最合適該職位的人員<br />
+* 培訓（資安意識(Awareness), 訓練(Training)及教育(Education)的對象與目標.）</p>
+<ul>
+<li>資安意識(Awareness)：<ul>
+<li>所有人</li>
+<li>政策宣導、提高資安意識</li>
+</ul>
+</li>
+<li>訓練(Training)：<ul>
+<li>特定一群人</li>
+<li>達到對工作的要求或學會特定技能</li>
+</ul>
+</li>
+<li>教育(Education)：<ul>
+<li>特定一群人</li>
+<li>有證書或學位認證</li>
+</ul>
+</li>
+<li>崗位輪換 (job rotation)</li>
+<li>提供知識備份降低詐欺、數據更改、竊盜破壞與訊息濫用的風險</li>
+<li>強制休假</li>
+<li>Privilege Creep Prevention</li>
+</ul>
+</li>
+<li>
+<p>離職<br />
+* 解雇過程維持控制和風險最小化離職面談,主要對於雇員的責任和限制進行審查應在通知被解雇時同時進用和刪除其系統的訪問權限</p>
+</li>
+</ol>
+<h3 id="procurement">Procurement</h3>
+<p>Procurement and Supply Chain 採購和供應鏈</p>
+<p><img alt="" src="../assets/cissp/img16.jpg" /></p>
+<p>採購程序：</p>
+<ol>
+<li>招標文件<ul>
+<li>RFP</li>
+</ul>
+</li>
+<li>說明會</li>
+<li>
+<p>投標</p>
+<ul>
+<li>建議書</li>
+<li>資格確認Background<ul>
+<li>FOCI（Foreign Ownership Control Influence）</li>
+<li>
+<p>能力Capability：軟體開發能力、採購（外包）能力、服務能力</p>
+<ul>
+<li>丙方Auditor</li>
+<li>軟體開發：CMMI</li>
+<li>資安：ISMS</li>
+<li>
+<p>資安：SOC（AICPA）</p>
+<ul>
+<li>SOC1：財務認證<ul>
+<li>Type I：書審</li>
+<li>Type II：書審+實地查核一段時間</li>
+</ul>
+</li>
+<li>SOC2：類似ISMS<ul>
+<li>Type I：書審</li>
+<li>Type II：書審+實地查核一段時間</li>
+</ul>
+</li>
+<li>SOC3：精簡SOC2<ul>
+<li>Type I：書審</li>
+<li>Type II：書審+實地查核一段時間</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>信用卡PCIDSS</p>
+</li>
+<li>產品：Common Criteria，CC</li>
+<li>雲端CSA/ STAR</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>評選</p>
+</li>
+<li>議價</li>
+<li>簽約</li>
+<li>履約<ul>
+<li>合約<ul>
+<li>Service Level Agreement<ul>
+<li>Service Level Requirement</li>
+</ul>
+</li>
+<li>Security Requirement</li>
+<li>Audit Right 稽核權</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>結案</li>
+</ol>
+<h2 id="service-organization-control-soc">Service Organization Control (SOC)</h2>
+<p><img alt="" src="../assets/cissp/img17.png" /></p>
+<p>SOC 1、2 和 3 報告概述</p>
+<p>服務組織控制 (SOC)<br />
+以下是微軟網站的摘錄：</p>
+<p>企業越來越多地將數據存儲和應用程序訪問等基本功能外包給雲服務提供商 (CSP) 和其他服務組織。作為回應，美國註冊會計師協會 (AICPA)開發了服務組織控制 (SOC)框架，這是一種控制標準，用於保護在雲中存儲和處理的信息的機密性和隱私性。這與國際服務組織的報告標準《國際鑑證業務標準》(ISAE)一致。</p>
+<p>基於 SOC 框架的服務審計分為兩類——SOC 1 和 SOC 2——適用於範圍內的 Microsoft 雲服務。</p>
+<ul>
+<li>一個SOC 1審計，旨在會計師事務所審計的財務報表，計算一個的有效性CSP的內部控制影響使用供應商的雲服務客戶的財務報告。在上鑑證業務（SSAE 18）聲明和國際標準鑑證3402號公報（ISAE 3402）正在其中執行審計標準，並且是SOC 1報告的基礎。</li>
+<li>一個SOC 2審計計一的有效性CSP的系統基礎上，AICPA信託服務原則和標準。根據鑑證標準 (AT) 第 101 節進行的鑑證業務是 SOC 2 和 SOC 3 報告的基礎。</li>
+</ul>
+<p>在一個SOC 1或SOC 2審計結束後，審計師呈現的意見在SOC 1類型2或SOC 2類型2報告，其中描述了電信運營商的系統，並評估其控制的CSP說明的公平性。它還評估 CSP 的控制是否設計適當、是否在指定日期運行以及在指定時間段內是否有效運行。</p>
+<ul>
+<li>審核員還可以創建 SOC 3 報告（SOC 2 類型 2 審核報告的縮寫版本），供希望獲得 CSP 控制保證但不需要完整 SOC 2 報告的用戶使用。只有當 CSP 對 SOC 2 有無保留的審計意見時，才能授予 SOC 3 報告。</li>
+</ul>
+<h2 id="organizational-resilience-planning">組織韌性規劃 Organizational Resilience Planning</h2>
+<p><img alt="" src="../assets/cissp/img18.jpg" /></p>
+<p>Organizational Resilience Planning組織韌性規劃</p>
+<p>Tier1：<br />
+* Crisis Communication Plan 危機溝通計劃<br />
+* Occupant Emergency Plan（OEP）乘員緊急計劃 </p>
+<p>Tier2：<br />
+* Continuity of Operations Plan（COOP）業務連續性計劃<br />
+* Business Continuity Plan（BCP）業務連續性計劃</p>
+<p>Tier3：<br />
+* Disaster Recovery Plan（DRP）災難恢復計劃 <br />
+* Cyber Incident Response Plan（CIRP）網絡事件響應計劃<br />
+* Information System Contingency Plan（ISCP）資訊系統應急計劃<br />
+* Critical Infrastructure Protection （CIP）Plan 關鍵基礎設施保護計劃</p>
+<p>災難Disaster：建築物或相關設施（Data Center）出問題，且必須搬家到其他設施辦公。<br />
+* 災難重建的目標是維持CIA</p>
+<p>Business Continuity 業務持續（ISO 22301）：組織持續交付產品及服務的能力<br />
+* Business Continuity 業務持續目的：培養及維持組織持續交付產品及服務的能力</p>
+<ol>
+<li>事情（Event）（中性）</li>
+<li>事故（incident）（不好）：等級高中低</li>
+<li>中斷（Distraption）：事故將產品及服務交付中斷</li>
+<li>災難（Disaster）：建築物或相關設施（Data Center）出問題，且必須搬家到其他設施辦公（設施等級的事故，造成必須搬家。）<ul>
+<li>設施（Facitoty）：資訊系統（IS）<ul>
+<li>Relocation搬家</li>
+</ul>
+</li>
+<li>Disaster Recovey （DR）<ul>
+<li>IS</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>事故回應：防止小事故變成大事故</BR><br />
+重建：主要談資訊系統部分（CISSP）</p>
+<h2 id="bcm">BCM</h2>
+<p><img alt="" src="../assets/cissp/img19.png" /></p>
+<p>Business Continuity 業務持續：組織持續交付產品及服務的能力</p>
+<p>BCM<br />
+1. 內外部環境分析<br />
+2. 找出利害關係人及需求<br />
+3. 訂定範圍（清單）（BCM）<br />
+    * 依據內外部環境分析及利害關係人（組織單位及產品、服務）<br />
+4. 業務衝擊分析BIA =&gt;  找出關鍵流程及關鍵資源<br />
+    * MTD（Maximum tolerable downtime）最大容許停機時間：高階主管核定<br />
+    * RTO （Recovery Time Objective，復原時間目標）：<br />
+    * RPO（Recovery Point Objective，復原點目標）：<br />
+    * BIA（Business Impact Analysis）：依MTD決定<br />
+5. 風險評鑑<br />
+    * 風險識別 Risk Identification（找風險）<br />
+        * 目標（列表）<br />
+        * 風險登錄表（Risk Register）<br />
+    * 風險分析 Risk Analysis<br />
+        * 不確定因素/機率<br />
+        * 影響<br />
+        * 風險曝險值Risk exposure<br />
+            * 量化分析<br />
+            * 質化分析<br />
+    * 風險評估 Risk Evaluation<br />
+        * 決定/判斷decisions是否進行風險處置<br />
+        * 順位Priorities<br />
+6. 風險處置（ATMA ）=&gt;  PLAN<br />
+    1. 事前<br />
+        * Recovery Site(RTO)<br />
+            * Mirrored Site ，資料對拷<br />
+                * RTO：0-30s<br />
+                * RPO：zero<br />
+            * Hot Site熱站點，與生產環境，只差最新一份資料<br />
+                * RTO：30s-30m<br />
+                * RPO：zero<br />
+            * Warm Site溫站點，解決採購設備問題<br />
+                * RTO：30m-72h<br />
+                * RPO：&gt;zero<br />
+            * Cold Site冷站點，解決租賃地點問題<br />
+                * RTO：&gt;72h<br />
+                * RPO：&gt;zero<br />
+        * 備份(RPO)<br />
+            * Full Backup<br />
+            * Differential Backup<br />
+            * Incremental Backup<br />
+    2. 事中<br />
+    3. 事後<br />
+7. 測試及演練PLAN<br />
+    1. Read-through or Tabletop：Table Test(Check List)桌面測試，文件審查<br />
+    2. Walkthrough ：Walking Test 穿行測試，角色扮演（ex.軍棋演練/討論敵軍可能的入侵情境）<br />
+    3. Simulation：Simulation 模擬測試，直接演一演（ex.火災逃生演練）<br />
+    4. Parallel：Parallel 平行測試，在不影響正式環境下，另外找一個環境進行中斷測試（ex.從AWS建置全新的環境及系統，進行中斷演練）<br />
+    5. Full interruption：全中斷測試</p>
+<p><img alt="" src="../assets/cissp/img20.png" /></p>
+<h2 id="_9">事故回應</h2>
+<p>事故回應（IR）計畫<br />
+只要會影響產品及服務之風險或事故，皆需進行處置及回應（CISSP只從資安角度（尤其是網路））</p>
+<p>incident Management<br />
+* Preparation準備階段：須先有計劃Plan<br />
+    * Management buy-in：管理階層的同意（形成政策Policy）<br />
+    * Policy<br />
+    * 1️⃣Plan：計畫<br />
+    * IR Team<br />
+    * User Awareness：使用者意識</p>
+<ul>
+<li>
+<p>Triage（預處理）檢傷分類：先判斷真偽及排定順序，完成通報</p>
+<ul>
+<li>Detection：偵測<ul>
+<li>IDS</li>
+</ul>
+</li>
+<li>1️⃣Analysis &amp; Validation：判斷真假</li>
+<li>2️⃣Prioritization：排列優先順序（事故等級高中低）</li>
+<li>3️⃣Notification：完成通報</li>
+<li>Documentation：紀錄</li>
+</ul>
+</li>
+<li>
+<p>Response回應階段：先停損，後根除（因），有損害再復原</p>
+<ul>
+<li>1️⃣Containment：抑制（包含），讓使用者（業務）可以繼續工作（Workaround）<ul>
+<li>Workaround，暫時性處理方式</li>
+</ul>
+</li>
+<li>2️⃣Eradication（Remedy）：（根除）找到根因（Root Cause），防止再發（解決方案Solution）<ul>
+<li>解決方案Solution：解決根因（Root Cause）</li>
+</ul>
+</li>
+<li>3️⃣Recovery：當有損害，應進行復原</li>
+<li>Collect Evidence：收集證據</li>
+<li>調查investigate<ul>
+<li>行政調查</li>
+<li>法院調查</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Post-incident事後：做好反省檢討</p>
+<ul>
+<li>1️⃣Lessons learned （LL）：檢討改善</li>
+<li>Evidence retention</li>
+<li>Follow-up report</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img21.png" /></p>
+<h3 id="e-discovery">E-Discovery</h3>
+<ul>
+<li>Information Governance 資料處理流</li>
+<li>identification 識別，識別證據資訊</li>
+<li>Preservation 保存，保存證據資訊</li>
+<li>Collection 收集，收集證據資訊</li>
+<li>Processing 處理，過濾證據資訊</li>
+<li>Review 檢查，檢查證據資訊</li>
+<li>Analysis 分析，分析證據資訊</li>
+<li>Production 產出，依照提供證據格式</li>
+<li>Presentation 呈現，向法院呈現證據</li>
+</ul>
+<p>取證磁盤控制器執行四個功能。其中之一，寫阻塞，攔截發送到設備的寫命令並防止它們修改設備上的數據。其他三個功能包括返回讀取操作請求的數據、從設備返回訪問重要信息以及從設備向取證主機報告錯誤。控制器不應阻止將讀取命令發送到設備，因為這些命令可能會返回關鍵信息。</p>
+<h2 id="intrusion-detection">Intrusion Detection</h2>
+<p>Intrusion Detection<br />
+* 網路<br />
+    * IDS：只偵測、只聽、只判斷，不干涉入侵行為<br />
+    * IPS：偵測、判斷，干涉入侵行為<br />
+    * Related Topics<br />
+        * AI<br />
+        * SOAR<br />
+            * 聯防：自動化發通報驅動其他設備<br />
+        * SIEM<br />
+        * UEBA（User and Entity Behavior Analytics）<br />
+        * 情資Threat intelligence（Threat feeds, Threat Hunting（人工））<br />
+* Detection Approaches Detection<br />
+    * Signature-Based Detection<br />
+        * 比對已知樣態<br />
+* Anomaly-Based Detection<br />
+    * 以異常為基礎<br />
+        * 能偵測未知威脅<br />
+    * 建立時訓練期（Training Period），形成Model（Profile）<br />
+        * 以統計技術<br />
+        * 大數據<br />
+        * 資料採礦<br />
+        * AI<br />
+        * 機器學習<br />
+    * 缺點：推論，有誤判（假警報）<br />
+* Alert<br />
+    * positive 陽性<br />
+        * True positive：發警報<br />
+        * false positive ：以人工判斷後為假警報<br />
+    * negative 陰性<br />
+        * True negative：未發警報<br />
+        * false negative：有真實入侵，但未發Alert<br />
+* IDPS Deployment<br />
+    * Host-Based IDS<br />
+        * Agent<br />
+    * Network-Based IDS<br />
+        * Sensor<br />
+        * Sensor Modes<br />
+            * InLine<br />
+            * Passive<br />
+        * Passive Sensor Locations<br />
+            * Spanning Port<br />
+            * Network Tap<br />
+            * IDS Load Balancer<br />
+    * Network Bechavior Analysis（NBA）<br />
+    * Wireless</p>
+<ul>
+<li>實體 (請參考<span class="red">生物辨識</span>)</li>
+</ul>
+<h2 id="_10">符合性</h2>
+<p>Compliance 符合性</p>
+<p>Organization Level 組織層面</p>
+<ul>
+<li>Laws &amp; Regulations 法律&amp;法規</li>
+<li>Industry Standards 行業標準（PCIDSS / ISMS）</li>
+<li>Contracts 合約</li>
+</ul>
+<p>Individual Level 個人級別</p>
+<ul>
+<li>Organizational Policies 組織政策</li>
+<li>Due Diligence / Due Care 盡職調查/應有關注</li>
+<li>Ethics 道德</li>
+</ul>
+<p>個資要求<br />
+* 告知收集的目的<br />
+* 收集的資料，需最小化<br />
+* 須經當事人同意，始得收集<br />
+* 為確保資料品質，當事人可進行更新<br />
+* 當事人若提出刪除要求，不得拒絕<br />
+* 資料控制者，對收集來的個資，需做好保護(含對資料處理者的要求及確保資料處理者做好保護)<br />
+* 法律責任無法卸責<br />
+    * 若不慎洩漏，必須做到通報當事人的義務。<br />
+* 個資在分享階段，需注意到是否有跨境傳輸？以及有沒有相關保護措施，如以下<br />
+    * 匿名化：去除可識別唯一性<br />
+    * 擬名化：仍可使用對照表，還原可識別唯一性</p>
+<p>Code of Ethics</BR><br />
+保護社會、共同利益、必要的公眾信任和信心以及基礎設施。</BR><br />
+以光榮、誠實、公正、負責任和合法的方式行事。</BR><br />
+為原則提供勤奮和稱職的服務。(為你的雇主提供專業)</BR><br />
+推進和保護職業。(促進並保護資安專業)</BR></p>
+<p>投訴者，須為受害者</BR><br />
+需指出受害者身份</BR><br />
+指出CISSP違反原則（第三條，雇主/第四條，同為CISSP）</BR></p>
+<p>資訊技術安全評估共同準則 (Common Criteria for IT Security Evaluation, ISO/IEC 15408)，簡稱共同準則 (Common Criteria) 或 CC，是針對實現資/通訊產品所使用資訊技術的安全性所進行的安全技術認證。</BR></p>
+<ul>
+<li>Target of Evaluation，TOE，廠商研發送驗的IT產品</li>
+<li>Security Target，ST，檢驗標準（標準廠商自己訂，第三方驗證）</li>
+<li>Protection Profile，PP，範本，供ST參考</li>
+<li>Common Criteria Testing Lab，CCTL，CC檢驗實驗室</li>
+<li>類似SOC，標準自己寫，美國會計師來驗</li>
+<li>EA估保障等級 (Evaluation Assurance Level, EAL)：以數值方式來針對評估的深度以及嚴謹性進行評比。每一個 EAL 會對應一組預先定義好的安全保障需求 (SAR)，這些安全保障需求涵蓋產品開發的全部過程，有一定的嚴謹性。</li>
+</ul>
+<p>Evaluation Assurance Level</BR><br />
+<span class="red">EAL7，Formally Verified Design And Tested</span>，學術水準</BR><br />
+EAL6，Semi-formally Verified Design And Tested</BR><br />
+EAL5，Semi-formally Designed And Tested</BR><br />
+<span class="red">EAL4，Methodically Designed, Tested And Reviewed</span>，經過設計</BR><br />
+EAL3，Methodically Tested And Checked</BR><br />
+EAL2，Structurally Tested，結構測試</BR><br />
+<span class="red">EAL1，Functionally Independently Tested</span>，依操作手冊所寫進行功能呈現</BR></p>
+<p>Evaluation Assurance Level</BR><br />
+<span class="red">EAL7，Formally</span> 正式(學術)（數學）</BR><br />
+EAL6，Semi-formally半正式</BR><br />
+EAL5，半Semi-formally ，半正式</BR><br />
+<span class="red">EAL4，Methodically ，有設計</span></BR><br />
+EAL3，Methodically，有條理</BR><br />
+EAL2，Structurally ，有結構</BR><br />
+<span class="red">EAL1，Functionally，有功能</span></BR></p>
+<p><img alt="" src="../assets/cissp/img22.png" /></p>
+<h2 id="asset-security">Asset Security</h2>
+<p><img alt="" src="../assets/cissp/img23.png" /></p>
+<h5 id="_11">盤點</h5>
+<ul>
+<li>盤點後指定找到Asset Owners進行分類</li>
+</ul>
+<h5 id="_12">分類</h5>
+<p>分類原則：主要根據Business Value<br />
+* Business Value<br />
+* Confidentiality<br />
+* Integrity<br />
+* Availability<br />
+* Compliance<br />
+* Purchase Cost<br />
+* Opportunity Cost<br />
+* Revenue loss</p>
+<p>Military （依據Confidentiality機密性，Executive Order 12356）<br />
+* Top Secret：只要這機密資料外洩，會造成人命損失<br />
+* Secret<br />
+* Confidential<br />
+* Unclassified</p>
+<h5 id="_13">保護</h5>
+<p>懶人包Security Frameworks（框架）</BR><br />
+常見分類方式：</BR><br />
+Security Safeguards（HIPAA）</BR><br />
+* Administrative（Management）行政管理<br />
+* Technical（Logical）技術（邏輯）<br />
+* Physical  實體</p>
+<p>Types of Access Control  (ISC)2</p>
+<p>Before<br />
+* Directive 指示<br />
+* Deterrent 威懾<br />
+* Preventive 預防<br />
+During<br />
+* Detective 偵測<br />
+* Corrective 糾正</p>
+<p>After<br />
+* Recovery 復原</p>
+<p>Others<br />
+* Compensating 補償</p>
+<p>NIST RMF包含那幾個步驟?<br />
+1. Categorize Systems<br />
+2. Select Controls<br />
+3. Implement Controls<br />
+4. Assess Controls<br />
+5. Authorize Systems<br />
+6. Monitor Controls</p>
+<p>何謂範圍(scope)</BR><br />
+等同清單（list），可以條列</BR><br />
+清單有寫的就是範圍內，沒寫就是範圍外</BR></p>
+<p>scope等同清單(list). 所以清單就是可以用1,2,3,4,5...條列式列舉的文件.</BR><br />
+scoping就是列清單.安全控制的scoping, 就是決定要下多保安全控制措施, 把清單(scope)開出來</BR><br />
+scope通常可以去參考一些框架(懶人包), 它們會建議一包安全控制給企業用, 企業可再根據自己的需求去修改(增加, 刪除或調整), 這個就叫客製(tailoring)</BR><br />
+* Scope 範圍：受影響的範圍<br />
+* Scoping 決定範圍，決定基準或框架<br />
+* Tailoring (量身訂做) 由框架衍伸增加組織特性（所需）</p>
+<p>NIST Risk Management Framework (RMF)<br />
+1. Categorize Systems：依據impact程度分高中低<br />
+2. Select Controls：依等級進行項次的控制<br />
+3. Implement Controls：進行控制<br />
+4. Assess Controls：評鑑有效性<br />
+5. Authorize Systems：授權系統上線<br />
+6. Monitor Controls：持續監控安全控制措施一直有效</p>
+<h2 id="i3a">I+3A</h2>
+<p>Authentication（驗證身份）重點:<br />
+1. 三個小步驟 (要帶到token/assertions及SAML/OIDC)<br />
+2. MFA<br />
+3. 身份驗證協定: 從歷史開始講<br />
+4. SSO: Integrated, Fedrated, Scripted</p>
+<p>Authorization（檢查授權）重點:<br />
+1. Owner決定授權, Custodian(administrator)設權限<br />
+2. Need-to-know及Least Privilege<br />
+3. Access Control/Authorization mechanisms機制: DAC/MAC/RBAC/ABAC/Rule-based/Risk-based =&gt; 以及相關的學術理論</p>
+<p>Accounting（紀錄行為(寫Log)）重點:<br />
+1. 寫log (accounting)<br />
+2. 看log (auditing =&gt; audit trail)<br />
+3. 追究責任</p>
+<p>Assets<br />
+* Inventory盤點<br />
+    * 盤點後指定找到Asset Owners進行分類<br />
+* Classification分類<br />
+    * 依Business Value業務價值，價值高中低，進行保護<br />
+* Protecton保護<br />
+    * RMF<br />
+        * AC</p>
+<p><img alt="" src="../assets/cissp/img24.png" /></p>
+<p>TCSEC 安全系統評估準則</BR><br />
+Trusted Computer System Evaluation Criteria</BR><br />
+（Orange Book）</BR></p>
+<p><img alt="" src="../assets/cissp/img25.png" /></p>
+<p>Access Control（Security Kernel）<br />
+* DAC<br />
+* MAC</p>
+<p>Anderson Report</BR><br />
+不會被輕易破解, 要完全管制存取行為, 要夠小(不影響到效能)</BR></p>
+<ul>
+<li>tamper proof 防篡改，自身要夠安全</li>
+<li>always be invoked 總是被調用，存取都要管制</li>
+<li>small enough 足夠小（性能），體機夠小</li>
+</ul>
+<p>TCSEC Evaluation Criteria</p>
+<ul>
+<li>
+<p>Division D</p>
+</li>
+<li>
+<p>Division C</p>
+<ul>
+<li>DAC</li>
+<li>Audit</li>
+<li>Object Reuse</li>
+</ul>
+</li>
+<li>Division B<ul>
+<li>MAC</li>
+<li>Labels</li>
+<li>Trusted Path</li>
+<li>Configuration Management</li>
+<li>Covert Channel Analysis</li>
+<li>Trusted Recovery</li>
+</ul>
+</li>
+<li>Division A<ul>
+<li>Formal Design嚴謹設計</li>
+<li>以學術水準等級（數學理論）的嚴謹程度，來設計</li>
+<li>根據數學理論發展出來的設計</li>
+</ul>
+</li>
+</ul>
+<p>信任運算基礎Trusted Computing Base，TCB，這台電腦所有安全功能的總成（Security Perimeter安全邊界）<br />
+1. Access control （Security Kernel）<br />
+1. TR（Trusted Recovery）<br />
+1. TPM（加解密晶片）</p>
+<p>PC（TCS）＝TCB+非安全元件（如輸入元件）</p>
+<ul>
+<li>Trusted Computer System , TCB<ul>
+<li>電腦系統的採購規範</li>
+<li>TCB 是 : 一套電腦系統內安全元件的總成(最低要求)</li>
+<li>安全元件還有 EX. Security Keneral , TPM，TR (可信任式復原) …等</li>
+</ul>
+</li>
+<li>Security Perimeter<ul>
+<li>TCB和其他負責非安全事務的元件合組成一台電腦，安全元件與非安全元件之間的判定標準，這虛擬的邊界稱為安全邊界 Security Perimeter</li>
+</ul>
+</li>
+</ul>
+<p>Access<br />
+* Use使用</p>
+<p>Subject主體</p>
+<ul>
+<li>Active</li>
+<li>提出要求的主動方</li>
+</ul>
+<p>Object客體</p>
+<ul>
+<li>Passive</li>
+<li>回應要求的被動方</li>
+</ul>
+<p>Security Kernel安全核心：負責存取控制</BR><br />
+在電腦系統中，負責管制主體及客體之間的存取行為</BR></p>
+<p>Security Kernel安全核心：在電腦系統中，負責管制主體及客體之間的存取行為</BR><br />
+Security Kernel安全核心之安全要求：不會被輕易破解, 要完全管制存取行為, 要夠小(不影響到效能)</BR><br />
+Security Kernel安全核心之運作，會在主體對客體進行存取行為時，驗證主體身份</BR>（Authentication ），確認使用行為是否已被授權（Authorization ），並對於在客體的任何行為進行紀錄(Accounting )</BR></p>
+<p><img alt="" src="../assets/cissp/img26.png" /></p>
+<h5 id="access-control">Access control</h5>
+<p>Read：Simple property簡單屬性：管制讀取的動作</BR><br />
+Wirte（Read以外的行為）：Start property星屬性：管制讀取以外的動作</BR></p>
+<p>Referver Monitor參考監視器</BR><br />
+監控程式對於位置（記憶體）的參考（使用）<br />
+* Security Kernel：實作Referver Monitor</p>
+<p>當主體是人時候（美國軍方）<br />
+* 會被核定一個安全等級 security clearance<br />
+    * 如Confidential<br />
+    * 每個設備（Object）也會被Label一個security clearance（如Confidential、Secret、Top Secret）</p>
+<p>Read：</BR><br />
+A ---&gt; （Control Flow）B</BR><br />
+A ←（Data Flow）B</BR><br />
+Write：</BR></BR><br />
+A ---&gt; （Control Flow）B</BR><br />
+A →（Data Flow）B</BR></p>
+<p>禁南下（高等級到低等級）政策：資料流動禁止高階往低階流。不能讀取高階資料，不能寫入低階資料，跟工作無關的不能讀。</BR></p>
+<p>洩密：</BR><br />
+* 先判斷security clearance：層級（等級）不夠，但仍能讀取比自己高層級（等級）資料<br />
+* 再確認need-to-Know：同一層級，讀取非工作需求之資料（未授權）（need-to-Know）</p>
+<p>防洩密：做到資料(Data Flow)禁南下</BR></p>
+<p>OASIS組織制定<br />
+* SAML<br />
+* XACML<br />
+* SPML</p>
+<p><img alt="" src="../assets/cissp/img27.png" /></p>
+<h5 id="identity-and-access-management">Identity and Access Management</h5>
+<ul>
+<li>Identity Management（IdM） 身份管理<ul>
+<li>User Life Cycle<ul>
+<li>Provisioning供裝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Registration</li>
+<li>
+<p>帳號Directory<br />
+SAM<br />
+/etc/shadow</p>
+</li>
+<li>
+<p>DAP</p>
+</li>
+<li>X.500（表示法）<ul>
+<li>DN<ul>
+<li>O=ABC<ul>
+<li>OU=Sale</li>
+<li>CN=Kack</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>LDAP（Lightweight Directory Access Protocol，X.500瘦身版）</p>
+</li>
+<li>
+<p>Repository<br />
+放資料的地方</p>
+<ul>
+<li>版本庫</li>
+<li>函式庫</li>
+<li>帳號資料庫</li>
+</ul>
+</li>
+<li>
+<p>Identity Proofing身份證明</p>
+</li>
+<li>
+<p>ID Cards</p>
+<ul>
+<li>OTP</li>
+<li>Magnetic Stripe Card（Dumb）：磁條卡，無IC、記憶</li>
+<li>IC Card（Smart）<ul>
+<li>刷卡供電，接觸式卡片</li>
+<li>電磁供電，被動式，非接觸式卡片</li>
+<li>自帶電磁，主動式，非接觸式卡片</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Provisioning/De-Provisioning<br />
+Provisioning供裝</BR><br />
+一套系統在不同系統上自動化完成建帳號、設權限</BR><br />
+協定：SPML（Service Provisioning Markup Language）</p>
+</li>
+<li>
+<p>Identification鑑別</p>
+<ul>
+<li>The Process of a subject Claiming, or professing, an identity主體聲稱或承認身份的過程</li>
+<li>出示身份</li>
+</ul>
+</li>
+</ul>
+<h2 id="authentication">Authentication身份驗證</h2>
+<ul>
+<li>Authentication身份驗證：確認身份正確性<ul>
+<li>出示身份：密碼加密（主動方告訴認證伺服器（Authentication Server，AS），進行身份管理）</li>
+<li>檢查身份：直接存取帳號資料庫或是代驗證</li>
+<li>通知結果：Token</li>
+<li>通知結果<ul>
+<li>Token<ul>
+<li>Key Value</li>
+<li>Assertion斷言：An assertion is the “sentence or proposition in logic which is asserted (or assumed) to be true.</li>
+<li>在邏輯描述中，被斷言是真實的<ul>
+<li>身份驗證</li>
+<li>屬性</li>
+<li>授權</li>
+</ul>
+</li>
+<li>Claim宣稱</li>
+</ul>
+</li>
+<li>Key（欄位） = Value</li>
+<li>ID = Jack</li>
+<li>Role角色</li>
+<li>EXP逾期時間</li>
+<li>斷言(assertion)或宣稱(claim)是authentication server對通過身份驗證的subject的肯定描述, 通常是用key/value的形式程現. 例如:<br />
+FullName = Wentz Wu,</BR><br />
+Email = wentzwu@example.com</BR></li>
+</ul>
+</li>
+<li>斷言必須包含欄位(key)及值(value), 缺一不可.</li>
+<li>一個token, 可以放很多斷言.</li>
+</ul>
+</li>
+<li>
+<p>Token標準協議</p>
+<ul>
+<li>
+<p>SAML：Security Assertion Markup Language<br />
+```</p>
+<ul>
+<li>XML<ul>
+<li>自定義標籤</li>
+<li><Username>Jack</Username><br />
+```</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>OIDC：OpenID Connect</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>        * JSON
+            * {UserName：&quot;Jack&quot;}
+{UserName：&quot;Jack&quot;
+Age：40}
+
+</code></pre>
+<hr />
+<h3 id="mfa">MFA多因子驗證</h3>
+<ul>
+<li>Factors（MFA多因子驗證）<ul>
+<li>你知道什麼 Someting You know：意識（秘密）</li>
+<li>你有什麼 Someting You Have：物品</li>
+<li>你是什麼 Someting You Are：身體特徵<ul>
+<li>Biometrics：</li>
+<li>取特徵值（Model or template）</li>
+<li>存資料庫（Model Database or Repository）<ul>
+<li>Physiological<ul>
+<li>Face</li>
+<li>Hand<ul>
+<li>Fingerprints指紋</li>
+<li>Finger-vein靜脈</li>
+<li>Palm掌紋</li>
+</ul>
+</li>
+<li>Eyes<ul>
+<li>Iris虹膜</li>
+<li>Retina視網膜<ul>
+<li>容易遭疾病（糖尿病）影響</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Behavioral<ul>
+<li>Voice</li>
+<li>Signature簽名動態</li>
+<li>Keystroke dynamic鍵盤動態</li>
+</ul>
+</li>
+<li>Biological<ul>
+<li>DNA</li>
+<li>Blood Glucose</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_14">生物辨識</h3>
+<p>Identificatoin辨識</BR><br />
+one-to-Many</BR></p>
+<p>Authentication身份驗證</BR><br />
+one-to-one</BR><br />
+DNA，精準度99.9%以上</BR><br />
+指紋，不夠精準（僅能當MFA之一）</BR></p>
+<p>FRR，False Rejection Rate，Type I，錯誤拒絕率，FRR愈高，愈容易被誤判拒絕，變成使用者的不便利，要多試幾次。</BR><br />
+FAR，False Acceptance Rate，Type II，錯誤接受率，FAR愈高，有安全隱憂</BR><br />
+EER，Equal Error Rate：FAR = FRR</BR><br />
+CER，Crossover Error Rate，集合FRR及FAR兩個曲線的交叉點</BR></p>
+<p>FRR：錯殺. FRR高會造成不方便, 但較安全.</BR><br />
+FAR:：錯放. FAR高會導致不安全, 但較方便.</BR><br />
+ERR:：採購比較不同機器用. 愈低愈好</BR></p>
+<p>threshold門檻值調整，FRR和FAR改變，但不改變曲線</BR></p>
+<p>生物識別選購考量：</BR><br />
+價格、效能、準確度（FRR+FAR越低越好）、容易使用、使用者接受度</BR></BR><br />
+視網膜接受度，最低</BR><br />
+指紋接受度，最高</BR></p>
+<h3 id="authentication_1">Authentication身份驗證相關協定</h3>
+<ul>
+<li>
+<p>Protocols協定</p>
+<ul>
+<li>PPP<ul>
+<li>Point to Point Protocol</li>
+<li>PAP：密碼驗證協議（明碼Clear Text）<ul>
+<li>改良版：SPAP</li>
+</ul>
+</li>
+<li>CHAP：挑戰與回應協議（MD5）<ul>
+<li>MD5</li>
+<li>Repeatedly：過程反覆驗證</li>
+<li>改良版：MS-CHAP</li>
+</ul>
+</li>
+<li>EAP擴展認證協議(Framework)：屬框架，非身份驗證協定<ul>
+<li>EAP-TLS<ul>
+<li>基於憑證驗證</li>
+<li>Server及Client都需要安裝憑證</li>
+</ul>
+</li>
+<li>憑證會到期，管理負擔重<ul>
+<li>EAP-TTLS</li>
+<li>精簡版EAP-TLS</li>
+<li>僅Server安裝憑證</li>
+</ul>
+</li>
+<li>PEAP<ul>
+<li>微軟版</li>
+<li>改良EAP-TLS</li>
+<li>僅Server安裝憑證</li>
+</ul>
+</li>
+<li>EAP-MS-CHAP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>VPN</p>
+<ul>
+<li>A到B，有一虛擬（Virtual ）連線，常稱Tunnel</li>
+<li>可執行未加密連線（僅確保真實性）</li>
+<li>PPP可用的Protocol都可以用</li>
+<li>Tunnel<ul>
+<li>T2F（Cisco）</li>
+<li>PPTP（微軟）<ul>
+<li>MPPE</li>
+</ul>
+</li>
+<li>L2TP（RFC）<ul>
+<li>PPP</li>
+<li>L2 Tunnel Protocol</li>
+<li>IPsec<ul>
+<li>AH（真實性）</li>
+<li>ESP（真實性+機密性）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Security（Transition Session）<ul>
+<li>完整性（真實性）</li>
+<li>機密性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>NAC（Network Access Control）-LAN</p>
+<ul>
+<li>連線加密協定<ul>
+<li>使用PPP協定</li>
+</ul>
+</li>
+<li>802.1X（身份驗證協議）：Client to Switch/AP的身份驗證<ul>
+<li>又稱EAPOL（EAP OVER LAN）<ul>
+<li>Ethernet身份驗證 （Switch，RADIUS Client）</li>
+<li>Wireless身份驗證（AP，RADIUS Client）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>RADIUS：AP與AD認證的協定<ul>
+<li>AD預設停用</li>
+<li>AP與AD認證的協定</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Intranet</p>
+<ul>
+<li>NTLM（NT4）</li>
+<li>Kerberos（Win7）<ul>
+<li>Cilent</li>
+<li>KDC（Key Distribution Center）=<ul>
+<li>密鑰分發中心</li>
+<li>AS（Authentication Server）<ul>
+<li>認證伺服器</li>
+<li>驗證身份</li>
+</ul>
+</li>
+<li>TGS（Ticket Granting Server）<ul>
+<li>票據授權伺服器</li>
+</ul>
+</li>
+<li>Server<ul>
+<li>認票TGT</li>
+<li>TGT（Ticket Granting Ticket）= 票據授權票據，票據的票據</li>
+</ul>
+</li>
+<li>運作方式<br />
+    1.Client透過UserID與AS進行認證後取得TGT<br />
+    2.Client提供TGT給TGS驗票，取得Application Server Ticket<br />
+    3.Client提供Ticket給Application Server確認後，提供服務</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img28.png" /></p>
+<ul>
+<li>Extranet<ul>
+<li>供應商整合（聯盟）</li>
+<li>SAML</li>
+</ul>
+</li>
+<li>Internet<ul>
+<li>OIDC</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="sso">SSO</h3>
+<p>SSO（Single Sign On）單一簽入<br />
+* 使用者登入一次（不是指一個帳號），即可跨系統存取資源（保留自己的帳號）<br />
+* 一次登入可以對應多個系統帳號（每個系統都有自己的帳號）<br />
+* 軟體特色<br />
+* 信任關係（聯盟（不同公司）），認該Token（盟主），盟主帳號對應各自系統帳號<br />
+* 缺點，如FB API修改（或系統異常），信任關係即失效<br />
+* 形式<br />
+    * 整合型（微軟，一個使用者只有一個帳號）<br />
+    * 聯盟式（聯合式身份(federated Identity)）（使用者在每個系統都有自己的帳號，透過聯盟的關係，使用盟主的帳號即可跨系統登入）<br />
+    * 老系統，可寫程式幫忙登入（讓使用者感覺只登入一次）<br />
+        * 腳本<br />
+        * logon script</p>
+<p>無法SSO的話，可簡化登入程序<br />
+如，記憶密碼</p>
+<h2 id="authorization">Authorization授權</h2>
+<ul>
+<li>
+<p>Authorization授權：確認是否有權限</p>
+<ul>
+<li>Principles原則（Assets Owner決定授權, Custodian(administrator)設權限）<ul>
+<li>工作有需求（need-to-know）</li>
+<li>最小權限（Least Privilege）</li>
+</ul>
+</li>
+<li>協定<ul>
+<li>XACML（SAML）</li>
+<li>OAuth2（OIDC）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Data Owner，執行分類及授權</p>
+<ul>
+<li>Classification分類</li>
+<li>Authorization授權<ul>
+<li>工作有需求（need-to-know）</li>
+<li>最小權限（Least Privilege）</li>
+</ul>
+</li>
+<li>Accountability問責</li>
+</ul>
+</li>
+<li>Data Steward<ul>
+<li>管理資料品質狀況及組織的適用性</li>
+</ul>
+</li>
+<li>Data Custodian<ul>
+<li>Security Administrator</li>
+<li>執行權限分類</li>
+</ul>
+</li>
+</ul>
+<h3 id="authorization-mechanisms">授權機制Authorization Mechanisms</h3>
+<ul>
+<li>Authorization Mechanisms授權機制<ul>
+<li>Discretionary Access Control ，DAC，隨意型存取控制（隨Owner決定（File Owner/Data Owner）），用帳號設權限，可稱Identity-based身份型。<ul>
+<li>權限的給予由 Owner 決定,由Custadeo 實施</li>
+<li>存取控制矩陣（Access Control Matrix，ACM）</li>
+<li>資源的存取表（Object，被動方，左右欄位）<ul>
+<li>從資源的角度 (從資源設定權限)(存取控制清單) ACL,Access Control List</li>
+</ul>
+</li>
+<li>人的權限存取表（Subject，主動方，上下欄位)<ul>
+<li>從人的角度 (能力表) Capability Table</li>
+</ul>
+</li>
+<li>Take-Grant Model，能力表操作（ACM新增移除）理論</li>
+<li>缺點，<ul>
+<li>僅一般性原則，無法防止舞弊。</li>
+<li>權限授權後，仍可再往下授權，無限擴展。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Non Discretionary Access Control model（non-DAC）<ul>
+<li>Role-based Access Control ，以角色（具有權限的群組Group）為基礎。角色有帶權限，群組無權限概念。綁定職務。</li>
+<li>Attribute-base Access Control ，ABAC，屬性為基礎的存取控制，現代權限控管的主流，綜合Subject主體的屬性（ID、性別）、Object客體的屬性（IP、系統）和環境的屬性（時間），訂定複雜的授權規則。比較符合實際業務需求（特殊促銷案）。協定：XACML。</li>
+<li>Risk-based Access Control ，風險為基礎的存取控制，ABAC的延伸，依風險（屬性）分數。（本人1分、上班時間2分、公司電腦2分，存取系統需10分以下）。</li>
+<li>Rule-based Access Control ，以規則為基礎的存取控制，if-else，等同防火牆、統一控管、集中控管。</li>
+<li>Mandatory Access Control ，MAC，強制型存取控制。系統根據標籤進行強制控制。人員（Subject）經過安全檢查，資料（Object）進行分類，進行標籤。又稱Lattice-based Access Control。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Privileges 特權 = Permissions 權限 + Rights 權利</p>
+<p><img alt="" src="../assets/cissp/img29.png" /></p>
+<p>Security Models（BBCC）<br />
+* BLP，MAC，只控管機密性，禁南下<br />
+* Biba，MAC，只控管完整性，禁北上<br />
+* Chinese Wall，MAC，只控管機密性，防止利益衝突，以歷史為基礎；建立利害衝突群組，以時間或歷史為基準。。<br />
+* Clark-Wilson，交易相關，與AC無直接關係。</p>
+<h3 id="security-models">Security Models</h3>
+<ul>
+<li>Bell-LaPadula Model（BLP）：確保機密性，禁南下</li>
+<li>Biba Models： 確保完整性，禁北上政策</li>
+<li>Brewer-Nash Model（Chinses Wall），確保機密性，設定利益衝突群組，根據歷史讀取紀錄，動態阻絕</li>
+<li>Clark-Wilson Model：交易相關，與AC無直接關係，職責分離</li>
+<li>Goguen-Meseguer Model：Non-interference among domains</li>
+<li>Sutherland Model：Covert Channel</li>
+<li>Lipner Model：BLP+Biba</li>
+<li>Take-Grant Model：能力表操作（ACM新增移除）理論</li>
+<li>Graham-Denning Model：安全的建立與刪除Subject &amp; Object，讀取、授予、刪除、轉移權限</li>
+<li>Harrison-Ruzzo-Ullman Model：Subject 只能對 Object 進行有限的操作，確保不會造成未知的漏洞</li>
+</ul>
+<p>Security Models（BBCC）<br />
+* Basic Concepts基本概念<br />
+    * State Machine，狀態機，每個狀態都是安全的狀態<br />
+        * 無限狀態<br />
+        * 有限狀態<br />
+    * information Flow，資料流<br />
+        * Control Flow<br />
+        * Data Flow<br />
+    * Non-interference，不會互相干擾<br />
+* Confidentiality Models（Read）<br />
+    * Bell-LaPadula Model（BLP）<br />
+        * Labels for MAC<br />
+        * Compartment for Need-to-Know，DAC<br />
+        * 把所有主體及客體做分類<br />
+        * 確保機密性<br />
+        * 防止洩密：禁南下（高等級到低等級）政策：資料流動禁止高階往低階流。不能讀取高階資料，不能寫入低階資料。（No read up, No Write down）<br />
+        * Bob 之Simple及Star都勾選的話，僅可在所屬等級進行存取<br />
+        * 管制資料流動<br />
+            * Simple 簡單屬性 (管制讀取)<br />
+            * Star 星號屬性 (管制寫入)<br />
+    * Brewer-Nash Model（Chinses Wall）<br />
+        * Conflict of interests<br />
+        * History-based Access Control（Time-based）<br />
+        * 目的 : 確保系統機密性<br />
+        * 設定利益衝突群組，根據歷史讀取紀錄，動態阻絕<br />
+* Integrity Models（Write）<br />
+    * Biba Models<br />
+        * 目的 : 確保完整性<br />
+        * 禁北上政策 (No write up,no read down)<br />
+    * Clark-Wilson Model<br />
+        * 交易相關，與AC無直接關係<br />
+        * 確保完整性<br />
+        * Concpt of transaction，交易<br />
+            * 多個異動資料庫動作，視為一個單元<br />
+                * 全部成功<br />
+                * 全部失敗Roll Back<br />
+        * 職責分離SoD，寫入與職責是分開的<br />
+    * Clark-Wilson transaction<br />
+        * 用戶活動個體。<br />
+        * 轉換過程(Transformation Procedure，TP) 可編程的抽像操作，如讀、寫和更改。<br />
+        * 約束數據項(Constrained Data Item，CDI) 只能由TP操縱。<br />
+        * 非約束數據項(Unconstrained Data Item，UDI) 用戶可以通過簡單的讀寫操作進行操縱。<br />
+        * 完整性驗證過程(Integrity Verification Procedure，IVP) 檢查CDI與外部現實的一致性。<br />
+    * Goguen-Meseguer Model<br />
+        * Non-interference among domains<br />
+    * Sutherland Model<br />
+        * Covert Channel<br />
+    * Lipner Model<br />
+        * Steve Lipner, Microsoft<br />
+        * BLP+Biba<br />
+* Authorization Models（Privileges）<br />
+    * Take-Grant Model<br />
+    * Graham-Denning Model<br />
+    * Harrison-Ruzzo-Ullman Model</p>
+<p>存取控制模型 (OSG)</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>完整名稱</th>
+<th>關鍵特徵</th>
+<th>實現方式與解決</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAC</td>
+<td>Discretionary Access Control</td>
+<td>每個 Object 都有一個所有者,所有者可以授予或拒絕其他任何 Subject 的訪問</td>
+<td>使用客體ACL</td>
+<td>Windows 系統的文件、資料夾權限</td>
+</tr>
+<tr>
+<td>RBAC</td>
+<td>Role Based Access Control</td>
+<td>使用 Role 或 Group</td>
+<td>可消除特權潛變 Privilege Creep，強制執行 Least Privilige</td>
+<td>Windows OS 帳戶權限，WordPress 站台</td>
+</tr>
+<tr>
+<td>ABAC</td>
+<td>Attribute Based Access Control</td>
+<td>可包含多個屬性的規則,比RBAC更靈活</td>
+<td>屬性可以是用戶、裝置的任何特徵</td>
+<td>SD-WAN 軟體定義網路</td>
+</tr>
+<tr>
+<td>MAC</td>
+<td>Mandatory Access Control</td>
+<td>使用應用於 Subject 與 Object 的 Labels,又稱 Latice-based Model,且為 Implicit Deny</td>
+<td>依賴 Classfication Labeles (也需 Need To Know)</td>
+<td>軍方人員等級與可存取專案</td>
+</tr>
+<tr>
+<td>Rule-based AC</td>
+<td>Rule-based Access Control</td>
+<td>Restriction(限制) 、 Filter(過濾器)</td>
+<td></td>
+<td>防火牆</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="" src="../assets/cissp/img30.png" /></p>
+<h2 id="accounting">Accounting會計</h2>
+<p>Accounting會計：寫LOG（問責），紀錄主體或客體的行為（不管有無通過驗證或授權）<br />
+* 寫Log（Accounting）<br />
+* 看Log（Auditing）<br />
+    * Auditing<br />
+    * Audit Trall<br />
+        * 看跟當事者相關的軌跡<br />
+* 問責Accountability</p>
+<h2 id="security-assessment">安全評鑑Security Assessment</h2>
+<p>何謂安全評鑑?</BR><br />
+安全評鑑大部份的情境是指security control assessment. 而secucurity control則是risk treatment的實際施作, 也就是安全評鑑其實是資訊風險處置的成果的評鑑. 這個已經是在風險評鑑之後了.</BR></p>
+<p>風險評鑑 =&gt; 風險處置(寫計晝書及實施安全控制措施) =&gt; 安全(控制措施)評鑑.</BR></p>
+<p>Security Assessment安全評鑑：確保Security Controls有效性，是否符合符合性事項</BR><br />
+* 查驗<br />
+* 訪談<br />
+* 測試Testiting</p>
+<h3 id="testiting">測試Testiting</h3>
+<ul>
+<li>Common Testting 常見測試<ul>
+<li>Penetration Testing</li>
+<li>Software Testing</li>
+<li>Social Engineering</li>
+</ul>
+</li>
+<li>Type of Testing 測試類型<ul>
+<li>Black vs White Testing<ul>
+<li>黑箱測試：測試者對於受測標的物一無所知</li>
+<li>白箱測試：測試者對於受測標的物都知道</li>
+<li>灰箱測試</li>
+</ul>
+</li>
+<li>Active vs Passive Testing<ul>
+<li>互動：Interaction vs non-Interaction</li>
+</ul>
+</li>
+<li>Manual vs Automated Testing<ul>
+<li>Tester vs Test Runner/ Harness</li>
+</ul>
+</li>
+<li>Static vs Dynamic Testing （Software）<ul>
+<li>靜態測試：未執行該軟體（屬Program），放置於硬碟進行測試</li>
+<li>動態測試：已執行該軟體（屬Process），已被載入記憶體中進行測試</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>CWE，Common Weakness Enumeration：屬於設計階段風險審查。未針對特定廠商或型號。</BR><br />
+CVE，Common Vulnerability and Exposure：屬已知弱點。針對特定廠商或型號。</BR><br />
+CVSS，Common Vulnerability Scoring System：弱點評分系統</BR><br />
+SCAP，Security Content Automation Protocol：自動化修補協議</BR><br />
+NVD，National Vulnerability Database</BR></p>
+<p>弱點掃描：尋找已知漏洞威脅</BR><br />
+滲透測試：利用漏洞進行入侵可行性測試</BR></p>
+<p>市面上常見產品如下：<br />
+1.  主機弱掃(作業程式之弱點掃描)：Tenable(Nessus)、Tenable.IO、Rapid7<br />
+2.  網頁型弱掃(又稱黑箱掃描、黑箱測試)：WhiteHat、Qualys、Webinspect、AppScan<br />
+3.  原始碼檢測(又稱白箱掃描、白箱測試)：Checkmarx、Fortify<br />
+4.  滲透測試：基本上會結合主機弱掃+網頁型弱掃，透過人工執行確認漏洞可行性。</p>
+<h3 id="_15">滲透測試</h3>
+<p>滲透測試主要步驟：<br />
+1. Information Gathering，資訊收集<br />
+1. Scanning and Reconnaissance，掃描和偵察<br />
+1. Fingerprinting and Enumeration，指紋和列舉<br />
+1. Vulnerability Assessment，脆弱性評估<br />
+1. Exploit Research and Verification，利用研究和驗證<br />
+1. Reporting，報告</p>
+<p><img alt="" src="../assets/cissp/img31.png" /></p>
+<h3 id="audit">Audit</h3>
+<p>第一方：安全評鑑一般屬自我評鑑</BR><br />
+第二、三方：如由獨立單位（如稽核部門、客戶、外部認證單位等）進行則稱為稽核</BR></p>
+<p><img alt="" src="../assets/cissp/img32.png" /></p>
+<h2 id="_16">工程</h2>
+<p><img alt="" src="../assets/cissp/img33.png" /></p>
+<p>Security Engineering<br />
+* 工程（專案）：是一套學問，運用知識把一套產品製作出來，維運他，從出生到死亡<br />
+* 運用專業知識,把系統做出來,使用他維運它直到除役為止。(生命週期)<br />
+* 安全工程是解決整個系統生命週期中的保護需求或安全要求的一門專業學科。</p>
+<p>Engineering<br />
+* Functionality<br />
+* Quality，U PASS ME<br />
+    * Usability，使用介面，用戶體驗<br />
+    * Performance，效能（7秒回應時間）<br />
+    * Availability，系統穩定度（可用性，Anytime、Anywhere，QC：5個9，99.999%，一年約可停6分鐘）<br />
+    * Scalability，可擴展性（架構）（Elasticity彈性）<br />
+    * Security，安全性<br />
+    * Maintenance，容易維護<br />
+    * Extensibility，容易擴充<br />
+* System Engineering Standards<br />
+    * ISO 15288，單純工程要求<br />
+    * NIST SP 800-160，強化ISO 15288之安全要求</p>
+<p><img alt="" src="../assets/cissp/img34.png" /></p>
+<h3 id="sdlc">SDLC</h3>
+<p><img alt="" src="../assets/cissp/img35.png" /></p>
+<p>SDLC：System、Software、NIST SDLC（資訊系統開發）<br />
+* SDLC的S可以是software或system. NIST SDLC的S是指system. 而software只是system的一部份. 標的及範疇都不同.</p>
+<p>Software<br />
+* 有品質的軟體 = 安全的軟體</p>
+<p>軟體就是工程就是專案<br />
+* 在一定的時間和費用內，製作一定範圍的東西</p>
+<p>軟體開發安全，從軟體生命週期，切<br />
+* 能夠動<br />
+* 有品質（具備安全性）</p>
+<p>軟體開發的目的：開發有品質的軟體<br />
+* 具備安全性有品質（安全性）軟體：時時都安全（SDLC、狀態）、處處都安全（系統架構設計、元素）</p>
+<p>Software Development Security 軟體開發安全<br />
+* The Context and Scope of Software Developmen，軟體開發的背景和範圍<br />
+    * Software Developments as a Discopline of Engineering，軟體開發作為工程的差異<br />
+    * Software as a Component of a System，軟體作為系統的組成部分<br />
+    * Software "Development" Means "Make" or "Buy"，軟體"開發"表示"製造"或"購買"<br />
+* Enforcing Security Anytime &amp; Anywhere，隨時隨地加強安全<br />
+    * Anytime：Software Development Life Cycle（SDLC），隨時：軟體開發生命週期（SDLC）<br />
+    * Anywhere：Sofeware Architecture and Environments，任何地方：軟體建築和環境<br />
+* Maturity Models，成熟度模型<br />
+    * Capability Maturity Model Integration（CMM），能力成熟度模型整合（CMM）<br />
+    * Software Assurance Maturity Model（SAMM），軟體保證成熟度模型（SAMM）<br />
+    * 軟體成熟度<br />
+        * 軟體開發能力<br />
+        * 取得（採購）能力acquirement<br />
+        * 服務交付能力Service deliver</p>
+<p><img alt="" src="../assets/cissp/img36.png" /></p>
+<p>CMMI/SAMM成熟度等級：<br />
+1. 土法煉鋼<br />
+1. 各自為政，（有專案經理，但各自為政（各PM的經驗不一））<br />
+1. 統一方法，（公司立定統一一套辦法）（Managed 常見）<br />
+1. 量化管理<br />
+1. 最佳化（持續改善）</p>
+<p>NIST System Development Life Cycle，SDLC<br />
+* initiation，啟動<br />
+* Development/Acquisition，開發Make/收購Buy<br />
+* Implementation/Assessment，實施/評估<br />
+* Operations and Maintenance，運營和維護<br />
+* Disposal，處置</p>
+<h2 id="sdlc_1">軟體SDLC</h2>
+<p>Software Development Life Cycle，SDLC</p>
+<h2 id="planning-phase">Planning Phase</h2>
+<ul>
+<li>寫計畫書</li>
+<li>
+<p>決定開發方法</p>
+<ul>
+<li>軟體開發方法Software Development Approaches<ul>
+<li>Plan-driven （Formal）<ul>
+<li>產品成熟，經驗夠，可預知狀況</li>
+<li>分階段做，但沒有產出</li>
+<li>最後才會交付產品（才決定成敗）</li>
+<li>(計畫驅動型 Plan Driven)<ul>
+<li>計畫式</li>
+<li>弄好細節按表操課</li>
+<li>嚴謹</li>
+</ul>
+</li>
+<li>適合很熟悉的東西、掌握度高 (但現在環境太動態)</li>
+<li>較難因應變化</li>
+<li>Ex. 一年才做完，一翻兩瞪眼</li>
+<li>常見方法<ul>
+<li>Cleanroom</li>
+<li>Waterfall（瀑布式）<img alt="" src="../assets/cissp/img37.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Iterative反覆式（大瀑布拆成小瀑布，分期）<ul>
+<li>產出，分階段，進行SDLC</li>
+<li>上線，最後才能使用</li>
+<li>反覆/迭代 Iteration (生命週期)</li>
+<li>強調風險管理</li>
+<li>每一期作完客戶會看到一些產出(但還不能上線)</li>
+<li>反覆可以做出東西 但還不能用<ul>
+<li>如 PPT 簡單畫面呈現</li>
+<li>一年做四次</li>
+</ul>
+</li>
+<li>常見方法<ul>
+<li>Rapid Application Development</li>
+<li>Spiral</li>
+<li>Component-based Development</li>
+<li>Prototyping</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Agile（Iterative週期反覆（SDLC） + Incremental價值見證(Value)）(是觀念、方法)<ul>
+<li>每個階段都有產出，且要能上線（強調結果）</li>
+<li>適合充滿不確定性的專案（以敏捷的方式，早點識別風險）</li>
+<li>早死早超生（fail early fail  fast），整體專案不一定比較快</li>
+<li>反覆 "生命週期"會做出東西但結果不能實際使用</li>
+<li>好處降低風險</li>
+<li>反覆+價值漸增就是敏捷 (Iteration + Increment)</li>
+<li>每一次的反覆交出來的東西要能上線、要能用</li>
+<li>一旦能用就有產生價值 --&gt; Increment (漸增的東西)</li>
+<li>強調產出、強調風險管理</li>
+<li>一期在Scrum 稱為 Sprint</li>
+<li>透過 review 看 increment</li>
+<li>常見方式<ul>
+<li>Scrum，不超過一個月（框架）：針對錯綜複雜（complex）問題，採用迭代的、增量的方法來優化可預測性和控制風險的一個解決方案框架。<ul>
+<li>Sprint，每次不超過15分鐘</li>
+</ul>
+</li>
+<li>Kanbam，看板<ul>
+<li>Iterative</li>
+<li>Kanban，也就是「看板」，也是敏捷開發裡的其中一種方式，主要是利用一塊板子，在上面區分多的區域，作為流程分類，將一張便利貼（卡片）視為一個User Story，從0 -&gt;1 的流程控制與狀態移轉</li>
+</ul>
+</li>
+<li>eXtreme Programming，XP （極致編程）：解決軟體開發需求不斷改變的一種敏捷軟件開發框架，旨在為開發團隊生產更高質量的軟件和更高質量的生活。XP 是關於軟件開發的適當工程實踐的最具體的敏捷框架。一種輕量（敏捷）、高效、低風險、柔性、可預測、科學而且充滿樂趣的軟體開發方式<ul>
+<li>Test-driven development</li>
+<li>Pair Programming</li>
+<li>Continuous Integration</li>
+<li>克萊斯勒<ul>
+<li>善用比喻 Ex. AWS SnowBall S3 Glash<br />
+<img alt="" src="../assets/cissp/img38.png" /><br />
+<img alt="" src="../assets/cissp/img39.png" /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>組建團隊（IPT，Integrated Product Team整合產品團隊）</p>
+<ul>
+<li>整合產品團隊 （IPT） 是一個多門專業或功能的人員組成團隊，共同負責交付目標的產品</li>
+<li>不同人不同階段進場（傳統）<ul>
+<li>開發人員</li>
+<li>維運人員</li>
+</ul>
+</li>
+<li>敏捷團隊Agile：<ul>
+<li>DevOps：DevOps（Development和Operations的組合詞）是一種重視「軟體開發人員（Dev）」和「IT運維技術人員（Ops）」和「品質保證人員QA」之間溝通合作的文化、運動或慣例。透過自動化「軟體交付」和「架構變更」的流程，來使得構建、測試、發布軟體能夠更加地快捷、頻繁和可靠。  讓開發、測試、維運人員 有效快速的溝通<ul>
+<li>Dev</li>
+<li>IT</li>
+<li>QA</li>
+</ul>
+</li>
+<li>CI、CD<ul>
+<li>CI : 連續整合、整合測試</li>
+<li>CD<ul>
+<li>交付</li>
+<li>部署</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>有系統授權上限的問題</li>
+</ul>
+</li>
+<li>DevSecOps：在 DevOps 的敏捷、自動化、文化下融入資安，讓大家都有權力和責任來實踐資安。<ul>
+<li>Dev</li>
+<li>IT</li>
+<li>QA</li>
+<li>Security</li>
+<li>解決 授權 問題</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_17">敏捷軟件開發宣言</h3>
+<pre><code>    敏捷軟件開發宣言
+    Manifesto for Agile Software Development（以人為本，重視風險，創造價值）（思維Mindset）
+        1. Individuals and interactions over processes and tools
+            * 重視個人和互動，勝於流程和工具。
+            * 個人以及流程和工具之間的互動
+        2. Working software over comprehensive documentation
+            * 可用的軟體，勝過於很詳細的文件
+            * 工作軟件綜合文檔
+        3. Customer collaboration over contract negotiation
+            * 與客戶的協作，更勝於合約的協議
+            * 合同談判中的客戶協作
+        4. Responding to change over follwing a plan
+            * 回應變動（風險），更勝於照計畫書執行
+            * 響應遵循計劃的變更
+</code></pre>
+<pre><code>
+    12大敏捷原則
+        1. 我們的首要任務是通過早期和持續交付有價值的軟件來滿足客戶。
+        2. 歡迎不斷變化的要求，甚至是開發後期。敏捷流程利用變化來實現客戶的競爭優勢。
+        3. 經常提供工作軟件，從幾周到幾個月，優先考慮更短的時間尺度。
+        4. 業務人員和開發人員必須在整個項目中每天一起工作。
+        5. 圍繞有動力的個人建立項目。為他們提供所需的環境和支持，並相信他們能夠完成工作。
+        6. 向開發團隊內部和內部傳達信息的最有效和最有效的方法是面對面交談。
+        7. 工作軟件是進步的主要衡量標準。
+        8. 敏捷過程促進可持續發展。贊助商，開發者和用戶應該能夠無限期地保持穩定的步伐。
+        9. 持續關注技術卓越和良好的設計可提高靈活性。
+        10. 簡單性 – 最大化未完成工作量的藝術 – 至關重要。
+        11. 最好的架構，要求和設計來自自組織團隊。
+        12. 團隊定期反思如何變得更有效，然後相應地調整和調整其行為。
+
+</code></pre>
+<h2 id="analysis-phase">Analysis Phase</h2>
+<ul>
+<li>需求收集</li>
+<li>需求分析</li>
+<li>需求紀錄<ul>
+<li>Verification：內驗正確性</li>
+<li>Validation：外確有效性</li>
+</ul>
+</li>
+<li>
+<p>需求（Requirement）分析（了解利害關係人的需求）：（商業分析師）利用商業技巧，發掘（elicit）及收集（collect）利害關係人腦袋中的東西，分析他們的需要，用精準的方式寫下（變成規格書）並進行管理。</p>
+<ul>
+<li>需要（Need）：利害關係人腦袋中的東西，</li>
+<li>需求（Requirement）：寫下來並進行管理的需要。</li>
+<li>Spec規格：精確的描述（需求）</li>
+<li>SRS：軟體需求規則書</li>
+<li>需求表達方式<ul>
+<li>User Requirements Specification，URS：使用者要求規範</li>
+<li>Use Case（資安角度：錯誤行為Misuse Case or Abuse Case）<ul>
+<li>文本</li>
+<li>圖</li>
+</ul>
+</li>
+<li>User Story<ul>
+<li>身份：As a <span class="red"> Role </span></li>
+<li>行為：I want <span class="red"> goal </span></li>
+<li>目的：So that <span class="red"> benefit </span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Requirement Engineering</p>
+<ul>
+<li>Requirement Development</li>
+<li>Elicitation</li>
+<li>Analysis</li>
+<li>Specification</li>
+<li>Validation</li>
+<li>Requirement Managemenr</li>
+</ul>
+</li>
+<li>
+<p>Verification：內驗正確性</p>
+</li>
+<li>Validation：外確有效性</li>
+<li>Define Problem定義問題</li>
+</ul>
+<h2 id="design-phase">Design Phase</h2>
+<p>解決利害關係人的問題或需求</BR><br />
+設計，是一個紙上談兵的解決方案（書面）</BR><br />
+設計圖：資料流程圖</BR><br />
+* Software Security Design Principles，軟體安全設計原則<br />
+    * Core，核心<br />
+        * Confidentiality，機密性<br />
+        * Integrity，完整性<br />
+        * Availability，可用性<br />
+        * Authentication，認證<br />
+        * Authorization，授權<br />
+        * Accountability，問責<br />
+* Design，設計<br />
+    * Least Privilege，最小權限<br />
+        * Fail Safe，故障安全<br />
+        * Open Design，開放設計<br />
+        * Leveraging Existing Components，利用現有元件<br />
+        * Separation of Duties，職責分離<br />
+        * Economy of Mechanism，經濟機制<br />
+        * Least Common Mechanism，最不常見的機制<br />
+        * Eliminate Single Point of Failure，消除單一故障點<br />
+        * Defense in Depth，深度防禦<br />
+        * Complete Mediation，完全調解<br />
+        * Psychological Acceptability，心裡可接受性</p>
+<ul>
+<li>架構設計<ul>
+<li>RDMS</li>
+</ul>
+</li>
+<li>細部設計</li>
+<li>設計審查<ul>
+<li>Verification：內驗正確性</li>
+<li>Validation：外確有效性</li>
+</ul>
+</li>
+</ul>
+<h3 id="threat-modeling">威脅塑模Threat Modeling</h3>
+<ul>
+<li>資安角度：威脅塑模Threat Modeling</li>
+<li>風險管理的措施</li>
+<li>風險識別：看圖找問題</li>
+<li>步驟<ul>
+<li>Diagram Application Architecture，把圖拿出來</li>
+<li>Identify Threats，看圖<ul>
+<li>識別風險</li>
+<li>OWASP</li>
+<li>Threat Categorization - STRIDE<ul>
+<li>Spoofing</li>
+<li>Tampering</li>
+<li>Repudiation</li>
+<li>Information disclosure (privacy breach or                data leak)</li>
+<li>Denial of service</li>
+<li>Elevation of privilege</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Identify , Prioritize &amp; Implement Controls，處理問題<ul>
+<li>風險分析、風險評估、風險處理</li>
+<li>Mitigation Approaches</li>
+<li>Threat Analysis - DREAD<ul>
+<li>Damage – how bad would an attack be?</li>
+<li>Reproducibility – how easy is it to reproduce the attack?</li>
+<li>Exploitability – how much work is it to launch the attack?</li>
+<li>Affected users – how many people will be impacted?</li>
+<li>Discoverability – how easy is it to discover the threat?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Document &amp; Validate，紀錄他</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img40.jpg" /></p>
+<h3 id="layer-tier">軟體架構 Layer 與 Tier (三層式架構)</h3>
+<ul>
+<li>Layer (邏輯上) 三層式 (處處都安全的考量)<ul>
+<li>Presantation Layer (畫面呈現、收資料)</li>
+<li>資安考量</li>
+<li>惡意的程式碼植入 (因為UI可用來輸入資料)錯誤的輸入SQL Injection (SQL)XSS (JavaScript)Buffer Overflow灌爆 (塞資料+惡意程式),</li>
+<li>例外時 return 至特定位址 (提權執行…)進而執行惡意執行指令</li>
+<li>Bussiness Logic Layer</li>
+<li>Data Access Layer<ul>
+<li>資料存放<ul>
+<li>關聯式資料庫 (下方有補充)</li>
+<li>非結構化資料庫</li>
+<li>專家系統</li>
+<li>AI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>資安考量<ul>
+<li>實體完整性問題<ul>
+<li>資料重複就破壞完整性</li>
+<li>Primary Key就是用來保護資料完整性</li>
+</ul>
+</li>
+<li>參考完整性問題<ul>
+<li>查表動作 叫做 refernce</li>
+<li>若無資料 (斷頭) 稱為 refernce 完整性出問題</li>
+<li>用交易 Transaction 來保護參考完整性</li>
+<li>(透過交易去控制 Clark-Wilson)<ul>
+<li>SOD</li>
+<li>交易</li>
+<li>TP/IP/CDI</li>
+</ul>
+</li>
+<li>避免 : 主表格與明細表格不能出現斷頭</li>
+</ul>
+</li>
+<li>語意完整性問題<ul>
+<li>格式 、範圍 … 解讀上的意義 無意義</li>
+<li>控制資料型態 控制資料範圍 限定輸入方式 (改下拉式)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tier (實體)<ul>
+<li>放在不同的電腦上<ul>
+<li>與程式部署架構有關</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img41.png" /></p>
+<ul>
+<li>架構設計<ul>
+<li>三層式架構（Layer）<ul>
+<li>Presentation Layer：畫面處理</li>
+<li>Business Logic Layer：運算邏輯</li>
+<li>Data Access Layer：資料儲存（重點是資料庫）<ul>
+<li>Relation Database關連式資料庫：多個表（關聯Relation）的資料的集合，是以行（基數Cardinality）作為（紀錄Tuple）和列（度Degree）作為（屬性Attribute）的形式組織起來。</li>
+<li>RDBMS關聯式資料庫管理系統（英語：Relational Database Management System，縮寫為RDBMS)<ul>
+<li>Entity Integrity實體完整性：Primary Key<ul>
+<li>實體完整性出問題（資料重複）：Primary Key的值一樣（跟資料欄位無關）</li>
+<li>Primary Key 唯一識別</li>
+</ul>
+</li>
+<li>參考完整性Referential Integrity<ul>
+<li>參考完整性出問題：Foreign Key找不到源頭</li>
+<li>定義Foreign Key，建立Relaton，</li>
+<li>交易控制：Clark-Wilson Model</li>
+</ul>
+</li>
+<li>語意完整性Semantic Integrity（Domain Integrity）<ul>
+<li>語意完整性出問題：輸入資料型態或是範圍（Domain）不對</li>
+<li>透過欄位型態指定或是長度進行限制。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transaction，交易<ul>
+<li>ACID，Atomic, Consistent, Isolated, and Durable</li>
+<li>原子性（atomicity，或稱不可分割性）、一致性（consistency）、隔離性（isolation，又稱獨立性）、持久性（durability）。</li>
+</ul>
+</li>
+<li>
+<p>Database Programming Interfaces，資料庫程式設計介面</p>
+<ul>
+<li>Open Database Conne</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img42.png" /></p>
+</li>
+</ul>
+<h3 id="rdbms">RDBMS</h3>
+<ul>
+<li>RDBMS<ul>
+<li>SQL Language<ul>
+<li>Data Definition Language（DDL）</li>
+<li>Data Manipulation Language（DML）</li>
+<li>Data Control Language（DCL）</li>
+</ul>
+</li>
+<li>Tables and Relationships，表格和關係</li>
+<li>Views，視圖</li>
+<li>Transactions，交易</li>
+<li>Aggregation and Inference，聚合和推論</li>
+<li>高聚合：程式相關性越多得要包再一起</li>
+<li>低偶合：不要利用到其他程式的功能（元件）要用的話，當有問題時不會影響自己</li>
+<li>Content-dependent Access Control，內容依賴存取控制<ul>
+<li>Partitioning，分區</li>
+<li>Cell suppression，細胞抑制</li>
+<li>Noise and perturbation，噪音和騷動</li>
+<li>Polyinstantiation，多實例化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_18">資料庫正規化</h3>
+<ul>
+<li>Relation Database Normalization關連式資料庫正規化<ul>
+<li>第一正規化原則<ul>
+<li>All attributes are atomic，唯一識別</li>
+<li>Every non-key attribute must depend on the key。每個欄位的值都只能是單一值。</li>
+</ul>
+</li>
+<li>第二正規化原則<ul>
+<li>Every non-key attribute must depend on the  whole key。資料表裡的所有資料都要和該資料表的鍵（主鍵與候選鍵）有完全依賴關係</li>
+<li>Remove the non-transitive dependency。每個非鍵屬性必須獨立於任意一個候選鍵的任意一部分屬性</li>
+</ul>
+</li>
+<li>第三正規化原則<ul>
+<li>Every non-key attribute must depend on nothing but the key。要求所有非主鍵屬性都只和候選鍵有相關性</li>
+<li>Remove the transitive dependency。非主鍵屬性之間應該是獨立無關的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="expert-systems">專家系統 Expert Systems</h3>
+<ul>
+<li>Expert Systems 專家系統<ul>
+<li>User interface：由使用者進行搜尋後回饋建議</li>
+<li>Inference Engine：透過關聯或資料科學技術查找相關Knowledge Base資料</li>
+<li>Knowledge Base：由專家輸入相關知識</li>
+</ul>
+</li>
+</ul>
+<h3 id="soa">SOA</h3>
+<ul>
+<li>SOA，Service-Oriented Architecture<ul>
+<li>軟體服務化</li>
+<li>Roles<ul>
+<li>Service Registry，服務註冊</li>
+<li>Service Provider，服務提供</li>
+<li>Service Consumer，服務使用者</li>
+</ul>
+</li>
+<li>Implementations，實現<ul>
+<li>Web Services Description Language（WSDL）</li>
+<li>Universal Description Discovery and Integration（UDDI）</li>
+<li>Simple Object Access Protocol（SOAP）</li>
+</ul>
+</li>
+<li>協定：SOAP（XML）</li>
+</ul>
+</li>
+</ul>
+<h3 id="restful-architecture">RESTful Architecture</h3>
+<ul>
+<li>RESTful Style：調用服務系統時，使用HTTP Verb。RESTful API 使用 標準HTTP 方法來操作數據。例如，GET 用於查詢，POST 用於插入，PUT 用於修改，DELETE 用於刪除等。<br />
+        * GET：Query<br />
+        * POST：Insert<br />
+        * PUT：Update<br />
+        * Delete：Delete<ul>
+<li>HTTP Request<ul>
+<li>Head</li>
+<li>Body</li>
+</ul>
+</li>
+<li>HTTP Response<ul>
+<li>Head<ul>
+<li>Status Code<ul>
+<li>400：User端出問題</li>
+<li>500：伺服器出問題</li>
+<li>200：OK</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Body</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="microservices-architecture">微服務Microservices Architecture微服務</h3>
+<ul>
+<li>微服務，將程式模組化變成服務在跑，透過程式和網路調用公司內部服務</li>
+<li>MicroService 是一種低耦合架構，可以通過重新建構單一應用程式來實現，即將應用程式元件轉變為自成一體的網路服務，適合部署在可擴展或彈性容器或無伺服器環境中。</li>
+<li>Loosely Coupled Services<ul>
+<li>容器Containerization：Docker</li>
+<li>無服務化Serverless（AWS Lambda）<ul>
+<li>提供一頁面，僅需要輸入程式，即可使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Container Orchestration<ul>
+<li>Docker（Swarm）</li>
+<li>Google（K8s）</li>
+<li>Apache（OpenShift）</li>
+</ul>
+</li>
+</ul>
+<h2 id="development-phase">Development Phase</h2>
+<ul>
+<li>按圖施工<ul>
+<li>Design 書面解決方案<ul>
+<li>Solution<ul>
+<li>Requirement</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Software Environment<ul>
+<li>Development<ul>
+<li>IDE &amp; Runtime</li>
+<li>Code Repository<ul>
+<li>個人（本機），check in &amp; check out</li>
+<li>公司，pull &amp; push</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Database</li>
+<li>Testing<ul>
+<li>White / Black Box</li>
+<li>Static /Dynamic</li>
+<li>Certifivation and Accreditation</li>
+</ul>
+</li>
+<li>Staging</li>
+<li>Production<ul>
+<li>Separation of Due</li>
+<li>Configuration</li>
+<li>Patch Management</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img43.png" /></p>
+<ul>
+<li>Software<ul>
+<li>Program（存在硬碟的程式）</li>
+<li>Process（被載入RAM執行）</li>
+</ul>
+</li>
+<li>
+<p>按圖施工(寫程式(叫CPU做事)=資料處理（去處理資料）)</p>
+<ul>
+<li>Source Code（電腦語言/程式語言）<ul>
+<li>C, C+, C#, Python</li>
+<li>JavaScript</li>
+<li>Assembly</li>
+</ul>
+</li>
+<li>Compile編譯<ul>
+<li>直譯器</li>
+<li>編譯器</li>
+</ul>
+</li>
+<li>機械語言（CPU指令集）（目的語言/目的程式）<ul>
+<li>Program，可以被載入CPU的程式</li>
+</ul>
+</li>
+<li>Link<ul>
+<li>可執行檔</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Secure Coding Practices 安全編碼原則</p>
+<ol>
+<li>Validate input 輸入驗證</li>
+<li>Heed compiler warnings 注意編譯器警告</li>
+<li>Architext and design for security policies 安全策略的架構和設計</li>
+<li>Keep it simple 保持簡單</li>
+<li>Default deny 預設拒絕</li>
+<li>Adhere to the principle of least privilege 堅持最小特權原則</li>
+<li>Sanitize data sent to other systems 清理發送到其他系統的數據</li>
+<li>Practice defense in depth  練習縱深防禦</li>
+<li>Use effective quality assurance techniques 使用有效的品質保證技術</li>
+<li>Adopt a secure coding standard 採用安全編碼標準</li>
+<li>Define security requirements 定義安全要求</li>
+<li>Model threats  威脅塑模</li>
+</ol>
+</li>
+</ul>
+<h3 id="oop">物件導向程式設計（OOP）</h3>
+<p><img alt="" src="../assets/cissp/img44.png" /></p>
+<ul>
+<li>物件導向程式設計（英語：Object-oriented programming，縮寫：OOP）<ul>
+<li>將資料及執行該資料的程式封裝成類別，讓人呼叫或調用。但使用者不需要知道該類別內容</li>
+<li>封裝（資料隱藏，把相關的東西裝在一起，不給人碰）<ul>
+<li>相關，同類東西擺在一起<ul>
+<li>Class Diagram</li>
+<li>類別Class，封裝技術<ul>
+<li>資料（屬性）：主體</li>
+<li>和處理資料的程式（方法/operations）：功能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>保護，不讓別人碰到</li>
+</ul>
+</li>
+<li>繼承：繼承功能給別人用</li>
+<li>多形：繼承功能後，拿來改</li>
+</ul>
+</li>
+</ul>
+<h2 id="testing-phase">Testing Phase</h2>
+<ul>
+<li>Types of Testing 測試類型<ul>
+<li>Black vs White Testing<ul>
+<li>黑箱測試：測試者對於受測標的物一無所知</li>
+<li>白箱測試：測試者對於受測標的物都知道</li>
+<li>灰箱測試</li>
+</ul>
+</li>
+<li>Active vs Passive Testing<ul>
+<li>互動：Interaction vs non-Interaction</li>
+</ul>
+</li>
+<li>Manual vs Automated Testing<ul>
+<li>Tester vs Test Runner/ Harness</li>
+</ul>
+</li>
+<li>Static vs Dynamic Testing （Software）<ul>
+<li>靜態測試：未執行該軟體（屬Program），放置於硬碟進行測試</li>
+<li>動態測試：已執行該軟體（屬Process），已被載入記憶體中進行測試</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="_19">軟體測試口訣(順序)</h3>
+<ol>
+<li>單元測試</li>
+<li>code review</li>
+<li>整合測試</li>
+<li>應用程式介面測試、API測試</li>
+<li>模糊測試</li>
+<li>回歸測試</li>
+<li>系統測試（安全測試、效能測試、壓力測試）</li>
+<li>驗收測試（UAT）</li>
+<li>安裝測試</li>
+<li>合成交易Synthetic Transactions，寫腳本進行監控</li>
+</ol>
+<ul>
+<li>Software Testing Techniques<ul>
+<li>Unit Testing（+TDD（測試先行）：先寫單元測試，再寫程式）<ul>
+<li>本機Code Repository<ul>
+<li>公司Code Repository<ul>
+<li>Code Review</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Code Review<ul>
+<li>pair programming結對編程（同儕）（Agile）<ul>
+<li>最高檔code Review<ul>
+<li>即時檢視</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>提交審查（主管）</li>
+<li>機器人掃描Code Review</li>
+<li>正式審查檢視（專家）<ul>
+<li>費根審查Fagan Inspection</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Integration Testing整合測試，與其他人的code合併後<ul>
+<li>基本（常見）方式，將所有人的Unit Testing，再跑一次</li>
+</ul>
+</li>
+<li>Regression Testing回歸測試，測到沒問題</li>
+<li>Interface Testing，介面測試（UI測試、API測試）<ul>
+<li>Fuzz  Testing，模糊測試，用工具（Fuzzey）隨機動態，產生測試資料，透過使用者或是API介面進行測試（Interface Testing）。容易破壞語意完整性。<ul>
+<li>自定義</li>
+<li>自動化檢視</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Misuse Case Testing，誤用測試</li>
+<li>Stree Testing，壓力測試，測試系統上限</li>
+<li>Performance Testing，效能測試，在一段壓力下，測試效能狀況</li>
+<li>Security Testing<ul>
+<li>滲透、弱掃</li>
+</ul>
+</li>
+<li>User Acceptance Testing（UAT），驗收測試</li>
+<li>Installation Testing，安裝測試</li>
+<li>Synthetic Transactions，綜合交易，寫腳本進行監控</li>
+<li>Test Coverage Analysis，測試覆蓋率分析，重點是測試的分母為何</li>
+</ul>
+</li>
+</ul>
+<h2 id="maintenance-phase">Maintenance Phase</h2>
+<ul>
+<li>上線維運階段（職責分離）<ul>
+<li>資安人員：漏洞/弱點管理</li>
+<li>維護Maintenance：開發人員，修功能、修Bug</li>
+<li>維運operations ：資訊人員，資訊系統的維護，不讓資訊系統出問題（開發人員不能碰線上系統）</li>
+</ul>
+</li>
+</ul>
+<h2 id="rmf-nist-sdlc">RMF &amp; NIST SDLC</h2>
+<p>NIST System Development Life Cycle，SDLC<br />
+* initiation，啟動<br />
+    * RMF-Categorize  Systems：依據impact程度分高中低<br />
+    * BIA<br />
+    * PIA<br />
+* Development/Acquisition，開發Make/收購Buy<br />
+    * RMF-Select Controls：依等級進行項次的控制<br />
+    * RMF-Implement Controls：進行控制<br />
+* Implementation/Assessment，實施/評估<br />
+    * RMF-Assess Controls：評鑑有效性<br />
+        * Verificaton，內驗，內部驗證正確性<br />
+        * 認證(Accreditation)<br />
+            * 指主管機關對某實驗室或驗證機構給予正式認可（授權），證明其有能力執行某特定工作。例如：SGS的食品服務部是經過衛生福利部TFDA認證。<br />
+    * RMF-Authorize Systems：授權系統上線<br />
+        * Validation，外確，外部確認有效性<br />
+        * 驗證(Certification)<br />
+            * 由中立之第三者確認某一項產品、過程或服務，能否符合規定要求達到一定標準。<br />
+* Operations and Maintenance，運營和維護<br />
+    * Review 操作準備狀態<br />
+    * RMF-Monitoring Control：持續監測<br />
+    * 變更管理<br />
+* Disposal，除役<br />
+    * 資訊/資訊系統，最後會進入到除役階段，除了進行硬體設備資源再利用/報廢，或是法律要求的保存，也需對資訊系統所處理的資訊，進行資料消毒 Sanitization，避免資料殘餘 Data Remanence 。<br />
+    * 資料殘留<br />
+    * 資料保存政策<br />
+    * 資料消毒 Sanitization<br />
+        * Clear 擦除，人員/實驗室可恢復<br />
+        * Purge. 清除，廠商提供的工具，需送實驗室才能救回<br />
+        * Destroy. 銷毀，物理性破壞，如碎化</p>
+<p>Authorization Decisions：授權決定<br />
+* Authorization To Use<br />
+* Authorization To Operate，ATO，上線授權<br />
+* Common Control Authorization</p>
+<h3 id="_20">工程補充</h3>
+<p><img alt="" src="../assets/cissp/img45.png" /></p>
+<p>ISO 15288<br />
+* Life Cycle Stages<br />
+    * Concept<br />
+    * Development<br />
+    * Production<br />
+    * Utilization<br />
+    * Support<br />
+    * Retirement<br />
+* Agreement Processes<br />
+    * 採購<br />
+    * Acquisition<br />
+    * Supply<br />
+* Organizational Project-Enabling Processes<br />
+    * 組織管理專案（整合資源）<br />
+    * Life Cycle Model Management<br />
+    * Infrastructure Management<br />
+    * Portfolio  Management<br />
+    * Human Resource Management<br />
+    * Quality Management<br />
+    * Knowledge Management<br />
+* Technical Management Processes<br />
+    * 專案管理<br />
+    * Project Planning<br />
+    * Project Assessment and Control<br />
+    * Decision  Management<br />
+    * Risk Management<br />
+    * Configuration Management<br />
+    * information Management<br />
+    * Measurement<br />
+    * Quality Assurance<br />
+* Technical Processes<br />
+    * 專業技術<br />
+    * Business or Mission Analysis<br />
+    * Stakeholder Needs and Requirement Definition<br />
+    * System Requirement Definition<br />
+    * Architecture Definition<br />
+    * Design Definition<br />
+    * System Analysis<br />
+    * Implementation<br />
+    * Integration<br />
+    * Verification<br />
+    * Transition<br />
+    * Validation<br />
+    * Operation<br />
+    * Maintenance<br />
+    * Disposal</p>
+<p>Security Design Principles安全設計原則<br />
+- 威脅建模<br />
+- 最小許可權<br />
+- 深度防禦<br />
+- 預設安全設定<br />
+- 失效安全<br />
+- 職責分離 （SoD）<br />
+- 保持簡單<br />
+- 零信任<br />
+- 通過設計保護隱私<br />
+- 信任但要確認<br />
+- 共同責任</p>
+<p>Security Design Principles安全設計原則<br />
+* Saltzer and Schroeder<br />
+    * Economy of Mechanism<br />
+    * Fail Safe Defaults<br />
+    * Complete Mediation<br />
+    * Open Design<br />
+    * Separation of Privilege<br />
+    * Least Privilege<br />
+    * Least Common Mechanism<br />
+    * Psychological Acceptability<br />
+    * Work Factor<br />
+    * Compromise Recording<br />
+* ISO 19249<br />
+    * Architectural Principles<br />
+        * Domain Separation<br />
+        * Layering<br />
+        * Encapsulatoin<br />
+        * Redundancy<br />
+        * Virtualization<br />
+    * Design Principles<br />
+        * Least Privilege<br />
+        * Attack Surface Minimizatoin<br />
+        * Centralized Parameter Validation<br />
+        * Centralized General Security Services<br />
+        * Preparing for Error and Exception Handling<br />
+* NIST<br />
+    * Security Architecture And Design<br />
+        * Clear Abstractions<br />
+        * Hierarchical Trust<br />
+        * Least Common Mechanism<br />
+        * Inverse Modification Threshold<br />
+        * Modularity and Layering<br />
+        * Hierarchical Protection<br />
+        * Partially Ordered Dependencies<br />
+        * Minimized Security Elements<br />
+        * Efficiently Mediated Access<br />
+        * Least Privilege<br />
+        * Minimized Sharing<br />
+        * Perdicate Permission<br />
+        * Reduced Complexity<br />
+        * Self-Reliant Trustworthiness<br />
+        * Secure Evolvability<br />
+        * Secure Distributed Composition<br />
+        * Trusted Components<br />
+        * Trusted Communication Channels<br />
+    * Security Capability and Intrinsic Behaviors<br />
+        * Continuous Protection<br />
+        * Secure Failure and Recovery<br />
+        * Secure Metadata Management<br />
+        * Economic Security<br />
+        * Self-Analysis<br />
+        * Performance Security<br />
+        * Accountability and Traceability<br />
+        * Human Factored Security<br />
+        * Secure Defaults<br />
+        * Acceptable Security<br />
+    * Life Cycle Security<br />
+        * Repeatable and Documented Procedures<br />
+        * Secure System Modification<br />
+        * Procedural Rigor<br />
+        * Sufficient Documentation</p>
+<h2 id="malicious-softwaremalware">Malicious Software（Malware）</h2>
+<ul>
+<li>Viruses：Passive Programs（PGs）<ul>
+<li>Multipartite：File and MBR</li>
+<li>Stealth：Operating System</li>
+<li>Polymorphic：Self-modification</li>
+<li>Encrypted</li>
+</ul>
+</li>
+<li>Worms：Active Porocess</li>
+<li>Trojans：Cloaked PG in Normal PG（程式中藏程式）<ul>
+<li>Rogue Antivirus</li>
+<li>Ransomware：Encrypted</li>
+<li>Spyware：Silent malware</li>
+<li>Adware：Advertisements</li>
+</ul>
+</li>
+<li>Buzzwords<ul>
+<li>Pranks：Fun Viruses</li>
+<li>Hoaxes：Rumor</li>
+</ul>
+</li>
+<li>Backdoor<ul>
+<li>Trapdoor / Maintenance Hooks</li>
+<li>Logic Bombs</li>
+</ul>
+</li>
+<li>Botnets<ul>
+<li>Bots（robots）：Controlled agenta</li>
+<li>Zombies：Bod bots</li>
+<li>Bots Master：The Person in Command and Control （C&amp;C or C2） over the botnets.</li>
+</ul>
+</li>
+</ul>
+<h2 id="identifying-common-vulnerabilities">Identifying Common Vulnerabilities</h2>
+<ul>
+<li>Distributed Systems<ul>
+<li>Client-based systems</li>
+<li>Server-based systems</li>
+<li>Database systems，RDMS，SQLi</li>
+<li>Cryptographic systems</li>
+</ul>
+</li>
+<li>Cloud-based systems<ul>
+<li>Virtualized systems</li>
+<li>Edge Computing systems，CDN<ul>
+<li>內容分發(可用性)</li>
+<li>分散性服務，避免單點故障</li>
+<li>跨境問題(專利、商標、營業秘密、加密法、個資)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="cloud-computing">Cloud Computing</h2>
+<p><img alt="" src="../assets/cissp/img46.png" /></p>
+<p><img alt="" src="../assets/cissp/img47.png" /></p>
+<p>Cloud Computing：運算資源服務化<br />
+* Essential Characteristics基本特徵（NIST SP 800-145）<br />
+    * On-demand self-service：隨選自助服務<br />
+    * Broad network access：寬頻連接<br />
+    * Resource pooling：資源池<br />
+    * Rapid elasticity：快速彈性<br />
+    * Measured Service：可量測<br />
+    * ISO 17888<br />
+    * Multi-Tenancy：多租戶</p>
+<p>Service Models<br />
+* Software as a Service（SaaS）：使用軟體（服務），直接使用系統，一般使用者<br />
+    * 雲端的共享責任：Data<br />
+* Platform as a Service（PaaS）：程式平台，程式上傳，即可使用，程式設計師<br />
+    * 雲端的共享責任：Application<br />
+* Infastructure  as a Service（IaaS）：VM，自己裝作業系統，系統工程師<br />
+    * 雲端的共享責任：OS</p>
+<p>Deployment Modes<br />
+* Private Cloud：自己人使用<br />
+* Public Cloud：公眾使用<br />
+* Community Cloud：特定利害關係人一起使用<br />
+* Hybrid Cloud：上述情況混用</p>
+<p>Cloud Computing Role<br />
+* Cloud Carrier<br />
+* Cloud Service Provider，CSP<br />
+* Cloud Broker<br />
+* Cloud Consumer<br />
+* Cloud Auditor</p>
+<p>Microservices，微服務<br />
+* Containerization，容器<br />
+* Serverless，無伺服器<br />
+Embedded systems<br />
+* Industrial Control Systems（ICS）<br />
+* Internet of Things（IoT）<br />
+High-Performance Computing（HPC）Systems</p>
+<p>各種系統架構.<br />
+* 基於客戶端的系統<br />
+* 基於服務器的系統<br />
+* 數據庫系統<br />
+* 密碼系統<br />
+* 工業控制系統 (ICS)<br />
+* 基於雲端的系統（例如，軟件即服務（SaaS）、基礎架構即服務（IaaS）、平台即服務（PaaS））<br />
+* 應用系統<br />
+* 物聯網（IoT）<br />
+* 微服務<br />
+* 運算資源服務化<br />
+* 無服務器<br />
+* 嵌入式系統<br />
+* 計算（HPC）系統<br />
+* 邊界計算系統<br />
+* 虛擬化系統</p>
+<h2 id="zero-trust">Zero Trust零信任</h2>
+<p><img alt="" src="../assets/cissp/img48.png" /></p>
+<ul>
+<li>Zero Trust零信任：不要用網路邊界的概念來信任（來保護資訊資產）</li>
+<li>
+<p>以資料為中心，進行更細膩及動態的管制措施，並透明化紀錄各項軌跡、流量</p>
+</li>
+<li>
+<p>Zero Trust簡單說, 就是不要認為內網較安全, 也就是放棄用網路邊界來作資安. Zero Trust重點在保護資料, 必需以資料中心來訂範圍(晝虛擬的邊界), 並對個範圍內的資產, 進行更細緻, 動態及透明的存取控制.</p>
+</li>
+</ul>
+<p>Zero Trust零信任：<br />
+* A Cybersecurity Paradigm for Access Control 2.0<br />
+* Data-Centric, Fine-grained, Dynamic, and Transparent.<br />
+* 訪問控制 2.0 的網絡安全範式<br />
+* 以資料為中心、更細部（ABAC）、動態和透明。<br />
+* ABAC<br />
+    * XACML<br />
+        * Risk-based</p>
+<p>傳統上：<br />
+* 因內網比較安全，所以就自動信任（繼承）<br />
+* inherit繼承</p>
+<p>零信任：<br />
+* 去邊界化（De-perimeterization）<br />
+* 保護資源（資訊），資安</p>
+<p>Zero Trust Model<br />
+* CSA Software Defined Perimeter（SDP）,2013<br />
+* NIST Zero Trust Architecture<br />
+* NIST SP 800-207, Aug 2020</p>
+<p>Zero Trust：Access Control 2.0<br />
+* Security Principles<br />
+    * Need-to-Know<br />
+    * Least Privilege<br />
+* No inherent Trust<br />
+    * Give up "Trust, but verify"<br />
+    * Perimeterless<br />
+    * Microsegmentation（微分段）<br />
+    * Software-Defined Network（SDN）<br />
+* Continuous Verification<br />
+    * Verify and never trust<br />
+    * Network Access Control（802.1X）<br />
+    * Mutual-Authentication<br />
+* Data-Centric<br />
+    * Applications, Services, Devices, and Networks<br />
+    * Pepople and Workflows<br />
+* Fine-grained<br />
+    * Criteria-based vs Score-based（NIST）<br />
+    * Attribute-based vs Risk-based（ISC2）<br />
+* Dynamic<br />
+    * Port knocking<br />
+    * Single Packet Authorization（SPA）<br />
+    * Subject, Object, and Environment（ABAC）<br />
+* Transparent（Visibility）<br />
+    * Logging （Accounting）and Recording<br />
+    * Monitoring and Inspection</p>
+<h2 id="_21">密碼學</h2>
+<p><img alt="" src="../assets/cissp/img49.png" /></p>
+<p>Cyptology目標：<br />
+* 機密性：資料不被偷<br />
+* 完整性：資料不被串改，資料完整性<br />
+* 真實性：傳送來源的真實性<br />
+* 不可否認性：傳送雙方的不可否認性<br />
+* ~~可用性：~~</p>
+<h3 id="_22">布林代數</h3>
+<ul>
+<li>And：兩個1，才是1</li>
+<li>OR：只有有出現1，就是1</li>
+<li>XOR⊕：兩個不一樣，才是1</li>
+<li>NOT~：NOT 0 = 1；NOT 1 = 0</li>
+<li>取餘數 7 MOD 5＝2；7 MOD 10 = 7</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img50.jpg" /></p>
+<p>Cryptography：<br />
+* Cyptography（防守）<br />
+* Encryption（加密）： for Confidentiality機密性<br />
+    * Component元件<br />
+        * Plaintext明文<br />
+        * Cipher加密器；Algorithm（演算法）<br />
+            * Text-based（字母表，以文字為基礎）<br />
+                * Substitution Cipher（取代型加密器）<br />
+                    * 凱薩<br />
+                    * ROT-3（位移三位）<br />
+                        * BAD = EDG<br />
+                        * 金鑰：3<br />
+                        * Cipher：位移<br />
+                * Transposition Cipher（換位型加密器，Permutation Cipher排列加密器）<br />
+                    * 打亂文字位置<br />
+                    * 成員不變，位置改變<br />
+                * 現代密碼學<br />
+                    * 先取代<br />
+                    * 換位<br />
+                    * 反覆上述步驟，作為一輪，在做很多輪<br />
+            * Binary-based<br />
+                * Symmetric 對稱式，同強度128bits，快<br />
+                    * Symmetric Demands，對稱式金鑰數量<br />
+                        * n(n-1)/2<br />
+                        * 10個人要面對其他九個人，同一組人除2<br />
+                        * 金鑰管理問題，數量多<br />
+                    * Block Cipher區塊型<br />
+                        * 切塊，<br />
+                        * DES，Data Encryption Standard（Lucifer），Cipher：Lucifer<br />
+                        * DES-EEE3，三把金鑰<br />
+                        * DES-EDE3，D解密，但金鑰不同<br />
+                        * DES-EEE2，K1=K3，兩把金鑰<br />
+                        * DES-EDE2<br />
+<img alt="" src="../assets/cissp/img51.png" /></p>
+<pre><code>                    * AES，Advanced Encryption Standard（Rijndael），Cipher：Rijndael
+                    * CBC-MAC，最後一次的金鑰使用，雙方約定好的Shared Key（K2）進行加密
+                        ![](../assets/cissp/img52.png)
+                    * RC6
+                * Mode：不改變Cipher加密器的狀況下，事前事後都動手腳
+                    * Electronic Codebook（ECB）
+                        * 固定樣態，容易破解，缺點：同樣明文會加密成同樣密文
+                        * 因無加料，所以速度快
+                    * Cipher Block Chaining（CBC）
+                        * 加料：initialization Vector（IV）初始向量，動態亂數產生，進行XOR運算
+                        * 第一次的密文（Cipher Block ）當作第二次的IV，Chaining
+                        ![](../assets/cissp/img53.png)
+                    * Cipher Feedback（CFB）
+                    * Output Feedback（OFB）
+                    * Counter（CTR）
+                * Stream Cipher串流型
+                    * 不切塊，
+                    * 適用狀況
+                        * 運算能力不足
+                        * 行動裝置
+                        * 資料形式源源不絕
+                    * RC4（RSA發明）
+                    * TKIP
+
+            * Asymmetric 非對稱式，同強度2048bits，慢
+                * Asymmetric Demands，非對稱式金鑰數量
+                    * n*2
+                * Public Key Encryptoion
+                * Key Pair兩把金鑰
+                    * 只能用對應的公鑰及私鑰解密，事先產生公鑰後，傳輸公鑰給人
+                    * Public公鑰：隨便給，給別人加密用（用別人的公鑰加密）
+                    * Private私鑰：保管好，給自己簽章用（用自己的私鑰簽章）
+                * 加密演算法
+                    * Prime Factorization質因數分解
+                        * RSA（主流）
+                    * Discreate Logarithm離散數學
+                        * Diffie-Hellman，DH
+                            * Key Agreement金鑰協議
+                                * 非事先產生
+                                * 雙方協議後產生
+                                * 金鑰未在網路傳輸
+                        * EIGmal Cryptograply，REC，密文為明文的兩倍
+                        * Elliptic-Curve Cryptograply，ECC，短小精幹（比RSA更短、快）
+    * Key金鑰（啟動器）；Securt Key（密鑰）
+        * 加密Encryption及解密Decryption
+            * 同一把Key：對稱式加密（與非對稱式加密互補，搭配使用）
+            * 不同把Key：非對稱式加密（與對稱式加密互補，搭配使用）
+        * 隨機、亂碼
+            ![](../assets/cissp/img54.png)
+        * Key Exchange
+            * out-of-band
+            * Public Key Encryptoion
+                * Key Pair兩把金鑰
+                    * Public公鑰：隨便給，給別人加密用（用別人的公鑰加密）
+                    * Private私鑰：保管好，給自己簽章用（用自己的私鑰簽章）
+            * Diffie-Hellman，DH
+                * Key Agreement金鑰協議
+                    * 非事先產生
+                    * 雙方協議後產生
+                    * 金鑰未在網路傳輸
+
+            ![](../assets/cissp/img55.png)
+
+    * Ciphertext：密文
+        * 好的加密器（難破解），達成Hash的效果（唯一值）
+            * 金鑰（Securt Key）任何變更，密文完全改變，Confusion混淆
+            * 明文（Plaintext）任何變動，密文完全不一樣，Diffusion擴散
+            * Cipher Operation
+                * Confusion（S-Box or Substitution Cipher），混淆能力
+                * Diffusion（P-Box or Transpostion Cipher or Permutation Cipher），擴散能力
+                    ![](../assets/cissp/img56.png)
+</code></pre>
+<p><img alt="" src="../assets/cissp/img57.png" /></p>
+<ul>
+<li>
+<p>現代密碼學思維：只要把金鑰保護好，其他加密器、演算法透明公開、密文偷走也無所謂。</p>
+<ul>
+<li>The Kerckhoff Principle：A cryptographic system should be secure even if everything about the system, except the key, is public knowledge.</li>
+<li>克爾克霍夫原則：一個加密系統應該是安全的，即使關於系統的一切，除了密鑰，都是公共知識。（即使關於系統的所有內容（除了密鑰之外）都是公共知識，密碼系統也應該是安全的 ）</li>
+</ul>
+</li>
+<li>
+<p>Well-Know Cipher：</p>
+<ul>
+<li>DES，Data Encryption Standard（Lucifer），NIST訂定，美國國家加密標準（第一代），IBM發明。<ul>
+<li>Cipher：Lucifer</li>
+</ul>
+</li>
+<li>AES，Advanced Encryption Standard（Rijndael），NIST訂定，美國國家加密標準（取代DES），海選<ul>
+<li>Cipher：Rijndael</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Hash（雜湊（哈希））：for Data Integrity資料完整性</p>
+<ul>
+<li>不需要Key，任何資料都可以算出一個雜湊值（Hash，指紋）</li>
+<li>特性<ul>
+<li>Unique：唯一值</li>
+<li>Irreversible：不可逆，單向one way</li>
+<li>Fixed length：固定長度</li>
+<li>Fingerorint/Digest/Chechsum</li>
+</ul>
+</li>
+<li>MD5</li>
+<li>SHA</li>
+</ul>
+</li>
+<li>
+<p>Message Authentication Code，MAC（訊息驗證碼）：for Source Authenticity來源真實性</p>
+<ul>
+<li>真實性：資料是真的，來源也是真的<ul>
+<li>資料完整性，沒被改過：資料是真的</li>
+<li>傳送方的身份也是真的</li>
+</ul>
+</li>
+<li>本質上類似雜湊值</li>
+<li>用加密器Cipher算，CBC-MAC</li>
+<li>用雜湊Hash技術，HMAC（Hash-based MAC）</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img58.png" /></p>
+<p><img alt="" src="../assets/cissp/img59.png" /></p>
+<ul>
+<li>
+<p>PKI，Public Key Infrastructure（數位憑證基礎架構）</p>
+<ul>
+<li>數位身分證：有寫名字的公鑰</li>
+<li>Certificate Authority（CA）：負責發證</li>
+<li>Registration Authority（RA）：負責收件（註冊）</li>
+<li>Validation Authority（VA）：查詢憑證有效性</li>
+<li>憑證的有效性<ul>
+<li>憑證期限是否到期</li>
+<li>憑證鏈，中間有一憑證失效，即失效</li>
+<li>憑證是否已被廢置<ul>
+<li>線上憑證狀態協定（英語：Online Certificate Status Protocol，縮寫：OCSP）是一個用於取得X.509數位憑證復原狀態的網際協定</li>
+<li>憑證吊銷列表（英文：Certificate revocation list，縮寫：CRL，或譯作憑證廢止清冊）是尚未到期就被憑證頒發機構吊銷的數位憑證的名單。這些在憑證吊銷列表中的憑證不再會受到信任。</li>
+</ul>
+</li>
+<li>格式：X.509</li>
+<li>憑證生命週期<ul>
+<li>Generation：隨機性，熵（Entropy隨機程度的單位）<ul>
+<li>
+<ol>
+<li>產生金鑰對: 即public與private key</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>產生憑證申請檔(CSR): subject, public key, digital signature等</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>提交CSR</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>CA核準後發放憑證(certificate)</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>安裝及使用憑證</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Sotrage：儲存</li>
+<li>Distribution：發送</li>
+<li>Rotation：汰換<ul>
+<li>Out-of-band</li>
+<li>Key Exchange<ul>
+<li>Deternined</li>
+<li>Agrees</li>
+</ul>
+</li>
+<li>Public Key Infrastructure</li>
+</ul>
+</li>
+<li>Escrow：代管<ul>
+<li>Duo Control</li>
+<li>M Of N Control</li>
+</ul>
+</li>
+<li>Destruction：銷毀</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>簽章</p>
+<ul>
+<li>電子簽章<ul>
+<li>筆跡簽名(生物辨識)</li>
+</ul>
+</li>
+<li>數位簽章<ul>
+<li>憑證（密碼學）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>數位簽章流程：</p>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img60.png" /></p>
+<p><img alt="" src="../assets/cissp/img61.jpeg" /></p>
+<h2 id="_23">其他加密補充</h2>
+<ul>
+<li>
+<p>One-Time Pad，OTP，密碼學演算方式，號稱牢不可破，金鑰跟明文一樣長（隨機選出和明文 m 一樣長的密鑰 ）</p>
+</li>
+<li>
+<p>TPM（Trusted Platform Module）</p>
+</li>
+<li>
+<p>HSM（Hardware security module）</p>
+</li>
+<li>
+<p>Digital Envelope</p>
+<ul>
+<li>S/MINE</li>
+<li>PGP（Pretty Good Privacy）</li>
+</ul>
+</li>
+<li>
+<p>Steganography（隱碼術）：Null / Concealment Cipher</p>
+<ul>
+<li>藏頭詩</li>
+<li>藏在圖片（像素）</li>
+</ul>
+</li>
+<li>
+<p>Quantum</p>
+<ul>
+<li>Quantum Cryptography（Quantum Key Distribution），藍隊，量子密碼學</li>
+<li>Quantum Computing（Integer Factorization），量子運算學</li>
+</ul>
+</li>
+<li>
+<p>破密Cryptanalysis</p>
+<ul>
+<li>金鑰被猜到</li>
+<li>密文解密，被還原出任何有意義的資料</li>
+<li>Work factor（破解密碼的代價）<ul>
+<li>The time and effort to break a cryptographic system</li>
+<li>破解密碼系統的時間和精力</li>
+</ul>
+</li>
+<li>Key Cluster金鑰叢集：不同金鑰產出同一密文</li>
+</ul>
+</li>
+<li>Cyptanalysis（攻擊）（破密）<ul>
+<li>Attack Scenarios（星巴克，有本事你去破）<ul>
+<li>Ciphertext Only</li>
+<li>Know Plaintext（weaker codes）</li>
+<li>Chosen Plaintext，中途島</li>
+<li>Chosen Ciphertext（Key）</li>
+</ul>
+</li>
+<li>Attack Approaches<ul>
+<li>Analytic Attack（Algorithm）</li>
+<li>Statistical Attack（Cryptosystem）</li>
+<li>Implementation Attack（Software）</li>
+</ul>
+</li>
+<li>Attack Techniques<ul>
+<li>Brute Force暴力攻擊<ul>
+<li>Key Space：所有組合的可能性</li>
+</ul>
+</li>
+<li>Birthday Attack（Hash）</li>
+<li>"Meet" in the Middle（2DES）</li>
+<li>Frequency Analysis頻率分析</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_24">網路工程</h2>
+<ul>
+<li>架安全的網路</li>
+<li>提到工程<ul>
+<li>時時都安全 (可以是生命週期，也可以是 狀態)</li>
+<li>處處都安全</li>
+</ul>
+</li>
+<li>所以要從架構著手</li>
+</ul>
+<p>OSI 七層</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>名稱</th>
+<th>關鍵</th>
+<th>資安關注議題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Application</td>
+<td>應用程式</td>
+<td>FTP 明文傳送、DNS cache poisoning、流氓 DHCP</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Presentation</td>
+<td>編碼 / 壓縮 / 加解密</td>
+<td>Brute Force、Meet in the middle (2DES)、Frequency Analysis、Birthday Attack、彩虹表</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Session</td>
+<td>全雙工/半雙工/單工</td>
+<td>Access Token 劫持 (中間人、XSS 跨站攻擊-違反同源政策)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport</td>
+<td>保證送達、不保證送達</td>
+<td>UDP : Fraggle attack ; TCP : SYN Flood Attack 、 聖誕樹攻擊</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Network Layer</td>
+<td>(定址)Addressing 、(選徑)Routing</td>
+<td>Ping of Death 、 Smurf Attack 、TTL fingerprinting / footprinting 、淚珠攻擊 、 流氓路由器</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data Link Layer</td>
+<td>Media Access Control(MAC) 、 Logic Link Control(LLC)</td>
+<td>ARP cache poisoning、MAC flooding</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Physical</td>
+<td>線材、接頭、訊號、傳輸方式</td>
+<td>訊號衰減、干擾、竊聽、破壞</td>
+</tr>
+</tbody>
+</table>
+<p>OSI與TCP/IP<br />
+* Layer 7 Application Layer：服務應用<br />
+    * TCP/IP Layer：Application<br />
+    * Protocol Data Unit，PDU：Data / Message<br />
+* Layer 6 Presentation Layer：編碼及加密<br />
+    * TCP/IP Layer：Application<br />
+    * Protocol Data Unit，PDU：Data / Message<br />
+* Layer 5 Session Layer：認證及授權的生命週期<br />
+    * TCP/IP Layer：Application<br />
+    * Protocol Data Unit，PDU：Data / Message<br />
+* Layer 4 Transport Layer：服務端口<br />
+    * TCP/IP Layer：Transport<br />
+    * Protocol Data Unit，PDU：Segment<br />
+* Layer 3 Network Layer：定址和路由<br />
+    * TCP/IP Layer：Internet<br />
+    * Protocol Data Unit，PDU：Packet<br />
+* Layer 2 Data Link Layer：相鄰兩點設備連結的控制<br />
+    * TCP/IP Layer：Link<br />
+    * Protocol Data Unit，PDU：Frame<br />
+* Layer 1 Physical Layer：物理設備的標準及特性：如MAC/網路卡/網路線<br />
+    * TCP/IP Layer：Link<br />
+    * Protocol Data Unit，PDU：Bit</p>
+<h2 id="tcpip">TCP/IP 架構，元素、元素與元素之間的關係</h2>
+<p><img alt="" src="../assets/cissp/img62.png" /></p>
+<p><img alt="" src="../assets/cissp/img63.jpg" /></p>
+<p><img alt="" src="../assets/cissp/img64.png" /></p>
+<p><img alt="" src="../assets/cissp/img65.jpeg" /></p>
+<p><img alt="" src="../assets/cissp/img66.png" /></p>
+<h3 id="osi">OSI</h3>
+<ul>
+<li>
+<p>實體層Physical layer，MAC/網路卡/網路線</p>
+<ul>
+<li>
+<p>Repeater<br />
+<img alt="" src="../assets/cissp/img67.png" /></p>
+</li>
+<li>
+<p>Media線材（媒介）</p>
+<ul>
+<li>有線<ul>
+<li>同軸<ul>
+<li>粗（傳輸距離約500公尺）</li>
+<li>細（RG-58）（傳輸距離約100公尺）</li>
+</ul>
+</li>
+<li>銅線（雙絞線）<ul>
+<li>包覆，STP（鋁箔，防止外部干擾）<ul>
+<li>CAT-3</li>
+<li>CAT-4</li>
+<li>CAT-5（傳輸距離約100公尺）</li>
+<li>CAT-5e</li>
+</ul>
+</li>
+<li>未包覆，UTP</li>
+<li>RJ-45，Register Jacket-45，接頭</li>
+</ul>
+</li>
+<li>光纖<ul>
+<li>單模</li>
+<li>多模</li>
+</ul>
+</li>
+<li>價格<ul>
+<li>光纖&gt;STP&gt;UTP</li>
+</ul>
+</li>
+<li>傳輸距離<ul>
+<li>光纖&gt;粗銅軸&gt;銅線=細同軸</li>
+<li>長距離門檻<ul>
+<li>費用</li>
+<li>執照（一類電信）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>干擾<ul>
+<li>串音Cross Talk<ul>
+<li>端點Near End容易互相干擾</li>
+</ul>
+</li>
+<li>訊號衰減<ul>
+<li>放大器（擴大器）（類比）</li>
+<li>Repeater (數位)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>無線<ul>
+<li>電磁波<ul>
+<li>NFC and RFID</li>
+<li>Bluetooth and Zigbee 藍芽</li>
+<li>Wi-Fi （頻譜2.4G/5GMz）（1,6,11無重複）</li>
+<li>Li-Fi 光傳輸</li>
+<li>Cordless Phones（DECT）</li>
+<li>Cellular Netwoks（4G,5G）</li>
+<li>Satellite（Starlink）</li>
+</ul>
+</li>
+<li>常見攻擊<ul>
+<li>無線網路的攻擊<ul>
+<li>War Driving<ul>
+<li>開車繞一圈蒐集有多少基地台<ul>
+<li>基地台使用哪種協定</li>
+<li>是否使用預設密碼</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>War Chalking<ul>
+<li>將蒐集來的做記號(Ex.阿里巴巴做記號)</li>
+</ul>
+</li>
+<li>Evil Twin (完全模仿你,訊號強就會連結過來)<ul>
+<li>如公共基地台 (用相同的 SSID 與相同金鑰)<ul>
+<li>將筆電模擬成 AP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>藍芽攻擊<ul>
+<li>訊號側錄（中間人攻擊）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>WAN</p>
+<ul>
+<li>區域網路LAN與廣域網路WAN的概念<ul>
+<li>LAN：自己拉線拉得到的，基本上都算區域網路的範圍</li>
+<li>WAN：</li>
+</ul>
+</li>
+<li>Leased Line（專線）<ul>
+<li>貴</li>
+<li>T1<ul>
+<li>美規</li>
+</ul>
+</li>
+<li>E1<ul>
+<li>歐規</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Circuit Switching電路交換<ul>
+<li>佔線問題</li>
+<li>PSTN<ul>
+<li>電話網路</li>
+<li>類比</li>
+</ul>
+</li>
+<li>ISDN</li>
+</ul>
+</li>
+<li>Packet Switching封包交換<ul>
+<li>Switched Virtual Circuits（SVCs）</li>
+<li>Permanent Virual Circuits（PVCs）</li>
+<li>X.25</li>
+<li>Frame relaed</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Signal訊號</p>
+<ul>
+<li>Analog：連續波長，取高低峰，作為0和1<ul>
+<li>訊號衰減改善<ul>
+<li>放大器（擴大器）（類比）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Digital：0和1的訊號<ul>
+<li>訊號衰減改善<ul>
+<li>Repeater (數位)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Transmission傳輸</p>
+<ul>
+<li>Baseband 基頻（有線）: 如單音、solo 獨唱 ，一個頻率</li>
+<li>Broadband 寬頻（無線） : 如合唱、和弦 多個頻率</li>
+</ul>
+</li>
+<li>
+<p>Network Topology（形狀）</p>
+<ul>
+<li>Bus</li>
+<li>Star</li>
+<li>Ring</li>
+<li>Mesh</li>
+<li>Tree</li>
+<li>Point-to-Point</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>資料鏈結層Data Link Layer</p>
+<ul>
+<li>
+<p>Media Access Control（MAC）</p>
+<ul>
+<li>搶資源<ul>
+<li>先搶先贏</li>
+<li>CSMA/CD（乙太網路）<ul>
+<li>碰撞<ul>
+<li>偵測到重送</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CSMA/CA（無線網路）<ul>
+<li>碰撞<ul>
+<li>傳資料之前先聽，有人傳就暫停</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>次序（輪流）（乙太網路/無線網路）<ul>
+<li>ToKing Ring</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Logical Link Control（LLC）</p>
+<ul>
+<li>流量控制</li>
+<li>錯誤控制</li>
+</ul>
+</li>
+<li>
+<p>Common Attacks</p>
+<ul>
+<li>ARP Attacks</li>
+<li>MAC Spoofing</li>
+<li>DHCP Spoofing</li>
+<li>Virtual LAN Hopping</li>
+<li>CAM Table Overflows</li>
+<li>Spanning Tree Protocol Attacks</li>
+<li>CDP/LLDP Reconnaissance</li>
+</ul>
+</li>
+<li>
+<p>Link VS Route (Path)</p>
+<ul>
+<li>Link : 相鄰兩點 Point to Point</li>
+<li>Route (Path) : 端點到到端點 End Point - to - End Point ，經過很多點<ul>
+<li>Ex. E2E 加密,全程都都加密</li>
+</ul>
+</li>
+<li>放大器：Bridge</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>網路層Network Layer</p>
+<ul>
+<li>Router</li>
+<li>Addressing：定址，針對網路/電腦做編碼<ul>
+<li>IPv4<ul>
+<li>32 bit<br />
+    | 2^7^     | 2^6^     | 2^5^     | 2^4^       | 2^3^       | 2^2^  | 2^1^  | 2^0^  |<br />
+    | -- | -- | -- | --   | --   | -- | --  | -- |<br />
+    | 128      | 64       | 32       | 16         | 8          | 4     | 2     | 1     |</li>
+<li>CIDR（Classless Inter-Domain Routing） 表示法<ul>
+<li>192.168.0.1 /25</li>
+<li>111111111 . 11111111 . 11111111 . 1000 0000</li>
+<li>255.255.255.128</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IPv6<ul>
+<li>128 bit</li>
+<li>「：」冒號分隔</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Routing：選一條路把資料流出去（路由表）<ul>
+<li>Interior Gateway Protocol（IGP）<ul>
+<li>Distance Vector<ul>
+<li>RIP</li>
+</ul>
+</li>
+<li>Link State<ul>
+<li>OSPF</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Exterior Gateway Protocol（EGP）<ul>
+<li>Path Vector<ul>
+<li>BGP</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Controlling<ul>
+<li>ICMP<ul>
+<li>Unicast</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IGMP<ul>
+<li>Broadcast</li>
+<li>Multicast</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img68.png" /></p>
+<ul>
+<li>請簡述路由表的結構<ul>
+<li>Network Destination：目的網段</li>
+<li>Netmask：目的網段的子網路遮罩</li>
+<li>Gateway：常見指default Gateway或不同介面的default Gateway</li>
+<li>Interface：本機介面上的IP</li>
+<li>Metric：計算路由的指標，通常越小，預設會先行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>傳輸層Transport Layer</p>
+<ul>
+<li>Firewall</li>
+<li>Transport（程式傳輸）</li>
+<li>進行資料的傳遞</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img69.png" /></p>
+<ul>
+<li>
+<p>TLS/SSL協定訊息：三方交握後，</p>
+<ul>
+<li>Client會傳遞一組特殊的Client Hello extensions<ul>
+<li>SSL Protocol Version</li>
+<li>Session ID</li>
+<li>List of Cipher Suites，列出支援的加密方式</li>
+</ul>
+</li>
+<li>Server會回應Server Hello extensions<ul>
+<li>SSL Protocol Version</li>
+<li>Session ID</li>
+<li>Selected Cipher：選擇本次Sesson所用的加密方式</li>
+<li>提供Server Certificate</li>
+<li>Client Certificate Requset（Optional），依服務是否要求雙向加密</li>
+</ul>
+</li>
+<li>最後Client會驗證該Server Certificate後，進行資料傳輸。</li>
+</ul>
+</li>
+<li>
+<p>Common Attacks</p>
+<ul>
+<li>最常見的攻擊就是將Certificate進行置換，進行中間人攻擊</li>
+</ul>
+</li>
+<li>
+<p>通訊埠port number<br />
+    | Port     | 服務     | 補充     |<br />
+    | -- | -- | -- | <br />
+    |7 | echo | Echo 服務 |<br />
+    |20 | ftp-data | FTP 資料連接埠 |<br />
+    |21 | FTP | 檔案傳輸協定(FTP)連接埠；有時由檔案服務協定(FSP)所使用 |<br />
+    |22 | SSH | Secure Shell (SSH) 服務 |<br />
+    |23 | telnet | Telnet 服務 |<br />
+    |25 | smtp | Simple Mail Transfer Protocol (SMTP) |<br />
+    |53 | DNS | 網域名稱服務 |<br />
+    |67 | bootps | Bootstrap 協定 (BOOTP) 服務，也由動態主機配置協定 (DHCP) 服務所使用 |<br />
+    |68 | bootpc | Bootstrap (BOOTP) 用戶端；也由動態主機配置協定 (DHCP) 用戶端所使用 |<br />
+    |69 | TFTP | 細瑣檔案傳輸通訊協定(TFTP) |<br />
+    |80 | HTTP | 用於全球資訊網(WWW)服務的超文字傳輸通訊協定(HTTP) |<br />
+    |88 | kerberos | Kerberos 網路認證系統 |<br />
+    |110 | pop3 | 郵局通訊協定第三版 |<br />
+    |115 | SFTP | 安全的檔案傳輸協定(SFTP)服務 |<br />
+    |123 | NTP | 網路時間協定(NTP) |<br />
+    |143 | IMAP | 網際網路訊息存取協定 (IMAP) |<br />
+    |161 | SNMP | 簡易網路管理協定 (SNMP) |<br />
+    |162 | snmptrap | SNMP 的 Traps |<br />
+    |389 | ldap | 輕量級目錄存取協定 (LDAP) |<br />
+    |443 | HTTPS | 安全的超文字傳輸通訊協定 (HTTP) |<br />
+    |500 | isakmp | 網際網路安全協會與金鑰管理協定 (ISAKMP) |<br />
+    |749 | kerberos-adm | Kerberos 第五版 (v5) ‘kadmin’ 資料庫管理 |<br />
+    |750 | kerberos-iv | Kerberos 第四版 (v4) 的服務 |</p>
+</li>
+</ul>
+</li>
+<li>
+<p>會議層Session Layer（User Session）</p>
+<ul>
+<li>User登入到登出的這段期間（互動）</li>
+<li>Service<ul>
+<li>Authentication</li>
+<li>Authorization</li>
+<li>Session restoration</li>
+</ul>
+</li>
+<li>Protocols<ul>
+<li>PAP</li>
+<li>RPC</li>
+<li>NetBIOS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>展現層Presentation Layer</p>
+<ul>
+<li>編碼Encoding<ul>
+<li>ASCII</li>
+<li>UTF8/Unicode</li>
+<li>BASE64：將二進位檔案Binary date，轉換成TEXT，以利傳輸</li>
+</ul>
+</li>
+<li>壓縮<ul>
+<li>Content-Encodeing：gzip</li>
+<li>Content-Encodeing：Compress</li>
+</ul>
+</li>
+<li>加密<ul>
+<li>HTTPS</li>
+<li>AES</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>應用層Application Layer</p>
+<ul>
+<li>DNS<ul>
+<li>UDP53，用戶端與DNS Sever溝通（查詢）</li>
+<li>TCP53，Primary DNS Server 與 Secondy DNS之間進行Zone Transfer</li>
+</ul>
+</li>
+<li>HTTP<ul>
+<li>Request</li>
+<li>Response</li>
+<li>200 OK</li>
+</ul>
+</li>
+<li>FTP<ul>
+<li>Text</li>
+</ul>
+</li>
+<li>TFTP<ul>
+<li>不需身份驗證</li>
+</ul>
+</li>
+<li>SMTP/POP/IMAP<ul>
+<li>DHCP</li>
+</ul>
+</li>
+<li>BOOTP<ul>
+<li>用網卡開機</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img70.png" /></p>
+<ul>
+<li>Converged Protocols 融合協議<ul>
+<li>iSCSI：把原來只用於本機的SCSI協定透過TCP/IP網路傳送，進行更彈性的儲存技術應用<ul>
+<li>Initiator（iSCSI Client）</li>
+<li>Target（Storage）</li>
+<li>Host Bus Adapter（HBA）</li>
+</ul>
+</li>
+<li>VoIP：經由網際網路來進行電話或多媒體通訊<ul>
+<li>SIP，註冊用</li>
+<li>RTP，傳輸用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="firewall">Firewall</h3>
+<p><img alt="" src="../assets/cissp/img71.png" /></p>
+<p><img alt="" src="../assets/cissp/img72.jpg" /></p>
+<ul>
+<li>Firewall Technologies<ul>
+<li>Inspection<ul>
+<li>Packet Filtering（Stateless：IP）</li>
+<li>Circuit-level（Stateful：TCP）</li>
+<li>Deep Pack Inspection（Payload）</li>
+</ul>
+</li>
+<li>Proxy<ul>
+<li>Application Proxy</li>
+<li>Dedicated Proxy Servers</li>
+</ul>
+</li>
+<li>Next-Generation Features<ul>
+<li>Web Application Firewalls</li>
+<li>Network Access Control / Protection （NAC / NAP）</li>
+<li>Virtual Private Networking</li>
+<li>Unified Threat Management（UTM）</li>
+<li>Firewalls for Virtual Infrastructures</li>
+</ul>
+</li>
+<li>Zero Trust<ul>
+<li>不只是用網路區隔</li>
+<li>用軟體定義邊界</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img73.png" /></p>
+<h3 id="ipsec">IPsec（非協定而是框架或標準）</h3>
+<ul>
+<li>Network Layer</li>
+<li>Features 功能<ul>
+<li>Data Integrity Protection，資料完整性保護</li>
+<li>Data Origin Authentication，資料源驗證（真實性）</li>
+<li>Anti-replay Protection 防止重放攻擊</li>
+<li>Confidentiality 機密性</li>
+</ul>
+</li>
+<li>Modes（用途）<ul>
+<li>Transport Mode<ul>
+<li>End to End</li>
+</ul>
+</li>
+<li>Tunnel Mode<ul>
+<li>WAN</li>
+</ul>
+</li>
+<li>Gw to Gw</li>
+</ul>
+</li>
+<li>Protocols（封裝法）<ul>
+<li>ISAKMP金鑰管理協定（框架）<ul>
+<li>金鑰交換協議<ul>
+<li>IKEv1</li>
+<li>IKEv2<ul>
+<li>IKEv1簡化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ESP（加密）<ul>
+<li>完整性</li>
+<li>機密性</li>
+</ul>
+</li>
+<li>AH（未加密）<ul>
+<li>完整性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Application<ul>
+<li>VPN</li>
+<li>LAN</li>
+</ul>
+</li>
+<li>CIA<ul>
+<li>保護完整性Integirty</li>
+<li>依通訊協議，確認是否有加密性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="wireless">Wireless</h3>
+<p><img alt="" src="../assets/cissp/img74.jpg" /></p>
+<p><img alt="" src="../assets/cissp/img75.jpg" /></p>
+<ul>
+<li>Wireless</li>
+<li>802.1X Roles<ul>
+<li>Supplicant(用戶端)</li>
+<li>Authebticator（AP）</li>
+<li>Authentication Server（Rsdius Server）</li>
+</ul>
+</li>
+<li>Mode<ul>
+<li>Ad Hoc Mode<ul>
+<li>Peer to Peer</li>
+</ul>
+</li>
+<li>Infrastructure Mode<ul>
+<li>Access Point</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Wireless Security<br />
+    |Generation | 第1代 | 1.5代 | 第2代|<br />
+    | -- | -- | -- |  -- | <br />
+    |Features | WEP | WPA | WPA2|<br />
+    |標準 | 802.11 | 802.11i Draft | 802.11i|<br />
+    |驗證 | Open System Authentication / SharedKEY | PSK/WAP/802.1X | PSK/EAP/802.1X|<br />
+    |Cipher | RC4 | RC4 / TKIP (Firmware 升級) | AES/CCMP|<br />
+    |IV 長度 | 24 Bits | 48 Bits | 48 Bits|<br />
+    |Key/Size | 40/104 bits | 128 Bits | 128 Bits|<br />
+    |Integrity | CRC32 | MIC | CCM|</p>
+</li>
+<li>
+<p>Wireless Attacks</p>
+<ul>
+<li>Wi-Fi Attacks<ul>
+<li>War Driving</li>
+<li>War Charlking</li>
+<li>Evil Twin</li>
+</ul>
+</li>
+<li>Bluetooth Attacks<ul>
+<li>Bluesnarfing<ul>
+<li>使攻擊者能夠利用較舊的（大約在2003年）設備中的固件漏洞來訪問支持Bluetooth的設備。這種攻擊會強制與藍牙設備建立連接，從而允許訪問存儲在設備上的數據，包括該設備的國際移動設備身份（IMED）。IMEI是每個設備的唯一標識符，攻擊者可能會將其用於將所有傳入呼叫從用戶設備路由到攻擊者設備。</li>
+</ul>
+</li>
+<li>Bluejacking<ul>
+<li>藍牙劫持是在支援藍牙的行動裝置（如手機）上進行的攻擊。攻擊者通過向啟用藍牙的設備的使用者發送未經請求的消息來發起劫持。實際消息不會對使用者的設備造成傷害，但可能會誘使用戶以某種方式做出回應或將新聯繫人添加到設備的通訊簿中。此郵件發送攻擊類似於針對電子郵件用戶進行的垃圾郵件和網路釣魚攻擊。當用戶啟動對出於有害意圖發送的藍牙劫持消息的回應時，劫持可能會造成傷害。</li>
+</ul>
+</li>
+<li>Bluebugging<ul>
+<li>利用某些較舊（大約在2004年）藍牙設備的固件中的安全漏洞來訪問該設備及其命令。此攻擊在不通知用戶的情況下使用設備的命令，從而使攻擊者可以訪問數據，撥打電話，竊聽電話，發送消息以及利用設備提供的其他服務或功能。</li>
+</ul>
+</li>
+<li>Car Whisperer<ul>
+<li>是由歐洲安全研究人員開發的一種軟件工具，該工具利用了汽車中安裝的免提藍牙汽車套件中標準（非隨機）密碼的使用。Car Whisperer軟件允許攻擊者向車載套件發送音頻或從車載套件接收音頻。攻擊者可以將音頻傳輸到汽車的揚聲器或從汽車中的麥克風接收音頻（竊聽）。</li>
+</ul>
+</li>
+<li>Denial of Service<ul>
+<li>與其他無線技術一樣，藍牙容易受到DoS攻擊。影響包括使設備的藍牙接口無法使用以及耗盡設備的電池。這些類型的攻擊並不重要，並且由於使用藍牙所需的接近性，通常只需移開範圍即可輕鬆避免。</li>
+</ul>
+</li>
+<li>Fuzzing Attacks<ul>
+<li>藍牙模糊攻擊包括將格式錯誤或其他非標準數據發送到設備的藍牙無線電，並觀察設備的反應。如果設備的運行因這些攻擊而減慢或停止，則協議棧中可能存在嚴重的漏洞。</li>
+</ul>
+</li>
+<li>Pairing Eavesdropping<ul>
+<li>PIN /舊式配對（藍牙2.0及更早版本）和低能耗的舊式配對容易受到竊聽攻擊。收集所有配對幀的成功竊聽者可以在給定足夠的時間的情況下確定一個或多個秘密密鑰，從而允許可信設備模擬和主動/被動數據解密。</li>
+</ul>
+</li>
+<li>Secure Simple Pairing Attacks<ul>
+<li>有多種技術可以迫使遠程設備使用Just Works SSP，然後利用其缺乏MITM保護的功能（例如，攻擊設備聲稱它沒有輸入/輸出功能）。此外，固定的密鑰也可以使攻擊者也可以執行MITM攻擊。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Side-channel Attacks<ul>
+<li>Power  Consumption</li>
+<li>Timing information</li>
+<li>Electromagnetic emissions</li>
+<li>Acoustic（Sound）emissions</li>
+</ul>
+</li>
+<li>Control Zone against TEMPEST<ul>
+<li>Faraday cage</li>
+<li>White noise</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../assets/cissp/img76.png" /></p>
+<ul>
+<li>DOS Attacks<ul>
+<li>Ping of death：malformed ping</li>
+<li>LAND：Source and destination loop</li>
+<li>Buffer overflow attack：使資料超過了處理程式回傳堆疊位址限制的範圍時，程式出現的異常操作</li>
+<li>SYN flooding：flood of TCP/SYN</li>
+<li>Teardrop：mangled IP fragments</li>
+<li>Smurf：flood of spoofed ICMP</li>
+<li>Fraggle：UDP variant of Smurf</li>
+</ul>
+</li>
+</ul>
+<h2 id="data-center-security-concerns">Data Center Security Concerns</h2>
+<table>
+<thead>
+<tr>
+<th>位址管理 Site Management</th>
+<th>周邊安全 Perimeter Security</th>
+<th>建築安全 Facility Security</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>選址Site Selection</td>
+<td>Gates and Fences 大門和圍欄</br> - Barriers障礙<br> - Fences圍欄<br> - Gates大門<br> - Walls牆<br></td>
+<td>Walls（Access Abuse）牆壁（存取濫用）<br> - Masquerading偽造證件<br> - Piggybacking熟人夾帶<br> - Tailgating尾隨</td>
+</tr>
+<tr>
+<td>透過環境設計來犯罪防治(透過大環境特性) <br> - 天然  <br> - 刻意營造  <br> <blockquote> -- 圓環:不讓車直接衝向大門</td>
+<td>Lighting照明  <br> - Types of light system光系統類型 <br> <blockquote> -- Continuous lighting連續照明 <br> -- Stand-by  lighting備用照明 <br> -- Movable lighting移動偵測照明 <br> -- Emergency lighting緊急照明 <br></blockquote> - Type of light光的類型  <br><blockquote> -- Fluirescent lights螢光燈 <br> -- Mercury vapor lights水星蒸汽燈 <br> -- Sodium vapor lights鈉蒸汽燈 <br> -- Quartz lamps石英燈 <br> -- Infrared illuminators紅外照明器 <br></td>
+<td>Doors <br> - Mantraps陷阱<br><blockquote> -- 兩段式刷卡<br> -- 門後有門</blockquote> <br> - Turnstiles旋轉門 <br><blockquote> -- 一次只能進出一位 </blockquote></td>
+</tr>
+<tr>
+<td>Escort and Visitor Control 護送和訪客控制</td>
+<td>周邊入侵偵測Perimeter Intrusion Detection</td>
+<td>Keys鑰匙 <br> - Locks 鎖 <br> - Safes保險箱 <br> - Vaults金庫</td>
+</tr>
+<tr>
+<td>Awareness Training 意識訓練</td>
+<td>CCTV</td>
+<td>Windows窗戶 <br> - Type of Glass <br><blockquote> -- Tempered Glass鋼化玻璃：鋼化擋風玻璃不會破碎成大而鋒利的碎片 <br> -- Laminated Glass膠合玻璃：一層塑料，上面有一層玻璃，下面有一層玻璃，就像三明治一樣。這就是製造夾層玻璃以防止破裂的方式。中間的塑料部分使它更堅固。<br> -- Bullet-Proof Glass防彈玻璃：承受子彈等高速金屬片的衝擊 <br> -- Wired Glass夾絲玻璃：玻璃的頂部和底部之間確實有電線。如果你敲它，整個東西都不會破碎</td>
+</tr>
+<tr>
+<td>Emergency Response 緊急應變</td>
+<td>Alarms</td>
+<td>Wiring接線 <br> -- Wiretapping電話竊聽 <br> -- Eavesdropping隔牆竊聽 <br> -- Sniffing嗅探 <br> -- Man-in-the-Middle中間人</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>HVAC空調：冷熱通道</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Ceilings 天花板and Flooring地板 <br> - 挑高天花板<br> - 高架地板</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Power Supplies電力 <br> - Power Loss <br><blockquote> -- Fault瞬斷：故障Fault，瞬間斷電 <br> -- Blackout停很久：斷電 Blockout，長時間斷電 <br> </blockquote> - Power Degradation <br><blockquote> - Sag or Dip低壓：衰變Sag，瞬間低壓 <br> -- Brownout停電：電壓過低 Brownout，長時間低壓<br></blockquote> - Power Excess<br><blockquote> -- Spike突波：穗 Spike 瞬間高壓<br> -- Surge長時間突波：浪湧Surge長時間高壓 </blockquote></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Water and Gas Lines水和瓦斯管線</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Fire Decterction and Suppression <br> - Fire <br> <blockquote> -- Decterction <br> -- Fixed-temperature <br> -- detection systems，固定溫度檢測系統 <br> -- Rate-of rise detection systems，溫度上升率檢測系統<br> -- Flame-actuated detection systems，火焰驅動檢測系統<br> -- Smoke-actuated detection systems，煙霧驅動檢測系統</blockquote><br> - Fire Suppression <blockquote><br> -- Fire Extinguishers，滅火器<blockquote> <br> --- Class A：灰，一般易燃物 <br> --- Class B：氣體，油類<br> --- Class C：電子設備 <br> --- Class D：金屬 <br> ---Class K：廚房<br></blockquote></blockquote> -- Water Suppression Systems，水抑制系統<blockquote><br> --- Wet systems：Dry Pipe濕管，管內有水，透過感應器噴水<br> --- Dry system：Wet Pipe干管，管內有高壓氣體，透過止迴筏止水 <BR> -- Deluge system，雨淋系統：由火災自動報警系統/傳動管控制，自動開啟灑水<br> --- Pre-action sytem：提前動作，與干管類似，前方有連接頭，溶解才噴水。<blockquote><br> ---- computer facility適用  </blockquote></blockquote><BR> --- Gas Discharge System，氣體排放系統 <blockquote><BR> --- CO2, Halon or FM-200 <BR> --- Hazardous to people，對人體有害</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_25">常用名詞解釋</h2>
+<ul>
+<li>信任路徑(Trusted Path)：用戶（利用輸入設備）可以直接與資訊系統的安全功能進行安全連線的一種機制（進行帳號驗證前，確保通道安全的方式）<ul>
+<li>"一台電腦上," subject跟security kernel直接互動的溝通管道. 例如, NT 4要按ctrl+alt+del才能顯示登入話面, 將帳號及密碼傳輸給security kernel作驗證.<ul>
+<li>進行帳號驗證前，確保通道安全的方式<ul>
+<li>本機，如，Ctrl+Alt+Del</li>
+<li>遠端，如SSH</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>隱蔽通道(Covert Channel)：一個意外或未經授權的系統內部通道，使兩個合作實體能夠以違反系統安全政策但不超過實體訪問授權的方式傳輸資訊。<ul>
+<li>分storage及timeing二種形式, 即透過storage或timing方式傳輸資料的非授權管理.</li>
+</ul>
+</li>
+<li>側通道(Side Channel)：基於從電腦所產生的物理設計中獲取的資訊（聲音、功率、光學等），並使用這些資訊來反向工程電腦正在執行的操作。<ul>
+<li>泛指因為聲音, 震動, 電壓變化, 或電磁波外溢所導致洩密的管道.</li>
+<li>側通道(side-channel)攻擊是針對硬體的攻擊, 常見的是時序分析及錯誤分析(故意製造錯誤).</li>
+</ul>
+</li>
+<li>信任復原(Trusted Recovery)：確保在系統故障後不受影響的恢復能力<ul>
+<li>系統失效時, 亦能回復安全狀態的機制. 常見的實作有, windows的安全模式, 安裝程式失敗時的自動復原, 及應用程式當掉時的自動重啟(及回復資料).<ul>
+<li>手動復原（安全模式）</li>
+<li>自動復原（如硬碟磁區重算）</li>
+<li>自動復原且資料不會丟（如Word當機重新復原）</li>
+<li>功能性復原</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>物件重用(Object Reuse)：在確保存儲介質上沒有殘留數據後，重新分配和重複使用包含一個或多個物件的存儲介質。</li>
+</ul>
+  </article>
+  <footer>
+    <p>仆洛宅 · 資安知識筆記 · <a href="../index.html">sec.angelz13.com</a></p>
+    <p>內容為作者整理之學習筆記、非官方判定，亦不構成資安顧問建議。</p>
+  </footer>
+</div>
+</body>
+</html>
