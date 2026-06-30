@@ -12,7 +12,6 @@
 <meta property="og:description" content="CISSP 八大領域整理：治理與風險、資產安全、安全工程與密碼學、網路、IAM、安全評鑑、維運、軟體開發安全；對比矩陣、記憶口訣與自測。">
 <meta property="og:url" content="https://sec.angelz13.com/articles/cissp.html">
 <meta property="og:image" content="https://sec.angelz13.com/assets/avatar.png">
-<link rel="canonical" href="https://sec.angelz13.com/articles/cissp.html">
 <link rel="icon" type="image/png" href="../assets/avatar.png">
 <link rel="apple-touch-icon" href="../assets/avatar.png">
 <link rel="stylesheet" href="../css/brand.css">
@@ -24,6 +23,133 @@
   <h1>CISSP 八大領域筆記</h1>
   <p class="article-meta">作者：葉柏毅 Alex Yeh ｜ 原文：<a href="https://hackmd.io/@alrex5401/CISSP" rel="noopener" target="_blank">HackMD</a></p>
   <div class="attribution">本篇 CISSP 八大領域筆記整理自 <strong>WUSON（Wentz Wu）</strong>課程教材、經授權公開分享；圖表版權屬原作者，在此致謝。完整原始筆記見 <a href="https://hackmd.io/@alrex5401/CISSP" rel="noopener" target="_blank">HackMD</a>。</div>
+  <details class="toc-box" open>
+  <summary>目錄</summary>
+  <div class="toc">
+<ul>
+<li><a href="#wusoncissp-alex-yeh">WUSON的CISSP課後筆記整理-葉柏毅Alex Yeh</a><ul>
+<li><a href="#_1">相關連結</a><ul>
+<li><a href="#cissp-alex-yeh">CISSP考試心得-Alex Yeh</a></li>
+<li><a href="#alexyeh">AlexYeh心智圖(點我下載)</a></li>
+<li><a href="#alexyeh-pdf">AlexYeh 心智圖PDF版(點我下載)</a></li>
+<li><a href="#_2">關於我</a></li>
+</ul>
+</li>
+<li><a href="#domain">Domain 口訣</a></li>
+<li><a href="#asset">資產Asset</a></li>
+<li><a href="#_3">資安目標</a></li>
+<li><a href="#governance-structure">Governance Structure</a><ul>
+<li><a href="#_4">戰略發展</a></li>
+<li><a href="#_5">戰略投資組合</a><ul>
+<li><a href="#_6">政策框架</a></li>
+</ul>
+</li>
+<li><a href="#_7">專案</a></li>
+</ul>
+</li>
+<li><a href="#_8">風險</a></li>
+<li><a href="#business-processes">Business Processes</a><ul>
+<li><a href="#human-resources">Human Resources</a></li>
+<li><a href="#procurement">Procurement</a></li>
+</ul>
+</li>
+<li><a href="#service-organization-control-soc">Service Organization Control (SOC)</a></li>
+<li><a href="#organizational-resilience-planning">組織韌性規劃 Organizational Resilience Planning</a></li>
+<li><a href="#bcm">BCM</a></li>
+<li><a href="#_9">事故回應</a><ul>
+<li><a href="#e-discovery">E-Discovery</a></li>
+</ul>
+</li>
+<li><a href="#intrusion-detection">Intrusion Detection</a></li>
+<li><a href="#_10">符合性</a></li>
+<li><a href="#asset-security">Asset Security</a><ul>
+<li><a href="#_11">盤點</a></li>
+<li><a href="#_12">分類</a></li>
+<li><a href="#_13">保護</a></li>
+</ul>
+</li>
+<li><a href="#i3a">I+3A</a><ul>
+<li><a href="#access-control">Access control</a></li>
+<li><a href="#identity-and-access-management">Identity and Access Management</a></li>
+</ul>
+</li>
+<li><a href="#authentication">Authentication身份驗證</a><ul>
+<li><a href="#mfa">MFA多因子驗證</a></li>
+<li><a href="#_14">生物辨識</a></li>
+<li><a href="#authentication_1">Authentication身份驗證相關協定</a></li>
+<li><a href="#sso">SSO</a></li>
+</ul>
+</li>
+<li><a href="#authorization">Authorization授權</a><ul>
+<li><a href="#authorization-mechanisms">授權機制Authorization Mechanisms</a></li>
+<li><a href="#security-models">Security Models</a></li>
+</ul>
+</li>
+<li><a href="#accounting">Accounting會計</a></li>
+<li><a href="#security-assessment">安全評鑑Security Assessment</a><ul>
+<li><a href="#testiting">測試Testiting</a></li>
+<li><a href="#_15">滲透測試</a></li>
+<li><a href="#audit">Audit</a></li>
+</ul>
+</li>
+<li><a href="#_16">工程</a><ul>
+<li><a href="#sdlc">SDLC</a></li>
+</ul>
+</li>
+<li><a href="#sdlc_1">軟體SDLC</a></li>
+<li><a href="#planning-phase">Planning Phase</a><ul>
+<li><a href="#_17">敏捷軟件開發宣言</a></li>
+</ul>
+</li>
+<li><a href="#analysis-phase">Analysis Phase</a></li>
+<li><a href="#design-phase">Design Phase</a><ul>
+<li><a href="#threat-modeling">威脅塑模Threat Modeling</a></li>
+<li><a href="#layer-tier">軟體架構 Layer 與 Tier (三層式架構)</a></li>
+<li><a href="#rdbms">RDBMS</a></li>
+<li><a href="#_18">資料庫正規化</a></li>
+<li><a href="#expert-systems">專家系統 Expert Systems</a></li>
+<li><a href="#soa">SOA</a></li>
+<li><a href="#restful-architecture">RESTful Architecture</a></li>
+<li><a href="#microservices-architecture">微服務Microservices Architecture微服務</a></li>
+</ul>
+</li>
+<li><a href="#development-phase">Development Phase</a><ul>
+<li><a href="#oop">物件導向程式設計（OOP）</a></li>
+</ul>
+</li>
+<li><a href="#testing-phase">Testing Phase</a><ul>
+<li><a href="#_19">軟體測試口訣(順序)</a></li>
+</ul>
+</li>
+<li><a href="#maintenance-phase">Maintenance Phase</a></li>
+<li><a href="#rmf-nist-sdlc">RMF &amp; NIST SDLC</a><ul>
+<li><a href="#_20">工程補充</a></li>
+</ul>
+</li>
+<li><a href="#malicious-softwaremalware">Malicious Software（Malware）</a></li>
+<li><a href="#identifying-common-vulnerabilities">Identifying Common Vulnerabilities</a></li>
+<li><a href="#cloud-computing">Cloud Computing</a></li>
+<li><a href="#zero-trust">Zero Trust零信任</a></li>
+<li><a href="#_21">密碼學</a><ul>
+<li><a href="#_22">布林代數</a></li>
+</ul>
+</li>
+<li><a href="#_23">其他加密補充</a></li>
+<li><a href="#_24">網路工程</a></li>
+<li><a href="#tcpip">TCP/IP 架構，元素、元素與元素之間的關係</a><ul>
+<li><a href="#osi">OSI</a></li>
+<li><a href="#firewall">Firewall</a></li>
+<li><a href="#ipsec">IPsec（非協定而是框架或標準）</a></li>
+<li><a href="#wireless">Wireless</a></li>
+</ul>
+</li>
+<li><a href="#data-center-security-concerns">Data Center Security Concerns</a></li>
+<li><a href="#_25">常用名詞解釋</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
   <article class="article-body">
 <style>
 .blue {

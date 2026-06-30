@@ -12,7 +12,6 @@
 <meta property="og:description" content="ISO 27001:2022／ISMS 認證流程實務：里程碑、審查前檢查、A.5–A.18 稽核重點、稽核回答技巧、2013→2022 版本變更比對。">
 <meta property="og:url" content="https://sec.angelz13.com/articles/isms.html">
 <meta property="og:image" content="https://sec.angelz13.com/assets/avatar.png">
-<link rel="canonical" href="https://sec.angelz13.com/articles/isms.html">
 <link rel="icon" type="image/png" href="../assets/avatar.png">
 <link rel="apple-touch-icon" href="../assets/avatar.png">
 <link rel="stylesheet" href="../css/brand.css">
@@ -23,8 +22,83 @@
   <div class="kicker">SEC NOTES</div>
   <h1>ISO 27001:2022／ISMS 認證流程導覽</h1>
   <p class="article-meta">作者：葉柏毅 Alex Yeh ｜ 原文：<a href="https://hackmd.io/@alrex5401/ISMS" rel="noopener" target="_blank">HackMD</a></p>
+  <details class="toc-box" open>
+  <summary>目錄</summary>
+  <div class="toc">
+<ul>
+<li><a href="#_1">流程里程碑</a><ul>
+<li><a href="#sop">SOP文件編寫</a></li>
+<li><a href="#_2">資產盤點、製作資產清冊</a></li>
+<li><a href="#_3">風險評鑑（不可接受風險之改善計畫）</a></li>
+<li><a href="#kpi">有效性量測指標（KPI）</a></li>
+<li><a href="#biabcp">營運持續（BIA、BCP）</a></li>
+<li><a href="#_4">內部稽核活動（含缺失改善）</a></li>
+<li><a href="#_5">管理審查會議</a></li>
+<li><a href="#_6">外部稽核活動（含缺失改善）</a></li>
+<li><a href="#_7">證書取得（結案）</a></li>
+</ul>
+</li>
+<li><a href="#_8">(參考用)</a><ul>
+<li><a href="#_9">審查前注意事項：</a></li>
+<li><a href="#_10">稽核回答技巧說明</a><ul>
+<li><a href="#_11">說寫作一致：</a></li>
+<li><a href="#_12">只回答稽核員詢問的問題：</a></li>
+<li><a href="#_13">只提供稽核員欲調閱的文件：</a></li>
+<li><a href="#_14">確認各流程稽核結果：</a></li>
+</ul>
+</li>
+<li><a href="#_15">稽核重點與注意事項</a><ul>
+<li><a href="#_16">管理體系：</a></li>
+<li><a href="#a5">A.5 安全政策</a></li>
+<li><a href="#a6">A.6 組織資訊安全</a></li>
+<li><a href="#a7">A.7 人力資源安全</a></li>
+<li><a href="#a8">A.8 資產管理</a></li>
+<li><a href="#a9">A.9 存取控制</a></li>
+<li><a href="#a10">A.10 加密</a></li>
+<li><a href="#a11">A.11 實體與環境的安全</a></li>
+<li><a href="#a12">A.12 作業安全</a></li>
+<li><a href="#a13">A.13 通訊安全</a></li>
+<li><a href="#a14">A.14 系統取得、開發及維護</a></li>
+<li><a href="#a15">A.15 供應商關係</a></li>
+<li><a href="#a16">A.16 資訊安全事故管理</a></li>
+<li><a href="#a17">A.17 營運持續管理的資訊安全層面</a></li>
+<li><a href="#a18">A.18 遵循性</a></li>
+</ul>
+</li>
+<li><a href="#_17">稽核發現分類</a><ul>
+<li><a href="#major-nonconformity-major-car">Major Nonconformity (Major CAR) 主要不符合</a></li>
+<li><a href="#minor-nonconformity-minor-car">Minor Nonconformity (Minor CAR) 次要不符合</a></li>
+<li><a href="#observation-obs">Observation (OBS) 觀察事項</a></li>
+<li><a href="#opportunity-for-improvement-ofi">Opportunity for Improvement (OFI) 改善建議</a></li>
+</ul>
+</li>
+<li><a href="#_18">驗證流程</a></li>
+</ul>
+</li>
+<li><a href="#iso270012022">ISO27001:2022驗證要求</a></li>
+<li><a href="#iso270012022_1">ISO27001:2022轉版說明</a></li>
+<li><a href="#iso270012022_2">ISO27001:2022本文變更說明</a></li>
+<li><a href="#iso270012022_3">ISO27001:2022附錄變更說明</a><ul>
+<li><a href="#iso270012022a">ISO27001:2022附錄A 新條款說明</a><ul>
+<li><a href="#a57">A.5.7 威脅情資</a></li>
+<li><a href="#a523">A.5.23 使用雲端服務之資訊安全</a></li>
+<li><a href="#a530-ict">A.5.30 營運持續之ICT備妥性</a></li>
+<li><a href="#a74">A.7.4 實體安全監視</a></li>
+<li><a href="#a89">A.8.9 組態管理</a></li>
+<li><a href="#a810">A.8.10 資訊刪除</a></li>
+<li><a href="#a811">A.8.11 資料遮蔽</a></li>
+<li><a href="#a812">A.8.12 資料洩漏預防</a></li>
+<li><a href="#a816">A.8.16 監視活動</a></li>
+<li><a href="#a823">A.8.23 網頁過濾</a></li>
+<li><a href="#a828">A.8.28 安全程式設計</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
   <article class="article-body">
-<h1 id="iso-27001isms">ISO 27001/ISMS認證流程導覽</h1>
 <p>相信很多初入門資安界的朋友，可能大多上過並成功取得ISO 27001LA的上課證明。（如果還沒上的朋友，快去坐五天XD)</p>
 <p>但是上過課，您就真的<strong>學會</strong>了嗎？</p>
 <p>面試時，您可以說清楚講明白大概的流程嗎？</p>

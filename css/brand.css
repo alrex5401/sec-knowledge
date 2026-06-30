@@ -388,3 +388,37 @@ footer a { color: var(--sub); }
 .article-body li { margin: 5px 0; }
 .article-body a { color: var(--accent); word-break: break-word; }
 .article-body hr { border: none; border-top: 1px solid var(--card-border); margin: 28px 0; }
+
+/* ── 文章目錄（TOC） ───────────────────────── */
+.toc-box {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 4px 20px 12px;
+  margin: 0 0 26px;
+  box-shadow: 0 4px 18px rgba(55, 69, 97, 0.07);
+  font-size: 0.9rem;
+}
+.toc-box > summary {
+  cursor: pointer;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--kicker);
+  padding: 12px 0;
+  list-style: none;
+}
+.toc-box > summary::-webkit-details-marker { display: none; }
+.toc-box > summary::before { content: "▸ "; }
+.toc-box[open] > summary::before { content: "▾ "; }
+.toc-box[open] .toc {
+  max-height: 360px;
+  overflow-y: auto;
+  padding-bottom: 4px;
+}
+.toc-box .toc ul { margin: 0; padding-left: 1.25em; list-style: none; }
+.toc-box .toc > ul { padding-left: 0; }
+.toc-box .toc li { margin: 4px 0; }
+.toc-box .toc a { color: var(--accent); text-decoration: none; }
+.toc-box .toc a:hover { text-decoration: underline; }
+.toc-box .toc > ul > li > a { font-weight: 600; }
+.toc-box .toc > ul > li { margin-top: 8px; }

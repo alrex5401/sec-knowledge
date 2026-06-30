@@ -19,6 +19,8 @@ def convert(name, title, desc, source_url, attribution=None):
     md = re.sub(r"\(adsbygoogle[^\n]*\n", "", md)
     # 移除開頭重複的作者自介（站模板已有 article-meta、且避免露出 gmail）
     md = re.sub(r"^\s*#+\s*About Me\b.*?(?=\n#)", "", md, count=1, flags=re.S | re.I)
+    # 移除內文開頭與頁面標題重複的第一個 H1（站模板已有 <h1>）
+    md = re.sub(r"^\s*#\s+.+?\n", "", md, count=1)
     imgdir = BASE / "assets" / name
     imgdir.mkdir(parents=True, exist_ok=True)
     seen = {}
@@ -32,6 +34,9 @@ def convert(name, title, desc, source_url, attribution=None):
             ext = ".png"
         fn = f"img{cnt[0]:02d}{ext}"
         dest = imgdir / fn
+        if dest.exists() and dest.stat().st_size > 0:
+            seen[u] = f"../assets/{name}/{fn}"   # 已下載、冪等跳過（不重複抓圖）
+            return seen[u]
         subprocess.run(["curl", "-sL", "--max-time", "40", "-A", "Mozilla/5.0 (Macintosh)",
                         "-o", str(dest), u], capture_output=True)
         if dest.exists() and dest.stat().st_size > 0:
@@ -46,7 +51,12 @@ def convert(name, title, desc, source_url, attribution=None):
     md = re.sub(r"(!\[[^\]]*\]\()([^)\s]+)(\))", repl, md)
     ok = sum(1 for v in seen.values() if v.startswith("../"))
     print(f"{name}: 圖片 {len(seen)} 張、成功下載 {ok}、失敗 {len(seen)-ok}")
-    body = markdown.markdown(md, extensions=["tables", "fenced_code", "toc", "attr_list", "sane_lists", "nl2br"])
+    md_inst = markdown.Markdown(extensions=["tables", "fenced_code", "toc", "attr_list", "sane_lists", "nl2br"])
+    body = md_inst.convert(md)
+    toc_html = getattr(md_inst, "toc", "")
+    toc_block = ""
+    if toc_html and "<li" in toc_html:
+        toc_block = f'<details class="toc-box" open>\n  <summary>目錄</summary>\n  {toc_html}</details>\n  '
     attr_block = f'<div class="attribution">{attribution}</div>\n  ' if attribution else ""
     page = f'''<!DOCTYPE html>
 <html lang="zh-Hant-TW">
@@ -72,7 +82,7 @@ def convert(name, title, desc, source_url, attribution=None):
   <div class="kicker">SEC NOTES</div>
   <h1>{title}</h1>
   <p class="article-meta">作者：葉柏毅 Alex Yeh ｜ 原文：<a href="{source_url}" rel="noopener" target="_blank">HackMD</a></p>
-  {attr_block}<article class="article-body">
+  {attr_block}{toc_block}<article class="article-body">
 {body}
   </article>
   <footer>
