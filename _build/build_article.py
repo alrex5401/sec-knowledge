@@ -70,8 +70,8 @@ def convert(name, title, desc, source_url, attribution=None):
 <meta property="og:type" content="article">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:url" content="https://sec.angelz13.com/articles/{name}.html">
-<meta property="og:image" content="https://sec.angelz13.com/assets/avatar.png">
+<meta property="og:url" content="https://blog.angelz13.com/articles/{name}.html">
+<meta property="og:image" content="https://blog.angelz13.com/assets/avatar.png">
 <link rel="icon" type="image/png" href="../assets/avatar.png">
 <link rel="apple-touch-icon" href="../assets/avatar.png">
 <link rel="stylesheet" href="../css/brand.css">
@@ -86,7 +86,7 @@ def convert(name, title, desc, source_url, attribution=None):
 {body}
   </article>
   <footer>
-    <p>仆洛宅 · 資安知識筆記 · <a href="../index.html">sec.angelz13.com</a></p>
+    <p>仆洛宅 · 資安知識筆記 · <a href="../index.html">blog.angelz13.com</a></p>
     <p>內容為作者整理之學習筆記、非官方判定，亦不構成資安顧問建議。</p>
   </footer>
 </div>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sec.angelz13.com/sitemap.xml
+Sitemap: https://blog.angelz13.com/sitemap.xml
