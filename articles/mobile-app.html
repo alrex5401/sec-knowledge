@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="保險業 App 作業原則實務導讀：行動應用程式分類與資安檢測週期、上架前檢測程序、委託專業機構辦理檢測應訂內部程序，附白話解說。係「保險業辦理資訊安全防護自律規範」附件二。">
+<meta name="author" content="葉柏毅 Alex Yeh">
+<title>保險業提供行動應用程式（App）作業原則導覽｜仆洛宅資安筆記</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="保險業提供行動應用程式（App）作業原則導覽">
+<meta property="og:description" content="保險業 App 作業原則實務導讀：行動應用程式分類與資安檢測週期、上架前檢測程序、委託專業機構辦理檢測應訂內部程序，附白話解說。係「保險業辦理資訊安全防護自律規範」附件二。">
+<meta property="og:url" content="https://blog.angelz13.com/articles/mobile-app.html">
+<meta property="og:image" content="https://blog.angelz13.com/assets/avatar.png">
+<link rel="icon" type="image/png" href="../assets/avatar.png">
+<link rel="apple-touch-icon" href="../assets/avatar.png">
+<link rel="stylesheet" href="../css/brand.css">
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="../index.html">← 返回資安筆記</a>
+  <div class="kicker">SEC NOTES</div>
+  <h1>保險業提供行動應用程式（App）作業原則導覽</h1>
+  <p class="article-meta">作者：葉柏毅 Alex Yeh</p>
+  <div class="attribution">本篇為<strong>個人導讀整理</strong>：法規原文（保險業提供行動應用程式（App）作業原則，係「保險業辦理資訊安全防護自律規範」附件二）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href="https://law.lia-roc.org.tw/Law/Content?lsid=FL072726" rel="noopener" target="_blank">壽險公會保險法規查詢系統</a>。</div>
+  <details class="toc-box" open>
+  <summary>目錄</summary>
+  <div class="toc">
+<ul>
+<li><a href="#_1">一、</a></li>
+<li><a href="#_2">二、</a></li>
+<li><a href="#_3">三、</a></li>
+<li><a href="#_4">四、</a></li>
+<li><a href="#_5">五、行動應用程式資安檢測作業：</a><ul>
+<li><a href="#_6">(一) 檢測範圍：</a></li>
+<li><a href="#_7">(二) 依行動應用程式之重要性，定期委由專業機構完成資安檢測：</a></li>
+<li><a href="#_8">(三) 會員公司應建立行動應用程式上架前資安檢測程序：</a></li>
+</ul>
+</li>
+<li><a href="#app">六、保險業委託專業機構辦理 APP 資安檢測，應訂定內部程序，其至少包含下列項目：</a></li>
+<li><a href="#_9">七、</a></li>
+<li><a href="#_10">八、</a></li>
+<li><a href="#_11">九、行動應用程式屬第一類，應建立偽冒應用程式偵測機制，以維客戶權益。</a></li>
+<li><a href="#_12">十、</a></li>
+<li><a href="#_13">十一、</a></li>
+<li><a href="#_14">附錄：用語及定義</a><ul>
+<li><a href="#_15">一、行動裝置</a></li>
+<li><a href="#_16">二、專業機構</a></li>
+<li><a href="#_17">三、遭破解之行動裝置</a></li>
+<li><a href="#_18">四、完成資安檢測</a></li>
+<li><a href="#_19">五、黑箱測試</a></li>
+<li><a href="#_20">六、憑證</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details>
+  <article class="article-body">
+<p>修正日期：   民國 112 年 09 月 07 日（母規範現行版：民國 113 年 07 月 18 日）</p>
+<h1 id="_1">一、</h1>
+<p>保險業有提供行動應用程式者，會員公司可依不同應用類別之行動應用程式對於安全性有不同之要求，除符合經濟部工業局「行動應用App基本資安規範」外，應遵循本作業原則。</p>
+<blockquote>
+<ul>
+<li><a href="https://www.mas.org.tw/download/app">行動應用資安聯盟</a>，緣起數位發展部數位產業署(簡稱數位部產業署)，推動行動應用App及物聯網之資安認驗證機制。</li>
+<li>可參考<a href="https://www.mas.org.tw/storage/files/7283/original/1188011663c8afb079415.pdf">行動應用APP基本資安規範V1.4</a> (發行日期2023-01-19)</li>
+</ul>
+</blockquote>
+<h1 id="_2">二、</h1>
+<p>會員公司應依個人資料保護法於行動應用程式下載前，明確告知消費者對於個人資料蒐集處理利用之法定事項及消費者得要求刪除資料之權利等事項，以保護消費者權益。</p>
+<blockquote>
+<ul>
+<li>如APP涉及蒐集處理利用，應有一頁說明個資權益。</li>
+<li>常見有在公司官網聲明、App隱私權政策(在Store下載頁面或連結到官網)。</li>
+</ul>
+</blockquote>
+<h1 id="_3">三、</h1>
+<p>應用程式發布程序，應符合權責分工原則。</p>
+<blockquote>
+<ul>
+<li>係指開發人員與上版人員應不同人(單位)。</li>
+</ul>
+</blockquote>
+<h1 id="_4">四、</h1>
+<p>應於發布前檢視應用程式所需權限應與提供服務相當，首次發布或權限變動應經資安、法遵及風控等單位同意，以利綜合評估是否符合「個人資料保護法」之告知義務。</p>
+<blockquote>
+<ul>
+<li>首次發布或權限變動，應經資安、法遵及風控等單位同意；記得留存評估軌跡。</li>
+<li>評估確認其權限是否侷越APP服務需求(如，需要相機、聯絡人、簡訊...等)或涉及個資相關議題。</li>
+</ul>
+</blockquote>
+<h1 id="_5">五、行動應用程式資安檢測作業：</h1>
+<h2 id="_6">(一)  檢測範圍：</h2>
+<ol>
+<li>委託專業機構辦理資安檢測時，參考經濟部工業局「行動應用APP基本資安檢測基準」及OWASP公布之Mobile Top 10項目。</li>
+</ol>
+<blockquote>
+<ul>
+<li>應依<a href="https://www.mas.org.tw/storage/files/7283/original/1188011663c8afb079415.pdf">行動應用APP基本資安規範V1.4(發行日期2023-01-19)</a> 內容項目進行檢測</li>
+<li>和針對<a href="https://owasp.org/www-project-mobile-top-10/">OWASP Mobile Top 10</a>逐項檢測。</li>
+<li>每個APP至少要有兩份報告，IOS和Android各一支的話，要有四份報告喔!</li>
+</ul>
+<p>常見問題<br />
+- Q1，是否要取得<a href="https://www.mas.org.tw/app/passed">行動應用App基本資安標章</a>?<br />
+  A1，並無強制要求取資安標章，僅要求依據委託專業機構和依據對應項目進行檢測；資安標章，僅供組織考量是否應用相關曝光或是媒體公關、行銷需求。<br />
+  Q2，<a href="https://owasp.org/www-project-mobile-top-10/">OWASP Mobile Top 10</a> 在2023年9月30日（我撰稿的當下），有同時存在Initial Release 2023 和 Final List 2016，要採用哪個版本？<br />
+  A2，原則上應採用最新版本，即在報告上註明檢測日期和依據版本即可。</p>
+</blockquote>
+<ol start="2">
+<li>自行辦理檢測時，應對行動應用程式進行程式碼掃描或黑箱測試，並修正中、高風險漏洞（如屬可承擔風險者除外）。<blockquote>
+<ul>
+<li>修補期限，應依內部規範時程安排，但應修正中、高風險漏洞或申請例外程序後上線。</li>
+<li>技術上針對行動應用程式應進行程式碼掃描；黑箱測試常見是針對APP後台網站。</li>
+<li>常見程式碼掃描工具<a href="https://checkmarx.com/zh/product/cxsast-source-code-scanning/">Checkmarx</a>和黑箱掃描工具<a href="https://www.hcltechsw.cn/product/appscan/products/appscan-enterprise">HCL AppScan</a> 。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h2 id="_7">(二)  依行動應用程式之重要性，定期委由專業機構完成資安檢測：</h2>
+<table>
+<thead>
+<tr>
+<th>類別</th>
+<th>定義</th>
+<th>評估週期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一類</td>
+<td>對外部提供服務或直接提供客戶自動化服務之行動應用程式</td>
+<td>每年委由專業機構完成資安檢測</td>
+</tr>
+<tr>
+<td>第二類</td>
+<td>對內部員工（含其他通路）提供服務，其經員工介入以提供客戶服務之行動應用程式（如:行動投保、行動保全、行動理賠等）</td>
+<td>每二年委由專業機構完成資安檢測</td>
+</tr>
+<tr>
+<td>第三類</td>
+<td>對內部員工（含其他通路）提供服務，其未接觸客戶資訊或服務之行動應用程式（如:行動差勤、行動電子書等）</td>
+<td>每五年委由專業機構完成資安檢測</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ul>
+<li>原則上仍以是否接觸到客戶(資料)為主，但注意是第二類是<strong>每兩年</strong>委由專業機構完成資安檢測。</li>
+</ul>
+</blockquote>
+<h2 id="_8">(三)  會員公司應建立行動應用程式上架前資安檢測程序：</h2>
+<ol>
+<li>
+<p>初次上架前，屬第一、二類者，應委由專業機構完成資安檢測；屬第三類者，應通過資安檢測程序。</p>
+<blockquote>
+<ul>
+<li>專業機構：係指非會員公司之法人機構，其應具備經濟部工業局「行動應用APP基本資安自主檢測推動制度」列示之合格檢測實驗室資格。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>更新上架前，應通過資安檢測程序；若涉有重大變更作業或行動應用程式版本大幅更新時，應委由專業機構完成資安檢測。</p>
+<blockquote>
+<ul>
+<li>建議先定義好，何謂「重大變更作業」或「行動應用程式版本大幅更新」。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>重大變更作業包括但不限於保單投保交易、涉及資金轉移、身分辨識及客戶權益等有重大相關項目。</p>
+<blockquote>
+<ul>
+<li>重大變更作業，已有要求要納入「保單投保交易」、「涉及資金轉移」、「身分辨識及客戶權益」。</li>
+<li>常見應將「個資議題」也納入考量範圍。</li>
+</ul>
+</blockquote>
+</li>
+<li>
+<p>如因故需緊急變更過版時，應於兩個月內完成上述檢測。</p>
+<blockquote>
+<ul>
+<li>建議納入緊急過版流程。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h1 id="app">六、保險業委託專業機構辦理 APP 資安檢測，應訂定內部程序，其至少包含下列項目：</h1>
+<p>(一) 專業機構之遴選方法。<br />
+(二) 專業機構之評鑑機制。<br />
+(三) 就專業機構檢測報告建立檢核機制，其應辦理檢核項目，至少包含下列內容：<br />
+1.  檢測標的。 <br />
+2.  檢測範圍之宣告。<br />
+3.  檢測時程。<br />
+4.  檢測方式、環境與使用之工具。<br />
+5.  檢測執行人員與負責之項目。<br />
+6.  測試項目為「符合要求或不符合要求」之判定。<br />
+7.  測試過程紀錄及佐證資料，不符合要求之檢測項目應於報告中提出。</p>
+<blockquote>
+<ul>
+<li>專業機構之遴選及評鑑機制，應依請採購程序作業。</li>
+<li>報告內容應至少包含該七項檢核內容。</li>
+</ul>
+</blockquote>
+<h1 id="_9">七、</h1>
+<p>啟動應用程式時，如偵測行動裝置疑似遭破解，應提示使用者注意風險，且與行動裝置有關之安全設計（如設備指定、生物識別、敏感資料保護等），應評估其有效性。</p>
+<blockquote>
+<ul>
+<li>APP應有偵測越獄或Root的機制，並發出提醒。</li>
+<li>相關之安全設計檢視，常見是納入OWASP Mobile Top 10範疇(<a href="https://owasp.org/www-project-mobile-top-10/2016-risks/m1-improper-platform-usage">2016版，M1: Improper Platform Usage</a>)。</li>
+</ul>
+</blockquote>
+<h1 id="_10">八、</h1>
+<p>行動應用程式屬第一類，對外部提供服務或直接提供客戶自動化服務者，應於官網上提供應用程式之名稱、版本與下載位置。</p>
+<blockquote>
+<ul>
+<li>官網上應提供應用程式之名稱、版本與下載路徑。</li>
+</ul>
+</blockquote>
+<h1 id="_11">九、行動應用程式屬第一類，應建立偽冒應用程式偵測機制，以維客戶權益。</h1>
+<blockquote>
+<ul>
+<li>常見偽冒應用程式偵測機制：<br />
+1. 人工定期使用Google搜尋或是<a href="https://www.google.com.hk/alerts?hl=zh-TW">google 快訊訂閱</a>。<br />
+2. 使用<a href="https://www.eland.com.tw/tornado-home-page.html">語意分析系統</a>。<br />
+3. 使用專業偽冒偵測服務，如<a href="https://www.metaage.com.tw/brand_solution/68">RSA</a>或<a href="https://www.isecurity.com.tw/products/riskiq/">RiskIQ</a></li>
+</ul>
+</blockquote>
+<h1 id="_12">十、</h1>
+<p>採用憑證技術進行傳輸加密時，應用程式應建立可信任憑證清單並驗證完整憑證鏈及其憑證有效性。</p>
+<blockquote>
+<ul>
+<li>需使用憑證進行https加密通道傳輸。</li>
+<li>相關之安全設計檢視，常見是納入OWASP Mobile Top 10範疇(<a href="https://owasp.org/www-project-mobile-top-10/2016-risks/m3-insecure-communication">2016版，M3: Insecure Communication</a>和<a href="https://owasp.org/www-project-mobile-top-10/2023-risks/m5-insecure-communication.html">2023版，M5: Insecure Communication</a>)。</li>
+</ul>
+</blockquote>
+<h1 id="_13">十一、</h1>
+<p>應進行身分驗證相關資訊不以明文傳輸並具備帳戶鎖定機制，以防範自動化程式之登入或密碼更換嘗試。</p>
+<blockquote>
+<ul>
+<li>應至少有帳戶鎖定機制。</li>
+<li>常見會配合OTP或是<a href="https://support.google.com/a/answer/1217728?hl=zh-Hant">Captcha</a>機制。</li>
+<li>相關之安全設計檢視，常見是納入OWASP Mobile Top 10範疇(<a href="https://owasp.org/www-project-mobile-top-10/2016-risks/m4-insecure-authentication">2016版，M4: Insecure Authentication</a>和<a href="https://owasp.org/www-project-mobile-top-10/2023-risks/m3-insecure-authentication-authorization.html">2023版，M3: Insecure Authentication/Authorization</a>)。</li>
+</ul>
+</blockquote>
+<h1 id="_14">附錄：用語及定義</h1>
+<h2 id="_15">一、行動裝置</h2>
+<p>係指包含但不限於智慧型手機、平板電腦等具通信及連網功能之設備。</p>
+<h2 id="_16">二、專業機構</h2>
+<p>係指非會員公司之法人機構，其應具備經濟部工業局「行動應用 APP 基本資安自主檢測推動制度」列示之合格檢測實驗室資格。</p>
+<h2 id="_17">三、遭破解之行動裝置</h2>
+<p>係指透過系統程序取得手機最高權限，藉以突破手機作業系 統之基本防護，可能導致遭植入惡意程式。</p>
+<h2 id="_18">四、完成資安檢測</h2>
+<p>係指辦理資安檢測，並針對相關漏洞規劃修補作業，於一定時間 內完成修補。</p>
+<h2 id="_19">五、黑箱測試</h2>
+<p>動態分析或動態程式碼安全性檢測，主要用於受測主機資訊不足的情 況下進行測試。</p>
+<h2 id="_20">六、憑證</h2>
+<p>指載有簽章驗證資料，提供行動應用程式鑑別伺服器身分及資料傳輸加密 使用。</p>
+  </article>
+  <footer>
+    <p>仆洛宅 · 資安知識筆記 · <a href="../index.html">blog.angelz13.com</a></p>
+    <p>內容為作者整理之學習筆記、非官方判定，亦不構成資安顧問建議。</p>
+  </footer>
+</div>
+</body>
+</html>

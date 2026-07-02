@@ -120,3 +120,39 @@ if __name__ == "__main__":
                 "保險業電腦系統資訊安全評估作業原則實務導讀：評估範圍、系統分類與評估週期、資安評估作業七大檢視、社交工程演練、評估單位資格與評估報告，附完整合規問項檢查表。",
                 "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
                 "本篇為<strong>個人導讀整理</strong>：法規原文（保險業電腦系統資訊安全評估作業原則，係「保險業辦理資訊安全防護自律規範」附件一）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與合規檢查重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
+    elif target == "self-regulation":
+        convert("self-regulation",
+                "保險業辦理資訊安全防護自律規範導覽（母規範本文）",
+                "保險業辦理資訊安全防護自律規範本文逐條導讀：資安治理、營運環境管理人員權限、系統置換、資訊作業委外、日誌管理、跨機構合作、網路安全等，附白話解說與實務重點。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業辦理資訊安全防護自律規範）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
+    elif target == "mobile-app":
+        convert("mobile-app",
+                "保險業提供行動應用程式（App）作業原則導覽",
+                "保險業 App 作業原則實務導讀：行動應用程式分類與資安檢測週期、上架前檢測程序、委託專業機構辦理檢測應訂內部程序，附白話解說。係「保險業辦理資訊安全防護自律規範」附件二。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業提供行動應用程式（App）作業原則，係「保險業辦理資訊安全防護自律規範」附件二）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
+    elif target == "emerging-tech":
+        convert("emerging-tech",
+                "保險業運用新興科技作業原則導覽",
+                "保險業運用新興科技作業原則實務導讀：雲端服務（SaaS／PaaS／IaaS）安全控管、社群媒體控管程序、自攜裝置（BYOD）安全、生物特徵資料保護，附白話解說。係附件三。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業運用新興科技作業原則，係「保險業辦理資訊安全防護自律規範」附件三）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
+    elif target == "iot-devices":
+        convert("iot-devices",
+                "保險業使用物聯網設備作業準則導覽",
+                "保險業物聯網（IoT）設備作業準則實務導讀：設備清冊管理、安全性更新、身分驗證與加密、供應商資安協議、已知弱點處置、汰換防資料外洩，附白話解說。係附件四。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業使用物聯網設備作業準則，係「保險業辦理資訊安全防護自律規範」附件四）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
+    elif target == "ecommerce-auth":
+        convert("ecommerce-auth",
+                "保險業網路電子商務身分驗證之資訊安全作業準則導覽",
+                "保險業電子商務身分驗證作業準則實務導讀：靜態密碼規則、一次性密碼（OTP）、第三方認證、多因子驗證三取二、FIDO 身分驗證、情境適用，附白話解說。係附件五。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業網路電子商務身分驗證之資訊安全作業準則，係「保險業辦理資訊安全防護自律規範」附件五）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
+    elif target == "core-outsourcing":
+        convert("core-outsourcing",
+                "保險業核心資通系統作業委外資安注意事項導覽",
+                "保險業核心資通系統作業委外資安實務導讀：委外計畫作業、招標、決標、履約管理、驗收、保固六階段資安需求，含第三方服務提供者（TSP）風險，附白話解說。係附件六。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業核心資通系統作業委外資安注意事項，係「保險業辦理資訊安全防護自律規範」附件六）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="保險業核心資通系統作業委外資安實務導讀：委外計畫作業、招標、決標、履約管理、驗收、保固六階段資安需求，含第三方服務提供者（TSP）風險，附白話解說。係附件六。">
+<meta name="author" content="葉柏毅 Alex Yeh">
+<title>保險業核心資通系統作業委外資安注意事項導覽｜仆洛宅資安筆記</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="保險業核心資通系統作業委外資安注意事項導覽">
+<meta property="og:description" content="保險業核心資通系統作業委外資安實務導讀：委外計畫作業、招標、決標、履約管理、驗收、保固六階段資安需求，含第三方服務提供者（TSP）風險，附白話解說。係附件六。">
+<meta property="og:url" content="https://blog.angelz13.com/articles/core-outsourcing.html">
+<meta property="og:image" content="https://blog.angelz13.com/assets/avatar.png">
+<link rel="icon" type="image/png" href="../assets/avatar.png">
+<link rel="apple-touch-icon" href="../assets/avatar.png">
+<link rel="stylesheet" href="../css/brand.css">
+</head>
+<body>
+<div class="page">
+  <a class="back-link" href="../index.html">← 返回資安筆記</a>
+  <div class="kicker">SEC NOTES</div>
+  <h1>保險業核心資通系統作業委外資安注意事項導覽</h1>
+  <p class="article-meta">作者：葉柏毅 Alex Yeh</p>
+  <div class="attribution">本篇為<strong>個人導讀整理</strong>：法規原文（保險業核心資通系統作業委外資安注意事項，係「保險業辦理資訊安全防護自律規範」附件六）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與實務重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href="https://law.lia-roc.org.tw/Law/Content?lsid=FL072726" rel="noopener" target="_blank">壽險公會保險法規查詢系統</a>。</div>
+  <details class="toc-box" open>
+  <summary>目錄</summary>
+  <div class="toc">
+<ul>
+<li><a href="#_1">一、 本注意事項目的</a></li>
+<li><a href="#_2">二、本注意事項所稱核心資通系統，係指核心資訊系統與涉及核心業務持續運作之重要資訊系統。</a></li>
+<li><a href="#_3">三、計畫作業階段</a></li>
+<li><a href="#_4">四、 招標作業階段</a></li>
+<li><a href="#_5">五、 決標作業階段</a></li>
+<li><a href="#_6">六、 履約管理階段</a></li>
+<li><a href="#_7">七、 驗收作業階段</a></li>
+<li><a href="#_8">八、 保固作業階段</a></li>
+<li><a href="#_9">九、 其他應注意事項</a></li>
+</ul>
+</div>
+</details>
+  <article class="article-body">
+<p>修正日期：   民國 112 年 09 月 07 日（母規範現行版：民國 113 年 07 月 18 日）(異動差異，可見<strong><em>斜線粗體</em></strong>)</p>
+<h2 id="_1">一、   本注意事項目的</h2>
+<p>為協助保險業於辦理核心資通系統作業委外過程，於各階段(包括「計畫作業」、「招標」、「決標」、「履約管理」、「驗收」及「保固作業」等)考量相關資訊安全需求，以適當管理供應鏈風險，提升相關系統作業委外安全，特訂定本注意事項。</p>
+<blockquote>
+<ul>
+<li>立法目標說明。</li>
+<li>請注意各階段(包括「計畫作業」、「招標」、「決標」、「履約管理」、「驗收」及「保固作業」的資訊安全需求。</li>
+</ul>
+</blockquote>
+<h2 id="_2">二、<strong><em>本注意事項所稱核心資通系統，係指核心資訊系統與涉及核心業務持續運作之重要資訊系統。</em></strong></h2>
+<blockquote>
+<ul>
+<li>
+<p>核心資通系統：關鍵業務所需之必要系統，應包含「保險業辦理資訊安全防護自律規範」所列之<a href="(https://law.lia-roc.org.tw/Law/Article?lsid=FL072726&amp;lawno=5)">核心資訊系統</a>與涉及核心業務持續運作之重要資訊系統。請參考<a href="https://law.lia-roc.org.tw/Law/Article?lsid=FL099286&amp;lawno=2">保險業資訊作業韌性參考原則-第二點</a></p>
+</li>
+<li>
+<p>核心資訊系統，請參考<a href="https://law.lia-roc.org.tw/Law/Article?lsid=FL072726&amp;lawno=5">保險業辦理資訊安全防護自律規範-第五條</a>，應包括但不限於核保出單、保全（批改）、理賠、保費（收費）系統。</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="_3">三、計畫作業階段</h2>
+<p>(一) 核心資通系統作業委外可行性分析：<br />
+1.  篩選適合委託辦理之業務項目，確定該項業務委外之資訊安全可行性。<br />
+2.  將資安列入成本估算項目，進行效益分析。<br />
+3.  評估資訊系統作業委外資安風險與對策。</p>
+<blockquote>
+<ul>
+<li>如果委外廠商不能滿足組織資訊安全要求，將不得委託。</li>
+<li>如果委外廠商需要額外成本，進行弱點掃描或是獨立第三方稽核之成本，應納入成本效益評估。</li>
+<li>
+<p>評估該作業委外之風險，確認可否接受風險或是得以進行風險處置 (ATMA)</p>
+</li>
+<li>
+<p>風險處置 (ATMA)</p>
+<blockquote>
+<ul>
+<li>避免(Avoid) : 放棄該作業委外</li>
+<li>移轉(Transfer) : 第三方風險轉移，如，資安險。 風險可以轉移，但責任不行。<br />
+-緩解(Mitigate) : 處理不確定因素(降低發生可能性)，或處理影響，如，上線時，應無中以上弱點。</li>
+<li>接受(Accept) : 考量成本效益分析，接受風險，僅留在風險登錄表。</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+<p>(二) 核心資通系統作業委外開發案，專案成員中應有資安人員參與。</p>
+<blockquote>
+<ul>
+<li>專案成員必須要資安人員參與。 </li>
+</ul>
+</blockquote>
+<p>(三) 識別核心資通系統作業委外資安需求：<br />
+1.  委外業務涉及敏感性或含資安疑慮時，應識別委外廠商之限制。<br />
+2.  宜邀請廠商提出資安對應措施方案。</p>
+<blockquote>
+<ul>
+<li>如涉及機敏性資料、個資或存在資安疑慮，應條件限制廠商。</li>
+<li>如，擁有ISMS認證的廠商，或有處理同業作業之有經驗廠商。</li>
+</ul>
+</blockquote>
+<h2 id="_4">四、   招標作業階段</h2>
+<p>(一) 招標文件之制定與發布包含以下項目：<br />
+1.  採購產品或服務之資安要求事項。<br />
+2.  明定資安要求事項之服務水準（如：系統可用率、安全管控機制、稽核作業、資安檢測與弱點修補之責任與義務等）。<br />
+3.  未符合資安要求事項或服務水準時，應訂定罰責標準，依損害程度向委外廠商進行求償或罰款。</p>
+<blockquote>
+<ul>
+<li>RFP和合約內容要求：</li>
+<li>資安條款、SLA和罰責條款</li>
+</ul>
+</blockquote>
+<p>(二) 準備保密協議書。</p>
+<blockquote>
+<ul>
+<li>保密條款。</li>
+</ul>
+</blockquote>
+<p>(三) 委外廠商遴選準則之定義與實作：<br />
+1.  委外廠商之資安能量，評估核心系統是否承接過多會員公司之專案及其因應措施。<br />
+2.  要求委外廠商允許經授權之第三方稽核，以確認所定義資安要求事項之遵循性。<br />
+3.  委外廠商對其提供產品或服務之資安管理機制。</p>
+<blockquote>
+<ul>
+<li>評估委外廠商的接案能力，是否有能力因應專案需求及評估因應措施。</li>
+<li>稽核權；允許經授權之第三方稽核。</li>
+<li>要求廠商負責其產品或服務之資安管理機制，如弱點修補要求或是事件通報。</li>
+</ul>
+</blockquote>
+<p>(四) 評估委外位置與提供產品或服務之位置，對資安是否有不利影響，並納入評估項目。</p>
+<blockquote>
+<ul>
+<li>評估委外廠商或提供之產品或服務，是否能夠滿足SLA/RTO要求，或屬於境外、涉及高風險地區。</li>
+</ul>
+</blockquote>
+<h2 id="_5">五、   決標作業階段</h2>
+<p>與委外廠商簽訂合約或協議時，遵循相關安全管理措施，其內容包含：<br />
+(一) 應訂定相關資訊安全管理責任，載明與委外廠商雙方之資安角色與責任，若有分包，需一併確認分包計畫可能產生之資安風險。</p>
+<blockquote>
+<ul>
+<li>確認雙方及分包之資安角色與責任。</li>
+<li>常見需請委外廠商配合或是擔負一定的資安責任。</li>
+</ul>
+</blockquote>
+<p>(二) 資訊安全事件之通報流程及處理程序。</p>
+<blockquote>
+<ul>
+<li>明定資安事件之通報流程（或窗口）。</li>
+<li>建議包含公關要求事宜。</li>
+</ul>
+</blockquote>
+<p>(三) 委外廠商履行合約或協議時所提供軟體(或交付標的物)為交付產品，需具備合法性且不得違反智慧財產權之規定或侵害第三人合法權益，確認軟體(含元件)之使用版權及安全性。</p>
+<blockquote>
+<ul>
+<li>確認版權問題。</li>
+</ul>
+</blockquote>
+<p>(四) 委外廠商進行資訊系統開發或維運時，若涉及客戶、員工個人資料，需考量具個人資料安全防範措施。</p>
+<blockquote>
+<ul>
+<li>涉及個資議題，請務必要求個資法（或他國要求,ex. GDPR）相關要求</li>
+</ul>
+</blockquote>
+<p>(五) 委外廠商提供之優規產品或服務，仍需確認可能產生之資安風險。</p>
+<blockquote>
+<ul>
+<li>提供RFP以外之優規產品或服務，仍要注意資安風險。</li>
+<li>如中資產品、或仍要求資安檢測。</li>
+</ul>
+</blockquote>
+<h2 id="_6">六、   履約管理階段</h2>
+<p>(一) 建立委外廠商管理規範，其內容應含委外廠商之人員管控，雙方皆應指定專案負責人，負責督導及辦理各項資安要求事項。</p>
+<blockquote>
+<ul>
+<li>應指定專案負責人，負責督導專案成員，並配合資安要求（如，資安教育訓練、保密協定簽訂、識別證/帳號權限或是資安常規要求）</li>
+</ul>
+</blockquote>
+<p>(二) 持續識別資訊系統作業委外風險，並採取適當管控措施。</p>
+<blockquote>
+<ul>
+<li>應進行變更管理或是應定期監控風險，常見是設定SLA監控</li>
+</ul>
+</blockquote>
+<p>(三) 監督廠商於人員、實體環境及委外管理等資安要求事項是否落實執行，並建立適當檢驗機制，以確保管理機制有效落實。</p>
+<blockquote>
+<ul>
+<li>應定期或不定期進行相關抽查，如帳號權限盤點、設備攜出入管制及側錄監控調閱檢視。</li>
+</ul>
+</blockquote>
+<p>(四) 委外廠商對相關作業人員進行資訊安全教育訓練，使其充分了解資安政策及責任。</p>
+<blockquote>
+<ul>
+<li>應要求專案參與之作業人員應定期（每年）進行資安教育訓練及新進人員資安宣導。</li>
+</ul>
+</blockquote>
+<h2 id="_7">七、   驗收作業階段</h2>
+<p>委外作業於驗收程序，注意事項如下：<br />
+(一) 顧問訓練類：確認使用檢測工具的安全性和教育訓練時安裝軟體的安全性。</p>
+<blockquote>
+<ul>
+<li>顧問進場或是進行教育訓練時的設備，應使用我方之設備或是進行相關資安檢測後方能插入組織內網，常見在交付教育訓練教材時，應比照外部檔案傳輸之要求，進行相關掃毒或是資安檢測作業後，方能進入組織內部。</li>
+</ul>
+</blockquote>
+<p>(二) 系統發展類：<br />
+1.  要求委外廠商揭露第三方程式元件之來源與授權。</p>
+<blockquote>
+<ul>
+<li>當委外廠商使用第三方程式元件時，應要求並注意來源與合法性，並應進行相關資安檢測（如，<a href="https://www.gartner.com/reviews/market/software-composition-analysis-sca">SCA掃描工具</a>）</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li>要求委外廠商提供資訊系統之安全性檢測證明，如：源碼檢測、弱點掃描或滲透測試等。</li>
+</ol>
+<blockquote>
+<ul>
+<li>委外廠商提供資訊系統，應至少比照<a href="https://law.lia-roc.org.tw/Law/Article?lsid=FL072726&amp;lawno=14">保險業辦理資訊安全防護自律規範-第14條</a>，新系統或系統功能首次上線前及至少每半年應針對異動程式進行程式碼掃描或黑箱測試；或是依循內部新系統上線流程辦理。</li>
+</ul>
+</blockquote>
+<p>(三) 維運管理類：每半年執行系統弱點掃描。</p>
+<blockquote>
+<ul>
+<li>每半年執行系統弱點掃描；比照<a href="https://law.lia-roc.org.tw/Law/Article?lsid=FL072726&amp;lawno=14">保險業辦理資訊安全防護自律規範-第14條</a>，應至少每半年進行一次作業系統之弱點掃描。</li>
+</ul>
+</blockquote>
+<p>(四) 雲端服務類：確認雲端服務供應商宣稱之資安認證範圍（含功能）。</p>
+<blockquote>
+<ul>
+<li>應確認雲端服務供應商之認證範圍；確認資安認證的範疇是否涵蓋在委外範疇。</li>
+</ul>
+</blockquote>
+<p>委外關係終止或結束時，應依本自律規範第十六條第一項之規定辦理。</p>
+<blockquote>
+<ul>
+<li><a href="https://law.lia-roc.org.tw/Law/Article?lsid=FL072726&amp;lawno=16">保險業辦理資訊安全防護自律規範-第16條</a>；資訊系統作業委外終止或結束時，委外廠商應提供移轉服務，將留存資料移回至各會員公司自行處理，並應刪除或銷毀全數資料，且提供刪除或銷毀之佐證資訊與紀錄。</li>
+</ul>
+</blockquote>
+<h2 id="_8">八、   保固作業階段</h2>
+<p>(一) 保固服務：系統異常造成運作中斷或部分無法正常運作時，如可歸責於廠商時，廠商應依契約規定，履行保固服務或進行異常管理。</p>
+<blockquote>
+<ul>
+<li>合約應包含系統異常造成運作中斷或部分無法正常運作時，如可歸責於廠商時，廠商應依契約規定，履行保固服務或進行異常管理。</li>
+</ul>
+</blockquote>
+<p>(二) 異常管理：系統若有重大資安問題，應有變更計畫，評估潛在資安衝擊及提供變更及復原程序。</p>
+<blockquote>
+<ul>
+<li>應有專案管理進行變更管理作業，進行評估潛在資安風險分析</li>
+<li>應有變更程序及系統復原程序。</li>
+</ul>
+</blockquote>
+<h2 id="_9">九、   其他應注意事項</h2>
+<p>(一) 於籌獲套裝軟體時，應確認可能產生之資安風險。</p>
+<blockquote>
+<ul>
+<li>如採購套裝軟體時，仍應進行資安相關檢測或要求。如要求應原廠包裝直送（無經手廠商拆裝或客制安裝），仍應有掃毒等資安檢測。</li>
+</ul>
+</blockquote>
+<p>(二) 核心資通系統作業委外服務案中，委外廠商有須結合第三方服務提供者(Third-party Service Provider,TSP)方能提供完整服務之情形，應將TSP可能產生之資安風險納入評估。</p>
+<blockquote>
+<ul>
+<li>委外廠商如有分包之情形，仍應經同意或知悉，並有相對應的資安要求。</li>
+</ul>
+</blockquote>
+  </article>
+  <footer>
+    <p>仆洛宅 · 資安知識筆記 · <a href="../index.html">blog.angelz13.com</a></p>
+    <p>內容為作者整理之學習筆記、非官方判定，亦不構成資安顧問建議。</p>
+  </footer>
+</div>
+</body>
+</html>
