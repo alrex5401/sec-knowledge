@@ -21,6 +21,11 @@ def convert(name, title, desc, source_url, attribution=None):
     md = re.sub(r"^\s*#+\s*About Me\b.*?(?=\n#)", "", md, count=1, flags=re.S | re.I)
     # 移除內文開頭與頁面標題重複的第一個 H1（站模板已有 <h1>）
     md = re.sub(r"^\s*#\s+.+?\n", "", md, count=1)
+    # HackMD 筆記交叉連結（@alrex5401/…）將隨 HackMD 退役失效 → 拆連結留文字（負向前瞻避開 ![](…) 圖片、只動 /@ 不動 /_uploads）
+    _xlinks = re.findall(r"(?<!!)\[([^\]]*)\]\((https://hackmd\.io/@[^)]+)\)", md)
+    for _text, _url in _xlinks:
+        print(f"   [拆 HackMD 交叉連結] 「{_text}」← {_url}")
+    md = re.sub(r"(?<!!)\[([^\]]*)\]\(https://hackmd\.io/@[^)]+\)", r"\1", md)
     imgdir = BASE / "assets" / name
     imgdir.mkdir(parents=True, exist_ok=True)
     seen = {}
