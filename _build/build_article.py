@@ -81,7 +81,7 @@ def convert(name, title, desc, source_url, attribution=None):
   <a class="back-link" href="../index.html">← 返回資安筆記</a>
   <div class="kicker">SEC NOTES</div>
   <h1>{title}</h1>
-  <p class="article-meta">作者：葉柏毅 Alex Yeh ｜ 原文：<a href="{source_url}" rel="noopener" target="_blank">HackMD</a></p>
+  <p class="article-meta">作者：葉柏毅 Alex Yeh</p>
   {attr_block}{toc_block}<article class="article-body">
 {body}
   </article>
@@ -107,5 +107,11 @@ if __name__ == "__main__":
         convert("cissp",
                 "CISSP 八大領域筆記",
                 "CISSP 八大領域整理：治理與風險、資產安全、安全工程與密碼學、網路、IAM、安全評鑑、維運、軟體開發安全；對比矩陣、記憶口訣與自測。",
-                "https://hackmd.io/@alrex5401/CISSP",
-                "本篇 CISSP 八大領域筆記整理自 <strong>WUSON（Wentz Wu）</strong>課程教材、經授權公開分享；圖表版權屬原作者，在此致謝。完整原始筆記見 <a href=\"https://hackmd.io/@alrex5401/CISSP\" rel=\"noopener\" target=\"_blank\">HackMD</a>。")
+                "https://blog.angelz13.com/articles/cissp.html",
+                "本篇 CISSP 八大領域筆記整理自 <strong>WUSON（Wentz Wu）</strong>課程教材、經授權公開分享；圖表版權屬原作者，在此致謝。")
+    elif target == "computer-assessment":
+        convert("computer-assessment",
+                "保險業電腦系統資訊安全評估作業原則導覽",
+                "保險業電腦系統資訊安全評估作業原則實務導讀：評估範圍、系統分類與評估週期、資安評估作業七大檢視、社交工程演練、評估單位資格與評估報告，附完整合規問項檢查表。",
+                "https://law.lia-roc.org.tw/Law/Content?lsid=FL072726",
+                "本篇為<strong>個人導讀整理</strong>：法規原文（保險業電腦系統資訊安全評估作業原則，係「保險業辦理資訊安全防護自律規範」附件一）版權屬主管機關與中華民國人壽保險商業同業公會；本文於原文之上加註白話導讀與合規檢查重點，供學習與合規參考、非官方判定。法規現行版本（民國 113 年 7 月 18 日修正）請參 <a href=\"https://law.lia-roc.org.tw/Law/Content?lsid=FL072726\" rel=\"noopener\" target=\"_blank\">壽險公會保險法規查詢系統</a>。")
