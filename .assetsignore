@@ -1,0 +1,19 @@
+# Cloudflare Workers static assets 排除清單（blog 遷移自 GitHub Pages）
+# blog 無 .nojekyll ＝ GitHub Pages 在跑 Jekyll（會藏 _build 底線目錄）；
+# Workers 逐檔上傳、不藏底線目錄或非網站檔 → 必須明確排除。
+
+# 基礎設施 / build 工具（build_article.py 等含本機絕對路徑、不可公開）
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+CNAME
+.DS_Store
+**/.DS_Store
+.playwright-mcp
+_build
+
+# 文章 markdown 原始碼（HackMD 來源、含將失效的交叉連結；.html 才是對外成品）
+# 亦修掉現有曝露：GitHub Pages 上 articles/isms.md 等原始碼目前可公開讀取（200）
+*.md
+**/*.md

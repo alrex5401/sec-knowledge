@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers 靜態託管設定（blog.angelz13.com、由 GitHub Pages 遷入）
+  // Worker 名稱必須與 Cloudflare dashboard 建立的 Worker 一致（官方硬性要求）
+  "name": "sec-knowledge",
+  "compatibility_date": "2026-07-22",
+  "assets": {
+    // 網站檔在 repo 根目錄（index.html 在根）；非網站檔由 .assetsignore 排除
+    "directory": ".",
+    // 鎖死 .html URL：/articles/foo.html 原樣 200 服務、不 307 轉去掉副檔名
+    // （blog 的 sitemap 與 Google 已知 URL 全是 .html、收錄期須 URL 穩定）
+    "html_handling": "none",
+    // 找不到的路徑回 404（無自訂 404.html 則預設）；不是 SPA
+    "not_found_handling": "404-page"
+  }
+}
