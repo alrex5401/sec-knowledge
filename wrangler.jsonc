@@ -6,9 +6,9 @@
   "assets": {
     // 網站檔在 repo 根目錄（index.html 在根）；非網站檔由 .assetsignore 排除
     "directory": ".",
-    // 鎖死 .html URL：/articles/foo.html 原樣 200 服務、不 307 轉去掉副檔名
-    // （blog 的 sitemap 與 Google 已知 URL 全是 .html、收錄期須 URL 穩定）
-    "html_handling": "none",
+    // 預設 html_handling（auto-trailing-slash）：首頁 / 服務 index.html、
+    // 文章走無副檔名乾淨 URL（/articles/foo）、舊 /articles/foo.html 自動 307 導向。
+    // sitemap 與首頁連結同步改無副檔名（blog 未被 Google 收錄、改 URL 形式零成本）。
     // 找不到的路徑回 404（無自訂 404.html 則預設）；不是 SPA
     "not_found_handling": "404-page"
   }
