@@ -1,0 +1,19 @@
+# 舊網址（GitHub Pages 時代的 .html 形式）→ 現行乾淨網址，永久導向。
+#
+# 為什麼需要這個檔：沒有它時，Workers 的 html_handling="auto-trailing-slash"
+# 會自己發 307（暫時性導向）。307 對搜尋引擎的意思是「這只是暫時的、舊網址還算數」，
+# 不會把權重轉到新網址。301 才是「永久搬家、請改記新的」。
+#
+# 一篇文章一行。新增文章時要同步加一行（跟 sitemap.xml 一樣要手動維護）。
+
+/index.html                        /                                 301
+/articles/cissp.html               /articles/cissp                   301
+/articles/isms.html                /articles/isms                    301
+/articles/computer-assessment.html /articles/computer-assessment     301
+/articles/self-regulation.html     /articles/self-regulation         301
+/articles/mobile-app.html          /articles/mobile-app              301
+/articles/emerging-tech.html       /articles/emerging-tech           301
+/articles/iot-devices.html         /articles/iot-devices             301
+/articles/ecommerce-auth.html      /articles/ecommerce-auth          301
+/articles/core-outsourcing.html    /articles/core-outsourcing        301
+/articles/isr-templates.html       /articles/isr-templates           301

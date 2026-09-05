@@ -75,15 +75,16 @@ def convert(name, title, desc, source_url, attribution=None):
 <meta property="og:type" content="article">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:url" content="https://blog.angelz13.com/articles/{name}.html">
+<meta property="og:url" content="https://blog.angelz13.com/articles/{name}">
 <meta property="og:image" content="https://blog.angelz13.com/assets/avatar.png">
+<link rel="canonical" href="https://blog.angelz13.com/articles/{name}">
 <link rel="icon" type="image/png" href="../assets/avatar.png">
 <link rel="apple-touch-icon" href="../assets/avatar.png">
 <link rel="stylesheet" href="../css/brand.css">
 </head>
 <body>
 <div class="page">
-  <a class="back-link" href="../index.html">← 返回資安筆記</a>
+  <a class="back-link" href="../">← 返回資安筆記</a>
   <div class="kicker">SEC NOTES</div>
   <h1>{title}</h1>
   <p class="article-meta">作者：葉柏毅 Alex Yeh</p>
@@ -91,7 +92,7 @@ def convert(name, title, desc, source_url, attribution=None):
 {body}
   </article>
   <footer>
-    <p>仆洛宅 · 資安知識筆記 · <a href="../index.html">blog.angelz13.com</a></p>
+    <p>仆洛宅 · 資安知識筆記 · <a href="../">blog.angelz13.com</a></p>
     <p>內容為作者整理之學習筆記、非官方判定，亦不構成資安顧問建議。</p>
   </footer>
 </div>
